@@ -2,7 +2,7 @@
 techgroup to generate a System with Microservices using DAPR
 # Microservices
 
-- Academy Manager (C#)
+- Academy Manager (C#) (Tadeo Navas,)
 - Study Scheduler (Python)
 - Calendar (Java)
 
