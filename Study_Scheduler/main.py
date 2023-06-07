@@ -1,8 +1,9 @@
-# Import the flask module to create an application
 from flask import Flask
+from flask_sqlalchemy import SQLAlchemy
 
-# Initialize the Flask application
 app = Flask(__name__)
+app.config['SQLALCHEMY_DATABASE_URI'] = 'postgresql://postgres:postgres@db:5432/postgres'
+db = SQLAlchemy(app)
 
 # Define a route for the default URL, which loads the hello world message
 @app.route('/')

@@ -1,0 +1,18 @@
+version: '3.1'
+
+services:
+  db:
+    image: postgres
+    restart: always
+    environment:
+      POSTGRES_PASSWORD: postgres
+
+  web:
+    build: .
+    command: python main.py
+    volumes:
+      - .:/code
+    ports:
+      - 5000:5000
+    depends_on:
+      - db
