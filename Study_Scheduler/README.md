@@ -5,9 +5,30 @@ Study Scheduler is a simple Flask application for managing study schedules. It u
 ## Prerequisites
 
 - Docker installed on your system
-- Python 3.7 or higher
+- Python 3.7+
 
-## How to run the application
+## Setup for local development
+
+1. Setup and activate virtual environment
+
+   ```
+   python3 -m venv myenv
+   source myenv/bin/activate
+   ```
+
+2. Install dependencies
+
+   ```
+   pip install -r requirements.txt
+   ```
+
+3. Run the application
+
+   ```
+   python main.py
+   ```
+
+## How to run the application with Docker
 
 1. Clone the repository:
 
