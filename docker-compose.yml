@@ -1,0 +1,39 @@
+version: '3.1'
+
+services:
+  db:
+    image: postgres
+    restart: always
+    environment:
+      POSTGRES_PASSWORD: postgres
+      POSTGRES_USER: postgres
+      POSTGRES_DB: academy_scheduler
+    healthcheck:
+      test: ['CMD-SHELL', 'pg_isready -U postgres']
+      interval: 10s
+      timeout: 5s
+      retries: 5
+
+  migrations:
+    build:
+      context: ./db
+      dockerfile: Dockerfile
+    depends_on:
+      db:
+        condition: service_healthy
+    environment:
+      DATABASE_URL: postgresql://postgres:postgres@db:5432/academy_scheduler
+
+  study_scheduler:
+    build:
+      context: ./study_scheduler
+    command: python main.py
+    volumes:
+      - .:/code
+    ports:
+      - 5000:5000
+    depends_on:
+      - db
+      - migrations
+    environment:
+      DATABASE_URL: postgresql://postgres:postgres@db:5432/academy_scheduler
