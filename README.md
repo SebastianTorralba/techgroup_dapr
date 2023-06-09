@@ -7,6 +7,8 @@
 
 techgroup to generate a System with Microservices using DAPR
 
+# Diagrams
+ [Diagrams](https://twoboot-my.sharepoint.com/:u:/g/personal/sebastiantorralba_twoboot_onmicrosoft_com/EUjypxlE581Kt-E-J65vOjsBbZeT2nDSEn2EboCWOXZBDA?e=fk5d5H)
 # Microservices
 
 - Academy Manager (C#) (NetCore) (Tadeo Navas, Luis Nieto, Camilo Rossi)
