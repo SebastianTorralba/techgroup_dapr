@@ -1,0 +1,30 @@
+{
+  "Id": "",
+  "course:": {
+    "id": "",
+    "section": "",
+    "academy": { "id": "", "name": "", "description": "" }
+  },
+  "details": [
+    {
+      "Id": "",
+      "orderNo": "",
+      "module": {
+        "id": "1",
+        "course:": {
+          "id": "",
+          "section": "",
+          "academy": { "id": "", "name": "", "description": "" }
+        },
+        "subject": {
+          "id": "",
+          "name": "",
+          "teacher": {
+            "id": "",
+            "name": ""
+          }
+        }
+      }
+    }
+  ]
+}
