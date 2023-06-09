@@ -1,0 +1,65 @@
+datasource db {
+    provider = "postgresql"
+    url      = env("DATABASE_URL")
+}
+
+model Academy {
+    id          String   @id @default(cuid())
+    name        String
+    description String
+    courses     Course[]
+}
+
+model Classroom {
+    id     String @id @default(cuid())
+    number String
+}
+
+model Course {
+    id        String      @id @default(cuid())
+    section   String
+    academy   Academy     @relation(fields: [academyId], references: [id])
+    academyId String
+    modules   Module[]
+    plans     StudyPlan[]
+}
+
+model Module {
+    id        String            @id @default(cuid())
+    course    Course            @relation(fields: [courseId], references: [id])
+    courseId  String
+    subject   Subject           @relation(fields: [subjectId], references: [id])
+    subjectId String
+    details   StudyPlanDetail[]
+}
+
+model StudyPlanDetail {
+    id       String    @id @default(cuid())
+    orderNo  String
+    module   Module    @relation(fields: [moduleId], references: [id])
+    moduleId String
+    plan     StudyPlan @relation(fields: [planId], references: [id])
+    planId   String
+}
+
+model StudyPlan {
+    id       String            @id @default(cuid())
+    course   Course            @relation(fields: [courseId], references: [id])
+    courseId String
+    details  StudyPlanDetail[]
+}
+
+model Subject {
+    id        String   @id @default(cuid())
+    name      String
+    teacher   Teacher  @relation(fields: [teacherId], references: [id])
+    teacherId String
+    modules   Module[]
+}
+
+model Teacher {
+    id       String    @id @default(cuid())
+    name     String
+    lastName String
+    subjects Subject[]
+}
