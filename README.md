@@ -13,7 +13,7 @@ techgroup to generate a System with Microservices using DAPR
 
 - Academy Manager (C#) (NetCore) (Tadeo Navas, Luis Nieto, Camilo Rossi)
 - Study Scheduler (Python) (Flask) (Agustin Caviglia, Mateo Cerquetella)
-- Calendar (Java) (SpringBoot/Gradle) (Sebastian Torralba, Martin de Bernardo)
+- Calendar (Java) (SpringBoot/Gradle) (Sebastian Torralba, Martin de Bernardo, Arianne Rafael)
 
 # Prerequisites
 
