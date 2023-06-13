@@ -18,6 +18,17 @@ services:
       timeout: 5s
       retries: 5
 
+  mongodb:
+    image: mongo:latest
+    restart: always
+    volumes:
+      - mongodb_data:/data/db
+    environment:
+      MONGO_INITDB_ROOT_USERNAME: mongoadmin
+      MONGO_INITDB_ROOT_PASSWORD: secret
+    ports:
+      - 27017:27017
+
   migrations:
     build:
       context: ./db
@@ -44,3 +55,4 @@ services:
 
 volumes:
   postgres_data:
+  mongodb_data:
