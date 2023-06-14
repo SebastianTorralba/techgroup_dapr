@@ -42,7 +42,7 @@ services:
   study_scheduler:
     build:
       context: ./study_scheduler
-    command: python main.py
+    command: python run.py
     volumes:
       - .:/code
     ports:
