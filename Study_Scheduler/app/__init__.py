@@ -12,5 +12,8 @@ def create_app(config_class=Config):
 
     from app.study_plan.views import study_plan
     app.register_blueprint(study_plan)
+    
+    from app.module.views import module
+    app.register_blueprint(module)
 
     return app
