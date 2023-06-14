@@ -10,7 +10,6 @@ def get_study_plans():
     study_plans = StudyPlan.query.all()
     return jsonify({'study_plan': [plan.to_dict() for plan in study_plans]})
 
-
 @study_plan.route('/study-plan', methods=['POST'])
 def create_study_plan():
     data = request.get_json()
@@ -22,20 +21,24 @@ def create_study_plan():
     )
 
     db.session.add(new_plan)
-    
-    for detail in data['details']:
+    db.session.flush()  # Flush to get id of the new_plan
+
+    details = data.get('details', [])
+
+    for detail in details:
         new_detail = StudyPlanDetail(
             userId=detail['userId'],
             status=detail['status'],
             orderNo=detail['orderNo'],
             moduleId=detail['moduleId'],
-            plan=new_plan
+            study_plan_id=new_plan.id  # use the new_plan id as foreign key
         )
         db.session.add(new_detail)
 
     db.session.commit()
 
-    return jsonify({"message": "StudyPlan created"}), 201
+    return jsonify({"message": "StudyPlan created", "id": new_plan.id}), 201
+
 
 @study_plan.route('/study-plan/<id>', methods=['GET'])
 def get_study_plan(id):
