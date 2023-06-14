@@ -6,10 +6,10 @@ from app import db
 class Module(db.Model):
     __tablename__ = 'Module'
 
-    id = Column(String, primary_key=True)
+    id = Column(String, primary_key=True, default=lambda: str(uuid4()))
     userId = Column(String, nullable=False)
-    createdAt = Column(DateTime, nullable=False, server_default=func.now())
-    updatedAt = Column(DateTime, nullable=False, server_default=func.now())
+    createdAt = db.Column(db.DateTime(timezone=True), default=func.now())
+    updatedAt = db.Column(db.DateTime(timezone=True), default=func.now(), onupdate=func.now())
     status = Column(String, nullable=False)
     courseId = Column(String, ForeignKey('Course.id'), nullable=False)
     subjectId = Column(String, ForeignKey('Subject.id'), nullable=False)

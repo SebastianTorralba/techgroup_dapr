@@ -22,12 +22,13 @@ def create_module():
 
     return jsonify({"message": "Module created"}), 201
 
-# RETRIEVE
+# LIST
 @module.route('/module', methods=['GET'])
 def get_modules():
     modules = Module.query.all()
     return jsonify({'modules': [module.to_dict() for module in modules]})
 
+# GET
 @module.route('/module/<id>', methods=['GET'])
 def get_module(id):
     module = Module.query.get(id)
