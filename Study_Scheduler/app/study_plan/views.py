@@ -1,6 +1,6 @@
 from flask import Blueprint, request, jsonify
 from app import db
-from .models import StudyPlan
+from .models import StudyPlan, StudyPlanDetail
 
 study_plan = Blueprint('study_plan', __name__)
 
@@ -9,9 +9,6 @@ def get_study_plans():
     study_plans = StudyPlan.query.all()
     return jsonify({'study_plans': [plan.to_dict() for plan in study_plans]})
 
-from flask import request, jsonify
-from app import db
-from .models import StudyPlan, StudyPlanDetail
 
 @study_plan.route('/study-plan', methods=['POST'])
 def create_study_plan():
@@ -31,7 +28,7 @@ def create_study_plan():
             status=detail['status'],
             orderNo=detail['orderNo'],
             moduleId=detail['moduleId'],
-            plan=new_plan  # This links the detail to the new plan
+            plan=new_plan
         )
         db.session.add(new_detail)
 
