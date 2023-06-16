@@ -33,7 +33,7 @@ def get_modules():
 def get_module(id):
     module = Module.query.get(id)
     if module:
-        return jsonify({'module': module.to_dict()})
+        return jsonify({'module': module.to_dict()}), 200
     else:
         return jsonify({"message": "Module not found"}), 404
 

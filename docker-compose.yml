@@ -1,11 +1,11 @@
 version: '3.1'
 
 services:
-  db:
-    image: postgres
+  postgres:
+    image: postgres:latest
     restart: always
     volumes:
-      - postgres_data:/var/lib/postgresql/data
+      - ./db/local_data/postgres_data:/var/lib/postgresql/data
     environment:
       POSTGRES_PASSWORD: postgres
       POSTGRES_USER: postgres
@@ -22,22 +22,36 @@ services:
     image: mongo:latest
     restart: always
     volumes:
-      - mongodb_data:/data/db
+      - ./db/local_data/mongodb_data:/data/db
     environment:
       MONGO_INITDB_ROOT_USERNAME: mongoadmin
       MONGO_INITDB_ROOT_PASSWORD: secret
     ports:
       - 27017:27017
 
+  sqlserver:
+    image: mcr.microsoft.com/mssql/server
+    user: root
+    environment:
+      SA_PASSWORD: 'darp1234'
+      ACCEPT_EULA: 'Y'
+    ports:
+      - 1433:1433
+    volumes:
+      - ./db/local_data/sqlserver_data:/var/opt/mssql/data
+
   migrations:
     build:
       context: ./db
       dockerfile: Dockerfile
     depends_on:
-      db:
+      postgres:
         condition: service_healthy
+      sqlserver:
+        condition: service_started
     environment:
-      DATABASE_URL: postgresql://postgres:postgres@db:5432/academy_scheduler
+      DATABASE_URL: postgresql://postgres:postgres@postgres:5432/academy_scheduler
+      SQLSERVER_URL: jdbc:sqlserver://localhost:1433;databaseName=academy_scheduler;user=sa;password=darp1234
 
   study_scheduler:
     build:
@@ -48,11 +62,12 @@ services:
     ports:
       - 5000:5000
     depends_on:
-      - db
+      - postgres
       - migrations
     environment:
-      DATABASE_URL: postgresql://postgres:postgres@db:5432/academy_scheduler
+      DATABASE_URL: postgresql://postgres:postgres@postgres:5432/academy_scheduler
 
 volumes:
   postgres_data:
   mongodb_data:
+  sqlserver_data:
