@@ -1,3 +1,4 @@
+# Dockerfile
 FROM node:14
 
 WORKDIR /app
@@ -5,5 +6,6 @@ WORKDIR /app
 COPY . .
 
 RUN npm install
+RUN chmod +x runMigrations.sh
 
-CMD ["/bin/bash", "-c", "npm run migrate"]
+CMD [ "./runMigrations.sh" ]

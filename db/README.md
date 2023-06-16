@@ -11,17 +11,26 @@ This directory contains the database configuration for the Study Scheduler appli
 ## Setup for local development
 
 1. Install dependencies:
+
    ```
    cd db
    npm install
    ```
-2. Generate Prisma Client:
+
+2. Create .env inside the db folder:
+
+   ```
+   DATABASE_URL="postgresql://postgres:postgres@localhost:5432/academy_scheduler"
+   SQLSERVER_URL="sqlserver://localhost:1433;databaseName=academy_scheduler;user=sa;password=Darp1234!"
+   ```
+
+3. Generate Prisma Client:
 
    ```
    npx prisma generate
    ```
 
-3. Run migrations to update the database schema:
+4. Run migrations to update the database schema:
 
    ```
    npx prisma migrate deploy

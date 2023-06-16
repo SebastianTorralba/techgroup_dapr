@@ -30,10 +30,11 @@ services:
       - 27017:27017
 
   sqlserver:
-    image: mcr.microsoft.com/mssql/server
+    build:
+      context: ./db/sqlserver
     user: root
     environment:
-      SA_PASSWORD: 'darp1234'
+      SA_PASSWORD: 'Darp1234!'
       ACCEPT_EULA: 'Y'
     ports:
       - 1433:1433
@@ -51,7 +52,7 @@ services:
         condition: service_started
     environment:
       DATABASE_URL: postgresql://postgres:postgres@postgres:5432/academy_scheduler
-      SQLSERVER_URL: jdbc:sqlserver://localhost:1433;databaseName=academy_scheduler;user=sa;password=darp1234
+      SQLSERVER_URL: sqlserver://localhost:1433;databaseName=academy_scheduler;user=sa;password=Darp1234!
 
   study_scheduler:
     build:
