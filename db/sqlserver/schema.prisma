@@ -1,6 +1,6 @@
 datasource db {
     provider = "sqlserver"
-    url      = env("SQLSERVER_URL")
+    url      = env("DATABASE_URL")
 }
 
 model Academy {

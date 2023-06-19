@@ -1,4 +1,6 @@
 node_modules
 package-lock.json
 .env
-local_data
+postgres/postgres_data
+mongo/mongodb_data
+sqlserver/sqlserver_data
