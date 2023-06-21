@@ -1,0 +1,11 @@
+﻿################################################################################
+# Este archivo .gitignore ha sido creado automáticamente por Microsoft(R) Visual Studio.
+################################################################################
+
+/AcademyManager/AcademyManager/obj/Debug/net7.0/AcademyManager.pdb
+/AcademyManager/AcademyManager/obj/Debug/net7.0/AcademyManager.genruntimeconfig.cache
+/AcademyManager/AcademyManager/obj/Debug/net7.0/AcademyManager.dll
+/AcademyManager/AcademyManager/obj/Debug/net7.0/AcademyManager.csproj.FileListAbsolute.txt
+/AcademyManager/AcademyManager/bin/Debug/net7.0/AcademyManager.pdb
+/AcademyManager/AcademyManager/bin/Debug/net7.0/AcademyManager.dll
+/AcademyManager/.vs/AcademyManager/v17/.suo
