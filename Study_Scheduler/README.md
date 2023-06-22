@@ -25,7 +25,7 @@ Study Scheduler is a simple Flask application for managing study schedules. It u
 3. Run the application
 
    ```
-   python main.py
+   python run.py
    ```
 
 ## How to run the application with Docker

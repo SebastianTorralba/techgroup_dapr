@@ -4,7 +4,7 @@
   "main": "index.js",
   "scripts": {
     "new-migration": "prisma migrate dev --name academy_scheduler",
-    "migrate": "npx prisma generate && npx prisma migrate deploy && echo Migrations completed successfully!"
+    "migrate": "npx prisma migrate deploy && echo SQLServer migration completed successfully!"
   },
   "devDependencies": {
     "prisma": "^4.15.0"

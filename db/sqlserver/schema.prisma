@@ -1,0 +1,126 @@
+datasource db {
+    provider = "sqlserver"
+    url      = env("DATABASE_URL")
+}
+
+model Academy {
+    id          String      @id @default(cuid())
+    userId      String
+    createdAt   DateTime    @default(now())
+    updatedAt   DateTime    @updatedAt
+    status      String
+    name        String
+    description String
+    courses     Course[]
+    classroom   Classroom[]
+    module      Module[]
+}
+
+model Classroom {
+    id        String   @id @default(cuid())
+    userId    String
+    createdAt DateTime @default(now())
+    updatedAt DateTime @updatedAt
+    status    String
+    number    String
+    capacity  Int
+    academyId String
+    academy   Academy  @relation(fields: [academyId], references: [id])
+}
+
+model Course {
+    id        String       @id @default(cuid())
+    userId    String
+    createdAt DateTime     @default(now())
+    updatedAt DateTime     @updatedAt
+    status    String
+    section   String
+    academy   Academy      @relation(fields: [academyId], references: [id])
+    academyId String
+    modules   Module[]
+    plans     StudyPlan[]
+    users     UserCourse[]
+}
+
+model Module {
+    id        String            @id @default(cuid())
+    userId    String
+    createdAt DateTime          @default(now())
+    updatedAt DateTime          @updatedAt
+    status    String
+    course    Course            @relation(fields: [courseId], references: [id], onDelete: NoAction, onUpdate: NoAction)
+    courseId  String
+    subject   Subject           @relation(fields: [subjectId], references: [id])
+    subjectId String
+    academy   Academy           @relation(fields: [academyId], references: [id], onDelete: NoAction, onUpdate: NoAction)
+    academyId String
+    details   StudyPlanDetail[]
+}
+
+model StudyPlan {
+    id        String            @id @default(cuid())
+    userId    String
+    createdAt DateTime          @default(now())
+    updatedAt DateTime          @updatedAt
+    status    String
+    course    Course            @relation(fields: [courseId], references: [id])
+    courseId  String
+    details   StudyPlanDetail[]
+}
+
+model StudyPlanDetail {
+    id        String    @id @default(cuid())
+    userId    String
+    createdAt DateTime  @default(now())
+    updatedAt DateTime  @updatedAt
+    status    String
+    orderNo   String
+    module    Module    @relation(fields: [moduleId], references: [id])
+    moduleId  String
+    plan      StudyPlan @relation(fields: [planId], references: [id])
+    planId    String
+}
+
+model Subject {
+    id        String   @id @default(cuid())
+    userId    String
+    createdAt DateTime @default(now())
+    updatedAt DateTime @updatedAt
+    status    String
+    name      String
+    teacher   Teacher  @relation(fields: [teacherId], references: [id])
+    teacherId String
+    modules   Module[]
+}
+
+model Teacher {
+    id        String    @id @default(cuid())
+    userId    String
+    createdAt DateTime  @default(now())
+    updatedAt DateTime  @updatedAt
+    status    String
+    name      String
+    lastName  String
+    subjects  Subject[]
+}
+
+model User {
+    id        String       @id @default(cuid())
+    userId    String       @unique
+    createdAt DateTime     @default(now())
+    updatedAt DateTime     @updatedAt
+    status    String
+    courses   UserCourse[]
+}
+
+model UserCourse {
+    userId    String
+    courseId  String
+    user      User     @relation(fields: [userId], references: [id])
+    course    Course   @relation(fields: [courseId], references: [id])
+    createdAt DateTime @default(now())
+    updatedAt DateTime @updatedAt
+    status    String
+
+    @@id([userId, courseId])
+}
