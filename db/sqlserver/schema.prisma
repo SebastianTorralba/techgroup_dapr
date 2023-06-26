@@ -18,6 +18,7 @@ model Academy {
     courses     Course[]
     classroom   Classroom[]
     module      Module[]
+    user        User        @relation(fields: [userId], references: [id], onUpdate: NoAction, onDelete: NoAction)
 }
 
 model Classroom {
@@ -29,7 +30,8 @@ model Classroom {
     number    String
     capacity  Int
     academyId String
-    academy   Academy  @relation(fields: [academyId], references: [id])
+    academy   Academy  @relation(fields: [academyId], references: [id], onUpdate: NoAction, onDelete: NoAction)
+    user      User     @relation(fields: [userId], references: [id], onUpdate: NoAction, onDelete: NoAction)
 }
 
 model Course {
@@ -39,11 +41,12 @@ model Course {
     updatedAt DateTime     @updatedAt
     status    String
     section   String
-    academy   Academy      @relation(fields: [academyId], references: [id])
     academyId String
+    academy   Academy      @relation(fields: [academyId], references: [id], onUpdate: NoAction, onDelete: NoAction)
     modules   Module[]
     plans     StudyPlan[]
     users     UserCourse[]
+    user      User         @relation(fields: [userId], references: [id], onUpdate: NoAction, onDelete: NoAction)
 }
 
 model Module {
@@ -52,13 +55,14 @@ model Module {
     createdAt DateTime          @default(now())
     updatedAt DateTime          @updatedAt
     status    String
-    course    Course            @relation(fields: [courseId], references: [id], onDelete: NoAction, onUpdate: NoAction)
     courseId  String
-    subject   Subject           @relation(fields: [subjectId], references: [id])
+    course    Course            @relation(fields: [courseId], references: [id], onUpdate: NoAction, onDelete: NoAction)
     subjectId String
-    academy   Academy           @relation(fields: [academyId], references: [id], onDelete: NoAction, onUpdate: NoAction)
+    subject   Subject           @relation(fields: [subjectId], references: [id], onUpdate: NoAction, onDelete: NoAction)
     academyId String
+    academy   Academy           @relation(fields: [academyId], references: [id], onUpdate: NoAction, onDelete: NoAction)
     details   StudyPlanDetail[]
+    user      User              @relation(fields: [userId], references: [id], onUpdate: NoAction, onDelete: NoAction)
 }
 
 model StudyPlan {
@@ -67,9 +71,10 @@ model StudyPlan {
     createdAt DateTime          @default(now())
     updatedAt DateTime          @updatedAt
     status    String
-    course    Course            @relation(fields: [courseId], references: [id])
     courseId  String
+    course    Course            @relation(fields: [courseId], references: [id], onUpdate: NoAction, onDelete: NoAction)
     details   StudyPlanDetail[]
+    user      User              @relation(fields: [userId], references: [id], onUpdate: NoAction, onDelete: NoAction)
 }
 
 model StudyPlanDetail {
@@ -79,10 +84,11 @@ model StudyPlanDetail {
     updatedAt DateTime  @updatedAt
     status    String
     orderNo   String
-    module    Module    @relation(fields: [moduleId], references: [id])
     moduleId  String
-    plan      StudyPlan @relation(fields: [planId], references: [id])
+    module    Module    @relation(fields: [moduleId], references: [id], onUpdate: NoAction, onDelete: NoAction)
     planId    String
+    plan      StudyPlan @relation(fields: [planId], references: [id], onUpdate: NoAction, onDelete: NoAction)
+    user      User      @relation(fields: [userId], references: [id], onUpdate: NoAction, onDelete: NoAction)
 }
 
 model Subject {
@@ -92,9 +98,10 @@ model Subject {
     updatedAt DateTime @updatedAt
     status    String
     name      String
-    teacher   Teacher  @relation(fields: [teacherId], references: [id])
     teacherId String
+    teacher   Teacher  @relation(fields: [teacherId], references: [id], onUpdate: NoAction, onDelete: NoAction)
     modules   Module[]
+    user      User     @relation(fields: [userId], references: [id], onUpdate: NoAction, onDelete: NoAction)
 }
 
 model Teacher {
@@ -106,25 +113,34 @@ model Teacher {
     name      String
     lastName  String
     subjects  Subject[]
+    user      User      @relation(fields: [userId], references: [id], onUpdate: NoAction, onDelete: NoAction)
 }
 
 model User {
-    id        String       @id @default(cuid())
-    userId    String       @unique
-    createdAt DateTime     @default(now())
-    updatedAt DateTime     @updatedAt
-    status    String
-    courses   UserCourse[]
+    id              String            @id @default(cuid())
+    createdAt       DateTime          @default(now())
+    updatedAt       DateTime          @updatedAt
+    status          String
+    courses         UserCourse[]
+    Academy         Academy[]
+    Classroom       Classroom[]
+    Course          Course[]
+    Module          Module[]
+    StudyPlan       StudyPlan[]
+    StudyPlanDetail StudyPlanDetail[]
+    Subject         Subject[]
+    Teacher         Teacher[]
 }
 
 model UserCourse {
-    userId    String
-    courseId  String
-    user      User     @relation(fields: [userId], references: [id])
-    course    Course   @relation(fields: [courseId], references: [id])
+    id        String   @id @default(cuid())
     createdAt DateTime @default(now())
     updatedAt DateTime @updatedAt
     status    String
+    user      User     @relation(fields: [userId], references: [id], onUpdate: NoAction, onDelete: NoAction)
+    userId    String
+    course    Course   @relation(fields: [courseId], references: [id], onUpdate: NoAction, onDelete: NoAction)
+    courseId  String
 
-    @@id([userId, courseId])
+    @@unique([userId, courseId])
 }
