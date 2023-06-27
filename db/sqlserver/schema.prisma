@@ -8,7 +8,7 @@ datasource db {
 }
 
 model Academy {
-    id          String      @id @default(cuid())
+    id          String      @id @default(uuid())
     userId      String
     createdAt   DateTime    @default(now())
     updatedAt   DateTime    @updatedAt
@@ -22,7 +22,7 @@ model Academy {
 }
 
 model Classroom {
-    id        String   @id @default(cuid())
+    id        String   @id @default(uuid())
     userId    String
     createdAt DateTime @default(now())
     updatedAt DateTime @updatedAt
@@ -35,7 +35,7 @@ model Classroom {
 }
 
 model Course {
-    id        String       @id @default(cuid())
+    id        String       @id @default(uuid())
     userId    String
     createdAt DateTime     @default(now())
     updatedAt DateTime     @updatedAt
@@ -50,7 +50,7 @@ model Course {
 }
 
 model Module {
-    id        String            @id @default(cuid())
+    id        String            @id @default(uuid())
     userId    String
     createdAt DateTime          @default(now())
     updatedAt DateTime          @updatedAt
@@ -66,7 +66,7 @@ model Module {
 }
 
 model StudyPlan {
-    id        String            @id @default(cuid())
+    id        String            @id @default(uuid())
     userId    String
     createdAt DateTime          @default(now())
     updatedAt DateTime          @updatedAt
@@ -78,7 +78,7 @@ model StudyPlan {
 }
 
 model StudyPlanDetail {
-    id        String    @id @default(cuid())
+    id        String    @id @default(uuid())
     userId    String
     createdAt DateTime  @default(now())
     updatedAt DateTime  @updatedAt
@@ -92,7 +92,7 @@ model StudyPlanDetail {
 }
 
 model Subject {
-    id        String   @id @default(cuid())
+    id        String   @id @default(uuid())
     userId    String
     createdAt DateTime @default(now())
     updatedAt DateTime @updatedAt
@@ -105,7 +105,7 @@ model Subject {
 }
 
 model Teacher {
-    id        String    @id @default(cuid())
+    id        String    @id @default(uuid())
     userId    String
     createdAt DateTime  @default(now())
     updatedAt DateTime  @updatedAt
@@ -117,7 +117,7 @@ model Teacher {
 }
 
 model User {
-    id              String            @id @default(cuid())
+    id              String            @id @default(uuid())
     firstname       String            @db.VarChar(100)
     lastname        String            @db.VarChar(100)
     email           String            @unique(map: "user_email_unique") @db.VarChar(320)
@@ -140,7 +140,7 @@ model User {
 }
 
 model UserCourse {
-    id        String   @id @default(cuid())
+    id        String   @id @default(uuid())
     createdAt DateTime @default(now())
     updatedAt DateTime @updatedAt
     status    String
