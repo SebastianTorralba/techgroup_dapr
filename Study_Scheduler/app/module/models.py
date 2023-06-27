@@ -1,6 +1,6 @@
 from uuid import uuid4
 from sqlalchemy import Column, ForeignKey, String, func
-from sqlalchemy.orm import relationship
+from sqlalchemy.orm import relationship, class_mapper
 from app import db
 
 class Module(db.Model):
@@ -18,13 +18,5 @@ class Module(db.Model):
     studyPlanDetails = relationship('StudyPlanDetail', backref='module')
 
     def to_dict(self):
-        return {
-            'id': self.id,
-            'userId': self.userId,
-            'createdAt': self.createdAt.isoformat(),
-            'updatedAt': self.updatedAt.isoformat(),
-            'status': self.status,
-            'courseId': self.courseId,
-            'subjectId': self.subjectId,
-            'academyId': self.academyId,
-        }
+        return {c.key: getattr(self, c.key) for c in class_mapper(self.__class__).columns}
+
