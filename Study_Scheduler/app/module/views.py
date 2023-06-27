@@ -26,7 +26,6 @@ def create_module():
 @module.route('/module', methods=['GET'])
 def get_modules():
     modules = Module.query.all()
-    print('test', Module.userId)
     return jsonify({'modules': [module.to_dict() for module in modules]})
 
 # GET
@@ -54,13 +53,13 @@ def update_module(id):
     else:
         return jsonify({"message": "Module not found"}), 404
 
-# DELETE
+# DELETE (SET TO INACTIVE)
 @module.route('/module/<id>', methods=['DELETE'])
-def delete_module(id):
+def set_module_inactive(id):
     module = Module.query.get(id)
     if module:
-        db.session.delete(module)
+        module.status = "inactive"
         db.session.commit()
-        return jsonify({"message": "Module deleted"}), 200
+        return jsonify({"message": "Module set to inactive"}), 200
     else:
         return jsonify({"message": "Module not found"}), 404
