@@ -103,56 +103,88 @@ CREATE TABLE [dbo].[Teacher] (
 -- CreateTable
 CREATE TABLE [dbo].[User] (
     [id] NVARCHAR(1000) NOT NULL,
-    [userId] NVARCHAR(1000) NOT NULL,
+    [firstname] VARCHAR(100) NOT NULL,
+    [lastname] VARCHAR(100) NOT NULL,
+    [email] VARCHAR(320) NOT NULL,
+    [password] VARCHAR(255) NOT NULL,
+    [photo] VARCHAR(500),
+    [cellphone] VARCHAR(20),
+    [birthdate] DATETIME2 NOT NULL,
     [createdAt] DATETIME2 NOT NULL CONSTRAINT [User_createdAt_df] DEFAULT CURRENT_TIMESTAMP,
     [updatedAt] DATETIME2 NOT NULL,
     [status] NVARCHAR(1000) NOT NULL,
     CONSTRAINT [User_pkey] PRIMARY KEY CLUSTERED ([id]),
-    CONSTRAINT [User_userId_key] UNIQUE NONCLUSTERED ([userId])
+    CONSTRAINT [user_email_unique] UNIQUE NONCLUSTERED ([email])
 );
 
 -- CreateTable
 CREATE TABLE [dbo].[UserCourse] (
-    [userId] NVARCHAR(1000) NOT NULL,
-    [courseId] NVARCHAR(1000) NOT NULL,
+    [id] NVARCHAR(1000) NOT NULL,
     [createdAt] DATETIME2 NOT NULL CONSTRAINT [UserCourse_createdAt_df] DEFAULT CURRENT_TIMESTAMP,
     [updatedAt] DATETIME2 NOT NULL,
     [status] NVARCHAR(1000) NOT NULL,
-    CONSTRAINT [UserCourse_pkey] PRIMARY KEY CLUSTERED ([userId],[courseId])
+    [userId] NVARCHAR(1000) NOT NULL,
+    [courseId] NVARCHAR(1000) NOT NULL,
+    CONSTRAINT [UserCourse_pkey] PRIMARY KEY CLUSTERED ([id]),
+    CONSTRAINT [UserCourse_userId_courseId_key] UNIQUE NONCLUSTERED ([userId],[courseId])
 );
 
 -- AddForeignKey
-ALTER TABLE [dbo].[Classroom] ADD CONSTRAINT [Classroom_academyId_fkey] FOREIGN KEY ([academyId]) REFERENCES [dbo].[Academy]([id]) ON DELETE NO ACTION ON UPDATE CASCADE;
+ALTER TABLE [dbo].[Academy] ADD CONSTRAINT [Academy_userId_fkey] FOREIGN KEY ([userId]) REFERENCES [dbo].[User]([id]) ON DELETE NO ACTION ON UPDATE NO ACTION;
 
 -- AddForeignKey
-ALTER TABLE [dbo].[Course] ADD CONSTRAINT [Course_academyId_fkey] FOREIGN KEY ([academyId]) REFERENCES [dbo].[Academy]([id]) ON DELETE NO ACTION ON UPDATE CASCADE;
+ALTER TABLE [dbo].[Classroom] ADD CONSTRAINT [Classroom_academyId_fkey] FOREIGN KEY ([academyId]) REFERENCES [dbo].[Academy]([id]) ON DELETE NO ACTION ON UPDATE NO ACTION;
+
+-- AddForeignKey
+ALTER TABLE [dbo].[Classroom] ADD CONSTRAINT [Classroom_userId_fkey] FOREIGN KEY ([userId]) REFERENCES [dbo].[User]([id]) ON DELETE NO ACTION ON UPDATE NO ACTION;
+
+-- AddForeignKey
+ALTER TABLE [dbo].[Course] ADD CONSTRAINT [Course_academyId_fkey] FOREIGN KEY ([academyId]) REFERENCES [dbo].[Academy]([id]) ON DELETE NO ACTION ON UPDATE NO ACTION;
+
+-- AddForeignKey
+ALTER TABLE [dbo].[Course] ADD CONSTRAINT [Course_userId_fkey] FOREIGN KEY ([userId]) REFERENCES [dbo].[User]([id]) ON DELETE NO ACTION ON UPDATE NO ACTION;
 
 -- AddForeignKey
 ALTER TABLE [dbo].[Module] ADD CONSTRAINT [Module_courseId_fkey] FOREIGN KEY ([courseId]) REFERENCES [dbo].[Course]([id]) ON DELETE NO ACTION ON UPDATE NO ACTION;
 
 -- AddForeignKey
-ALTER TABLE [dbo].[Module] ADD CONSTRAINT [Module_subjectId_fkey] FOREIGN KEY ([subjectId]) REFERENCES [dbo].[Subject]([id]) ON DELETE NO ACTION ON UPDATE CASCADE;
+ALTER TABLE [dbo].[Module] ADD CONSTRAINT [Module_subjectId_fkey] FOREIGN KEY ([subjectId]) REFERENCES [dbo].[Subject]([id]) ON DELETE NO ACTION ON UPDATE NO ACTION;
 
 -- AddForeignKey
 ALTER TABLE [dbo].[Module] ADD CONSTRAINT [Module_academyId_fkey] FOREIGN KEY ([academyId]) REFERENCES [dbo].[Academy]([id]) ON DELETE NO ACTION ON UPDATE NO ACTION;
 
 -- AddForeignKey
-ALTER TABLE [dbo].[StudyPlan] ADD CONSTRAINT [StudyPlan_courseId_fkey] FOREIGN KEY ([courseId]) REFERENCES [dbo].[Course]([id]) ON DELETE NO ACTION ON UPDATE CASCADE;
+ALTER TABLE [dbo].[Module] ADD CONSTRAINT [Module_userId_fkey] FOREIGN KEY ([userId]) REFERENCES [dbo].[User]([id]) ON DELETE NO ACTION ON UPDATE NO ACTION;
 
 -- AddForeignKey
-ALTER TABLE [dbo].[StudyPlanDetail] ADD CONSTRAINT [StudyPlanDetail_moduleId_fkey] FOREIGN KEY ([moduleId]) REFERENCES [dbo].[Module]([id]) ON DELETE NO ACTION ON UPDATE CASCADE;
+ALTER TABLE [dbo].[StudyPlan] ADD CONSTRAINT [StudyPlan_courseId_fkey] FOREIGN KEY ([courseId]) REFERENCES [dbo].[Course]([id]) ON DELETE NO ACTION ON UPDATE NO ACTION;
 
 -- AddForeignKey
-ALTER TABLE [dbo].[StudyPlanDetail] ADD CONSTRAINT [StudyPlanDetail_planId_fkey] FOREIGN KEY ([planId]) REFERENCES [dbo].[StudyPlan]([id]) ON DELETE NO ACTION ON UPDATE CASCADE;
+ALTER TABLE [dbo].[StudyPlan] ADD CONSTRAINT [StudyPlan_userId_fkey] FOREIGN KEY ([userId]) REFERENCES [dbo].[User]([id]) ON DELETE NO ACTION ON UPDATE NO ACTION;
 
 -- AddForeignKey
-ALTER TABLE [dbo].[Subject] ADD CONSTRAINT [Subject_teacherId_fkey] FOREIGN KEY ([teacherId]) REFERENCES [dbo].[Teacher]([id]) ON DELETE NO ACTION ON UPDATE CASCADE;
+ALTER TABLE [dbo].[StudyPlanDetail] ADD CONSTRAINT [StudyPlanDetail_moduleId_fkey] FOREIGN KEY ([moduleId]) REFERENCES [dbo].[Module]([id]) ON DELETE NO ACTION ON UPDATE NO ACTION;
 
 -- AddForeignKey
-ALTER TABLE [dbo].[UserCourse] ADD CONSTRAINT [UserCourse_userId_fkey] FOREIGN KEY ([userId]) REFERENCES [dbo].[User]([id]) ON DELETE NO ACTION ON UPDATE CASCADE;
+ALTER TABLE [dbo].[StudyPlanDetail] ADD CONSTRAINT [StudyPlanDetail_planId_fkey] FOREIGN KEY ([planId]) REFERENCES [dbo].[StudyPlan]([id]) ON DELETE NO ACTION ON UPDATE NO ACTION;
 
 -- AddForeignKey
-ALTER TABLE [dbo].[UserCourse] ADD CONSTRAINT [UserCourse_courseId_fkey] FOREIGN KEY ([courseId]) REFERENCES [dbo].[Course]([id]) ON DELETE NO ACTION ON UPDATE CASCADE;
+ALTER TABLE [dbo].[StudyPlanDetail] ADD CONSTRAINT [StudyPlanDetail_userId_fkey] FOREIGN KEY ([userId]) REFERENCES [dbo].[User]([id]) ON DELETE NO ACTION ON UPDATE NO ACTION;
+
+-- AddForeignKey
+ALTER TABLE [dbo].[Subject] ADD CONSTRAINT [Subject_teacherId_fkey] FOREIGN KEY ([teacherId]) REFERENCES [dbo].[Teacher]([id]) ON DELETE NO ACTION ON UPDATE NO ACTION;
+
+-- AddForeignKey
+ALTER TABLE [dbo].[Subject] ADD CONSTRAINT [Subject_userId_fkey] FOREIGN KEY ([userId]) REFERENCES [dbo].[User]([id]) ON DELETE NO ACTION ON UPDATE NO ACTION;
+
+-- AddForeignKey
+ALTER TABLE [dbo].[Teacher] ADD CONSTRAINT [Teacher_userId_fkey] FOREIGN KEY ([userId]) REFERENCES [dbo].[User]([id]) ON DELETE NO ACTION ON UPDATE NO ACTION;
+
+-- AddForeignKey
+ALTER TABLE [dbo].[UserCourse] ADD CONSTRAINT [UserCourse_userId_fkey] FOREIGN KEY ([userId]) REFERENCES [dbo].[User]([id]) ON DELETE NO ACTION ON UPDATE NO ACTION;
+
+-- AddForeignKey
+ALTER TABLE [dbo].[UserCourse] ADD CONSTRAINT [UserCourse_courseId_fkey] FOREIGN KEY ([courseId]) REFERENCES [dbo].[Course]([id]) ON DELETE NO ACTION ON UPDATE NO ACTION;
 
 COMMIT TRAN;
 

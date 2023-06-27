@@ -110,14 +110,21 @@ model Teacher {
     createdAt DateTime  @default(now())
     updatedAt DateTime  @updatedAt
     status    String
-    name      String
-    lastName  String
+    firstname String
+    lastname  String
     subjects  Subject[]
     user      User      @relation(fields: [userId], references: [id], onUpdate: NoAction, onDelete: NoAction)
 }
 
 model User {
     id              String            @id @default(cuid())
+    firstname       String            @db.VarChar(100)
+    lastname        String            @db.VarChar(100)
+    email           String            @unique(map: "user_email_unique") @db.VarChar(320)
+    password        String            @db.VarChar(255)
+    photo           String?           @db.VarChar(500)
+    cellphone       String?           @db.VarChar(20)
+    birthdate       DateTime
     createdAt       DateTime          @default(now())
     updatedAt       DateTime          @updatedAt
     status          String

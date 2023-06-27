@@ -26,6 +26,7 @@ def create_module():
 @module.route('/module', methods=['GET'])
 def get_modules():
     modules = Module.query.all()
+    print('test', Module.userId)
     return jsonify({'modules': [module.to_dict() for module in modules]})
 
 # GET
