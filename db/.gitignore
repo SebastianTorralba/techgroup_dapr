@@ -4,3 +4,4 @@ package-lock.json
 postgres/postgres_data
 mongo/mongodb_data
 sqlserver/sqlserver_data
+.DS_Store

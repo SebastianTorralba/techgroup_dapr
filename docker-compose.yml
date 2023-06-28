@@ -60,10 +60,9 @@ services:
       context: ./db/sqlserver
       dockerfile: Dockerfile
     depends_on:
-      sqlserver:
-        condition: service_started
+      - sqlserver
     environment:
-      SQLSERVER_URL: sqlserver://localhost:1433;databaseName=academy_scheduler;user=sa;password=Darp1234!
+      DATABASE_URL: sqlserver://sqlserver:1433;databaseName=academy_scheduler;user=sa;password=Darp1234!;encrypt=DANGER_PLAINTEXT
 
   study_scheduler:
     build:
