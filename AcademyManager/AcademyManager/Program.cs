@@ -1,8 +1,5 @@
 using AcademyManager.Infraestructure.Data;
-using Autofac.Core;
 using Microsoft.EntityFrameworkCore;
-using Microsoft.Extensions.Configuration;
-using Microsoft.Extensions.DependencyInjection;
 
 var builder = WebApplication.CreateBuilder(args);
 
