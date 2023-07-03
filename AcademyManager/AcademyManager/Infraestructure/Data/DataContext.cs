@@ -7,7 +7,7 @@ namespace AcademyManager.Infraestructure.Data
     {
         public DbSet<Teacher> Teachers { get; set; }
         public DbSet<Subject> Subjects { get; set; }
-        public DbSet<Classroom> Clasrooms { get; set; }
+        public DbSet<Classroom> Classrooms { get; set; }
         public DbSet<Academy> Academies { get; set; }
         public DbSet<Course> Courses { get; set; }
 

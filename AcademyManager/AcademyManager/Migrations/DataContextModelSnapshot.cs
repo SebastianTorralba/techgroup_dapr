@@ -44,7 +44,7 @@ namespace AcademyManager.Migrations
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<DateTime>("UpdateDate")
+                    b.Property<DateTime?>("UpdateDate")
                         .HasColumnType("datetime2");
 
                     b.HasKey("Id");
@@ -72,14 +72,14 @@ namespace AcademyManager.Migrations
                     b.Property<int>("Number")
                         .HasColumnType("int");
 
-                    b.Property<DateTime>("UpdateDate")
+                    b.Property<DateTime?>("UpdateDate")
                         .HasColumnType("datetime2");
 
                     b.HasKey("Id");
 
                     b.HasIndex("AcademyId");
 
-                    b.ToTable("Clasrooms");
+                    b.ToTable("Classrooms");
                 });
 
             modelBuilder.Entity("AcademyManager.Domain.Course", b =>
@@ -106,10 +106,7 @@ namespace AcademyManager.Migrations
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<int>("SubjectId")
-                        .HasColumnType("int");
-
-                    b.Property<DateTime>("UpdateDate")
+                    b.Property<DateTime?>("UpdateDate")
                         .HasColumnType("datetime2");
 
                     b.HasKey("Id");
@@ -148,12 +145,14 @@ namespace AcademyManager.Migrations
                     b.Property<int>("TeacherId")
                         .HasColumnType("int");
 
-                    b.Property<DateTime>("UpdateDate")
+                    b.Property<DateTime?>("UpdateDate")
                         .HasColumnType("datetime2");
 
                     b.HasKey("Id");
 
                     b.HasIndex("AcademyId");
+
+                    b.HasIndex("CourseId");
 
                     b.HasIndex("TeacherId");
 
@@ -167,9 +166,6 @@ namespace AcademyManager.Migrations
                         .HasColumnType("int");
 
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
-
-                    b.Property<int>("AcademyId")
-                        .HasColumnType("int");
 
                     b.Property<DateTime>("CreateDate")
                         .HasColumnType("datetime2");
@@ -185,12 +181,10 @@ namespace AcademyManager.Migrations
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<DateTime>("UpdateDate")
+                    b.Property<DateTime?>("UpdateDate")
                         .HasColumnType("datetime2");
 
                     b.HasKey("Id");
-
-                    b.HasIndex("AcademyId");
 
                     b.ToTable("Teachers");
                 });
@@ -223,18 +217,15 @@ namespace AcademyManager.Migrations
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
+                    b.HasOne("AcademyManager.Domain.Course", null)
+                        .WithMany("Subjects")
+                        .HasForeignKey("CourseId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
                     b.HasOne("AcademyManager.Domain.Teacher", null)
                         .WithMany("Subjects")
                         .HasForeignKey("TeacherId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-                });
-
-            modelBuilder.Entity("AcademyManager.Domain.Teacher", b =>
-                {
-                    b.HasOne("AcademyManager.Domain.Academy", null)
-                        .WithMany("Teachers")
-                        .HasForeignKey("AcademyId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
                 });
@@ -246,13 +237,16 @@ namespace AcademyManager.Migrations
                     b.Navigation("Courses");
 
                     b.Navigation("Subjects");
-
-                    b.Navigation("Teachers");
                 });
 
             modelBuilder.Entity("AcademyManager.Domain.Classroom", b =>
                 {
                     b.Navigation("Courses");
+                });
+
+            modelBuilder.Entity("AcademyManager.Domain.Course", b =>
+                {
+                    b.Navigation("Subjects");
                 });
 
             modelBuilder.Entity("AcademyManager.Domain.Teacher", b =>

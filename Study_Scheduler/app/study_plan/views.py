@@ -1,6 +1,7 @@
 from flask import Blueprint, request, jsonify
 from app import db
 from .models import StudyPlan, StudyPlanDetail
+from datetime import datetime
 
 study_plan = Blueprint('study_plan', __name__)
 
@@ -19,7 +20,9 @@ def create_study_plan():
     new_plan = StudyPlan(
         userId=data['userId'],
         status=data['status'],
-        courseId=data['courseId']
+        courseId=data['courseId'],
+        createdAt=datetime.utcnow(),
+        updatedAt=datetime.utcnow()
     )
 
     db.session.add(new_plan)
@@ -33,7 +36,9 @@ def create_study_plan():
             status=detail['status'],
             orderNo=detail['orderNo'],
             moduleId=detail['moduleId'],
-            study_plan_id=new_plan.id  # use the new_plan id as foreign key
+            planId=new_plan.id,  # use the new_plan id as foreign key
+            createdAt=datetime.utcnow(),
+            updatedAt=datetime.utcnow()
         )
         db.session.add(new_detail)
 

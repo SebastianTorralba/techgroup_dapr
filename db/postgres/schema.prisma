@@ -1,10 +1,14 @@
+generator client {
+    provider = "prisma-client-js"
+}
+
 datasource db {
     provider = "postgresql"
     url      = env("DATABASE_URL")
 }
 
 model Academy {
-    id          String      @id @default(cuid())
+    id          String      @id @default(uuid())
     userId      String
     createdAt   DateTime    @default(now())
     updatedAt   DateTime    @updatedAt
@@ -14,10 +18,11 @@ model Academy {
     courses     Course[]
     classroom   Classroom[]
     module      Module[]
+    user        User        @relation(fields: [userId], references: [id], onUpdate: NoAction, onDelete: NoAction)
 }
 
 model Classroom {
-    id        String   @id @default(cuid())
+    id        String   @id @default(uuid())
     userId    String
     createdAt DateTime @default(now())
     updatedAt DateTime @updatedAt
@@ -25,102 +30,124 @@ model Classroom {
     number    String
     capacity  Int
     academyId String
-    academy   Academy  @relation(fields: [academyId], references: [id])
+    academy   Academy  @relation(fields: [academyId], references: [id], onUpdate: NoAction, onDelete: NoAction)
+    user      User     @relation(fields: [userId], references: [id], onUpdate: NoAction, onDelete: NoAction)
 }
 
 model Course {
-    id        String       @id @default(cuid())
+    id        String       @id @default(uuid())
     userId    String
     createdAt DateTime     @default(now())
     updatedAt DateTime     @updatedAt
     status    String
     section   String
-    academy   Academy      @relation(fields: [academyId], references: [id])
     academyId String
+    academy   Academy      @relation(fields: [academyId], references: [id], onUpdate: NoAction, onDelete: NoAction)
     modules   Module[]
     plans     StudyPlan[]
     users     UserCourse[]
+    user      User         @relation(fields: [userId], references: [id], onUpdate: NoAction, onDelete: NoAction)
 }
 
 model Module {
-    id        String            @id @default(cuid())
+    id        String            @id @default(uuid())
     userId    String
     createdAt DateTime          @default(now())
     updatedAt DateTime          @updatedAt
     status    String
-    course    Course            @relation(fields: [courseId], references: [id])
     courseId  String
-    subject   Subject           @relation(fields: [subjectId], references: [id])
+    course    Course            @relation(fields: [courseId], references: [id], onUpdate: NoAction, onDelete: NoAction)
     subjectId String
-    academy   Academy           @relation(fields: [academyId], references: [id])
+    subject   Subject           @relation(fields: [subjectId], references: [id], onUpdate: NoAction, onDelete: NoAction)
     academyId String
+    academy   Academy           @relation(fields: [academyId], references: [id], onUpdate: NoAction, onDelete: NoAction)
     details   StudyPlanDetail[]
+    user      User              @relation(fields: [userId], references: [id], onUpdate: NoAction, onDelete: NoAction)
 }
 
 model StudyPlan {
-    id        String            @id @default(cuid())
+    id        String            @id @default(uuid())
     userId    String
     createdAt DateTime          @default(now())
     updatedAt DateTime          @updatedAt
     status    String
-    course    Course            @relation(fields: [courseId], references: [id])
     courseId  String
+    course    Course            @relation(fields: [courseId], references: [id], onUpdate: NoAction, onDelete: NoAction)
     details   StudyPlanDetail[]
+    user      User              @relation(fields: [userId], references: [id], onUpdate: NoAction, onDelete: NoAction)
 }
 
 model StudyPlanDetail {
-    id        String    @id @default(cuid())
+    id        String    @id @default(uuid())
     userId    String
     createdAt DateTime  @default(now())
     updatedAt DateTime  @updatedAt
     status    String
     orderNo   String
-    module    Module    @relation(fields: [moduleId], references: [id])
     moduleId  String
-    plan      StudyPlan @relation(fields: [planId], references: [id])
+    module    Module    @relation(fields: [moduleId], references: [id], onUpdate: NoAction, onDelete: NoAction)
     planId    String
+    plan      StudyPlan @relation(fields: [planId], references: [id], onUpdate: NoAction, onDelete: NoAction)
+    user      User      @relation(fields: [userId], references: [id], onUpdate: NoAction, onDelete: NoAction)
 }
 
 model Subject {
-    id        String   @id @default(cuid())
+    id        String   @id @default(uuid())
     userId    String
     createdAt DateTime @default(now())
     updatedAt DateTime @updatedAt
     status    String
     name      String
-    teacher   Teacher  @relation(fields: [teacherId], references: [id])
     teacherId String
+    teacher   Teacher  @relation(fields: [teacherId], references: [id], onUpdate: NoAction, onDelete: NoAction)
     modules   Module[]
+    user      User     @relation(fields: [userId], references: [id], onUpdate: NoAction, onDelete: NoAction)
 }
 
 model Teacher {
-    id        String    @id @default(cuid())
+    id        String    @id @default(uuid())
     userId    String
     createdAt DateTime  @default(now())
     updatedAt DateTime  @updatedAt
     status    String
-    name      String
-    lastName  String
+    firstname String
+    lastname  String
     subjects  Subject[]
+    user      User      @relation(fields: [userId], references: [id], onUpdate: NoAction, onDelete: NoAction)
 }
 
 model User {
-    id        String       @id @default(cuid())
-    userId    String       @unique
-    createdAt DateTime     @default(now())
-    updatedAt DateTime     @updatedAt
-    status    String
-    courses   UserCourse[]
+    id              String            @id @default(uuid())
+    firstname       String            @db.VarChar(100)
+    lastname        String            @db.VarChar(100)
+    email           String            @unique(map: "user_email_unique") @db.VarChar(320)
+    password        String            @db.VarChar(255)
+    photo           String?           @db.VarChar(500)
+    cellphone       String?           @db.VarChar(20)
+    birthdate       DateTime          @db.Timestamptz(6)
+    createdAt       DateTime          @default(now())
+    updatedAt       DateTime          @updatedAt
+    status          String
+    courses         UserCourse[]
+    Academy         Academy[]
+    Classroom       Classroom[]
+    Course          Course[]
+    Module          Module[]
+    StudyPlan       StudyPlan[]
+    StudyPlanDetail StudyPlanDetail[]
+    Subject         Subject[]
+    Teacher         Teacher[]
 }
 
 model UserCourse {
-    userId    String
-    courseId  String
-    user      User     @relation(fields: [userId], references: [id])
-    course    Course   @relation(fields: [courseId], references: [id])
+    id        String   @id @default(uuid())
     createdAt DateTime @default(now())
     updatedAt DateTime @updatedAt
     status    String
+    user      User     @relation(fields: [userId], references: [id], onUpdate: NoAction, onDelete: NoAction)
+    userId    String
+    course    Course   @relation(fields: [courseId], references: [id], onUpdate: NoAction, onDelete: NoAction)
+    courseId  String
 
-    @@id([userId, courseId])
+    @@unique([userId, courseId])
 }

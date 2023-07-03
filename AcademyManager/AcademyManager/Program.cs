@@ -1,6 +1,5 @@
 using AcademyManager.Infraestructure.Data;
 using Microsoft.EntityFrameworkCore;
-using Microsoft.Extensions.DependencyInjection;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -12,8 +11,11 @@ builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 //builder.Services.AddMediatR(typeof(Program).Assembly);
 builder.Services.AddMediatR(cfg => cfg.RegisterServicesFromAssemblyContaining(typeof(Program)));
+builder.Services.AddDbContext<DataContext>(options =>
+                options.UseSqlServer(builder.Configuration.GetConnectionString("DefaultConnection"),
+                    builder => builder.MigrationsAssembly(typeof(DataContext).Assembly.FullName)));
 
-builder.Services.AddDbContext<DataContext> (option=> option.UseSqlServer("Server=DESKTOP-30ISOBV\\SQLEXPRESS;Initial Catalog=AcademyManager;Integrated Security=true; TrustServerCertificate=True"));
+//builder.Services.AddDbContext<DataContext> (option=> option.UseSqlServer("Server=DESKTOP-30ISOBV\\SQLEXPRESS;Initial Catalog=AcademyManager;Integrated Security=true; TrustServerCertificate=True"));
 
 var app = builder.Build();
 
