@@ -80,10 +80,10 @@ services:
 
   academy_manager:
     build:
-      context: ./academy_manager/AcademyManager
+      context: ./AcademyManager/AcademyManager
       dockerfile: Dockerfile
     ports:
-      - 8080:8080
+      - 8080:5000
     depends_on:
       - sqlserver
       - migration-sqlserver
