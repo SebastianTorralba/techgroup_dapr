@@ -78,6 +78,16 @@ services:
     environment:
       DATABASE_URL: postgresql://postgres:postgres@postgres:5432/academy_scheduler
 
+  academy_manager:
+    build:
+      context: ./academy_manager/AcademyManager
+      dockerfile: Dockerfile
+    ports:
+      - 8080:8080
+    depends_on:
+      - sqlserver
+      - migration-sqlserver
+
 volumes:
   postgres_data:
   mongodb_data:
