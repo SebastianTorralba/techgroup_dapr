@@ -20,6 +20,7 @@ namespace AcademyManager.Application.Handler.Teacher
             {
                 Name = request.Name,
                 LastName = request.LastName,
+                AcademyId= request.AcademyId,
             };
 
             _dataContext.Teachers.Add(teacher);

@@ -31,25 +31,29 @@ namespace AcademyManager.Migrations
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
 
                     b.Property<DateTime>("CreateDate")
-                        .HasColumnType("datetime2");
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("datetime")
+                        .HasDefaultValueSql("(getutcdate())");
 
                     b.Property<string>("Description")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<bool>("Enabled")
-                        .HasColumnType("bit");
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("bit")
+                        .HasDefaultValueSql("((1))");
 
                     b.Property<string>("Name")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<DateTime?>("UpdateDate")
-                        .HasColumnType("datetime2");
+                        .HasColumnType("datetime");
 
                     b.HasKey("Id");
 
-                    b.ToTable("Academies");
+                    b.ToTable("Academy", (string)null);
                 });
 
             modelBuilder.Entity("AcademyManager.Domain.Classroom", b =>
@@ -60,26 +64,30 @@ namespace AcademyManager.Migrations
 
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
 
-                    b.Property<int?>("AcademyId")
+                    b.Property<int>("AcademyId")
                         .HasColumnType("int");
 
                     b.Property<DateTime>("CreateDate")
-                        .HasColumnType("datetime2");
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("datetime")
+                        .HasDefaultValueSql("(getutcdate())");
 
                     b.Property<bool>("Enabled")
-                        .HasColumnType("bit");
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("bit")
+                        .HasDefaultValueSql("((1))");
 
                     b.Property<int>("Number")
                         .HasColumnType("int");
 
                     b.Property<DateTime?>("UpdateDate")
-                        .HasColumnType("datetime2");
+                        .HasColumnType("datetime");
 
                     b.HasKey("Id");
 
-                    b.HasIndex("AcademyId");
+                    b.HasIndex(new[] { "AcademyId" }, "IX_Classroom_AcademyId");
 
-                    b.ToTable("Classrooms");
+                    b.ToTable("Classroom", (string)null);
                 });
 
             modelBuilder.Entity("AcademyManager.Domain.Course", b =>
@@ -93,29 +101,33 @@ namespace AcademyManager.Migrations
                     b.Property<int>("AcademyId")
                         .HasColumnType("int");
 
-                    b.Property<int?>("ClassroomId1")
+                    b.Property<int>("ClassroomId")
                         .HasColumnType("int");
 
                     b.Property<DateTime>("CreateDate")
-                        .HasColumnType("datetime2");
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("datetime")
+                        .HasDefaultValueSql("(getutcdate())");
 
                     b.Property<bool>("Enabled")
-                        .HasColumnType("bit");
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("bit")
+                        .HasDefaultValueSql("((1))");
 
                     b.Property<string>("Section")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<DateTime?>("UpdateDate")
-                        .HasColumnType("datetime2");
+                        .HasColumnType("datetime");
 
                     b.HasKey("Id");
 
-                    b.HasIndex("AcademyId");
+                    b.HasIndex("ClassroomId");
 
-                    b.HasIndex("ClassroomId1");
+                    b.HasIndex(new[] { "AcademyId" }, "IX_Course_AcademyId");
 
-                    b.ToTable("Courses");
+                    b.ToTable("Course", (string)null);
                 });
 
             modelBuilder.Entity("AcademyManager.Domain.Subject", b =>
@@ -133,10 +145,14 @@ namespace AcademyManager.Migrations
                         .HasColumnType("int");
 
                     b.Property<DateTime>("CreateDate")
-                        .HasColumnType("datetime2");
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("datetime")
+                        .HasDefaultValueSql("(getutcdate())");
 
                     b.Property<bool>("Enabled")
-                        .HasColumnType("bit");
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("bit")
+                        .HasDefaultValueSql("((1))");
 
                     b.Property<string>("Name")
                         .IsRequired()
@@ -146,17 +162,17 @@ namespace AcademyManager.Migrations
                         .HasColumnType("int");
 
                     b.Property<DateTime?>("UpdateDate")
-                        .HasColumnType("datetime2");
+                        .HasColumnType("datetime");
 
                     b.HasKey("Id");
-
-                    b.HasIndex("AcademyId");
 
                     b.HasIndex("CourseId");
 
                     b.HasIndex("TeacherId");
 
-                    b.ToTable("Subjects");
+                    b.HasIndex(new[] { "AcademyId" }, "IX_Subject_AcademyId");
+
+                    b.ToTable("Subject", (string)null);
                 });
 
             modelBuilder.Entity("AcademyManager.Domain.Teacher", b =>
@@ -167,11 +183,18 @@ namespace AcademyManager.Migrations
 
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
 
+                    b.Property<int>("AcademyId")
+                        .HasColumnType("int");
+
                     b.Property<DateTime>("CreateDate")
-                        .HasColumnType("datetime2");
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("datetime")
+                        .HasDefaultValueSql("(getutcdate())");
 
                     b.Property<bool>("Enabled")
-                        .HasColumnType("bit");
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("bit")
+                        .HasDefaultValueSql("((1))");
 
                     b.Property<string>("LastName")
                         .IsRequired()
@@ -182,76 +205,100 @@ namespace AcademyManager.Migrations
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<DateTime?>("UpdateDate")
-                        .HasColumnType("datetime2");
+                        .HasColumnType("datetime");
 
                     b.HasKey("Id");
 
-                    b.ToTable("Teachers");
+                    b.HasIndex(new[] { "AcademyId" }, "IX_Teacher_AcademyId");
+
+                    b.ToTable("Teacher", (string)null);
                 });
 
             modelBuilder.Entity("AcademyManager.Domain.Classroom", b =>
                 {
-                    b.HasOne("AcademyManager.Domain.Academy", null)
-                        .WithMany("Classrooms")
-                        .HasForeignKey("AcademyId");
+                    b.HasOne("AcademyManager.Domain.Academy", "Academy")
+                        .WithMany("Classroom")
+                        .HasForeignKey("AcademyId")
+                        .IsRequired();
+
+                    b.Navigation("Academy");
                 });
 
             modelBuilder.Entity("AcademyManager.Domain.Course", b =>
                 {
-                    b.HasOne("AcademyManager.Domain.Academy", null)
-                        .WithMany("Courses")
+                    b.HasOne("AcademyManager.Domain.Academy", "Academy")
+                        .WithMany("Course")
                         .HasForeignKey("AcademyId")
-                        .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
-                    b.HasOne("AcademyManager.Domain.Classroom", null)
-                        .WithMany("Courses")
-                        .HasForeignKey("ClassroomId1");
+                    b.HasOne("AcademyManager.Domain.Classroom", "Classroom")
+                        .WithMany("Course")
+                        .HasForeignKey("ClassroomId")
+                        .IsRequired();
+
+                    b.Navigation("Academy");
+
+                    b.Navigation("Classroom");
                 });
 
             modelBuilder.Entity("AcademyManager.Domain.Subject", b =>
                 {
-                    b.HasOne("AcademyManager.Domain.Academy", null)
-                        .WithMany("Subjects")
+                    b.HasOne("AcademyManager.Domain.Academy", "Academy")
+                        .WithMany("Subject")
                         .HasForeignKey("AcademyId")
-                        .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
-                    b.HasOne("AcademyManager.Domain.Course", null)
-                        .WithMany("Subjects")
+                    b.HasOne("AcademyManager.Domain.Course", "Course")
+                        .WithMany("Subject")
                         .HasForeignKey("CourseId")
-                        .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
-                    b.HasOne("AcademyManager.Domain.Teacher", null)
-                        .WithMany("Subjects")
+                    b.HasOne("AcademyManager.Domain.Teacher", "Teacher")
+                        .WithMany("Subject")
                         .HasForeignKey("TeacherId")
-                        .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
-                });
 
-            modelBuilder.Entity("AcademyManager.Domain.Academy", b =>
-                {
-                    b.Navigation("Classrooms");
+                    b.Navigation("Academy");
 
-                    b.Navigation("Courses");
+                    b.Navigation("Course");
 
-                    b.Navigation("Subjects");
-                });
-
-            modelBuilder.Entity("AcademyManager.Domain.Classroom", b =>
-                {
-                    b.Navigation("Courses");
-                });
-
-            modelBuilder.Entity("AcademyManager.Domain.Course", b =>
-                {
-                    b.Navigation("Subjects");
+                    b.Navigation("Teacher");
                 });
 
             modelBuilder.Entity("AcademyManager.Domain.Teacher", b =>
                 {
-                    b.Navigation("Subjects");
+                    b.HasOne("AcademyManager.Domain.Academy", "Academy")
+                        .WithMany("Teacher")
+                        .HasForeignKey("AcademyId")
+                        .IsRequired();
+
+                    b.Navigation("Academy");
+                });
+
+            modelBuilder.Entity("AcademyManager.Domain.Academy", b =>
+                {
+                    b.Navigation("Classroom");
+
+                    b.Navigation("Course");
+
+                    b.Navigation("Subject");
+
+                    b.Navigation("Teacher");
+                });
+
+            modelBuilder.Entity("AcademyManager.Domain.Classroom", b =>
+                {
+                    b.Navigation("Course");
+                });
+
+            modelBuilder.Entity("AcademyManager.Domain.Course", b =>
+                {
+                    b.Navigation("Subject");
+                });
+
+            modelBuilder.Entity("AcademyManager.Domain.Teacher", b =>
+                {
+                    b.Navigation("Subject");
                 });
 #pragma warning restore 612, 618
         }

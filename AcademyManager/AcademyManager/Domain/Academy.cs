@@ -4,19 +4,19 @@
     {
         public Academy()
         {
-            Subjects = new HashSet<Subject>();
-            Courses = new HashSet<Course>();
-            Classrooms = new HashSet<Classroom>();
-            //Teachers = new HashSet<Teacher>();
+            Subject = new HashSet<Subject>();
+            Course = new HashSet<Course>();
+            Classroom = new HashSet<Classroom>();
+            Teacher = new HashSet<Teacher>();
         }
 
         public string Name { get; set; }
         public string Description { get; set; }
 
-        public ICollection<Subject>  Subjects { get; set; }
-        public ICollection<Course> Courses { get; set; }
-        public ICollection<Classroom> Classrooms { get; set; }
-        //public ICollection<Teacher> Teachers { get; set; }
+        public virtual ICollection<Subject>  Subject { get; set; }
+        public virtual ICollection<Course> Course { get; set; }
+        public virtual ICollection<Classroom> Classroom { get; set; }
+        public virtual ICollection<Teacher> Teacher { get; set; }
 
     }
 }
