@@ -47,7 +47,7 @@ class Course(db.Model):
     section = Column(String, nullable=False)
     academyId = Column(String, ForeignKey('Academy.id'), nullable=False)
 
-    modules = relationship('Module', backref='course')
+    modules = relationship('Module', backref='course_modules')
     studyPlans = relationship('StudyPlan', backref='course')
     userCourses = relationship('UserCourse', backref='course')
     def to_dict(self):

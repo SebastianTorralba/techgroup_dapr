@@ -17,6 +17,7 @@ class Module(db.Model):
 
     academy = relationship('Academy', backref='academy_modules')
     subject = relationship('Subject', backref='subject_modules')
+    course = relationship('Course', backref='course_modules')
     studyPlanDetails = relationship('StudyPlanDetail', backref='module')
 
     def to_dict(self):

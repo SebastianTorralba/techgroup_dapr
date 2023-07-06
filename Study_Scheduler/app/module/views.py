@@ -26,13 +26,14 @@ def create_module():
 # LIST
 @module.route('/module', methods=['GET'])
 def get_modules():
-    modules = Module.query.options(joinedload(Module.academy),joinedload(Module.subject)).filter(Module.status == 'active').all()
+    modules = Module.query.options(joinedload(Module.academy),joinedload(Module.subject), joinedload(Module.course)).filter(Module.status == 'active').all()
     
     output = []
     for module in modules:
         module_dict = module.to_dict()
         module_dict['academy'] = module.academy.to_dict()
         module_dict['subject'] = module.subject.to_dict()
+        module_dict['course'] = module.course.to_dict()
         output.append(module_dict)
     
     return jsonify({'modules': output})
