@@ -26,14 +26,13 @@ def create_module():
 # LIST
 @module.route('/module', methods=['GET'])
 def get_modules():
-    # Assuming there is a foreign key relationship on modules with an academy_id
-    modules = Module.query.options(joinedload(Module.academy)).filter(Module.status == 'active').all()
+    modules = Module.query.options(joinedload(Module.academy),joinedload(Module.subject)).filter(Module.status == 'active').all()
     
-    # Extract the academy details from each module and append it to your output.
     output = []
     for module in modules:
         module_dict = module.to_dict()
-        module_dict['academy'] = module.academy.to_dict() # Assuming to_dict is a method in your Academy model too.
+        module_dict['academy'] = module.academy.to_dict()
+        module_dict['subject'] = module.subject.to_dict()
         output.append(module_dict)
     
     return jsonify({'modules': output})

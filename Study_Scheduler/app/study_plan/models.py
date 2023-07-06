@@ -101,6 +101,9 @@ class Subject(db.Model):
     modules = relationship('Module', backref='subject_modules')
     # user = db.relationship('User', backref='owned_subjects')
 
+    def to_dict(self):
+        return {c.key: getattr(self, c.key) for c in class_mapper(self.__class__).columns}
+
 class User(db.Model):
     __tablename__ = 'User'
 

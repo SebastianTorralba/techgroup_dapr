@@ -20,5 +20,6 @@ class Module(db.Model):
     studyPlanDetails = relationship('StudyPlanDetail', backref='module')
 
     def to_dict(self):
-        return {c.key: getattr(self, c.key) for c in class_mapper(self.__class__).columns}
+        return {c.key: getattr(self, c.key) for c in class_mapper(self.__class__).columns if c.key not in ['courseId', 'subjectId', 'academyId']}
+
 
