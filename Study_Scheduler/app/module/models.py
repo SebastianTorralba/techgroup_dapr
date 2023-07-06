@@ -15,6 +15,8 @@ class Module(db.Model):
     subjectId = Column(String, ForeignKey('Subject.id'), nullable=False)
     academyId = Column(String, ForeignKey('Academy.id'), nullable=False)
 
+    academy = relationship('Academy', backref='academy_modules')
+    subject = relationship('Subject', backref='subject_modules')
     studyPlanDetails = relationship('StudyPlanDetail', backref='module')
 
     def to_dict(self):

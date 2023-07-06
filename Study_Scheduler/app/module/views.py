@@ -1,5 +1,6 @@
 from flask import Blueprint, request, jsonify
 from app import db
+from sqlalchemy.orm import joinedload
 from .models import Module
 
 module = Blueprint('module', __name__)
@@ -25,8 +26,17 @@ def create_module():
 # LIST
 @module.route('/module', methods=['GET'])
 def get_modules():
-    modules = Module.query.filter_by(status='active').all()
-    return jsonify({'modules': [module.to_dict() for module in modules]})
+    # Assuming there is a foreign key relationship on modules with an academy_id
+    modules = Module.query.options(joinedload(Module.academy)).filter(Module.status == 'active').all()
+    
+    # Extract the academy details from each module and append it to your output.
+    output = []
+    for module in modules:
+        module_dict = module.to_dict()
+        module_dict['academy'] = module.academy.to_dict() # Assuming to_dict is a method in your Academy model too.
+        output.append(module_dict)
+    
+    return jsonify({'modules': output})
 
 # GET
 @module.route('/module/<id>', methods=['GET'])

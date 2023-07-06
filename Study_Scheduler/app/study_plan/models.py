@@ -14,9 +14,9 @@ class Academy(db.Model):
     name = Column(String, nullable=False)
     description = Column(String, nullable=False)
 
-    classrooms = relationship('Classroom', backref='academy')
-    courses = relationship('Course', backref='academy')
-    modules = relationship('Module', backref='academy')
+    classrooms = relationship('Classroom', backref='academy1')
+    courses = relationship('Course', backref='academy2')
+    modules = relationship('Module', backref='academy_modules')
     def to_dict(self):
         return {c.key: getattr(self, c.key) for c in class_mapper(self.__class__).columns}
 
@@ -53,33 +53,6 @@ class Course(db.Model):
     def to_dict(self):
         return {c.key: getattr(self, c.key) for c in class_mapper(self.__class__).columns}
 
-class User(db.Model):
-    __tablename__ = 'User'
-
-    id = Column(String, primary_key=True, default=lambda: str(uuid4()))
-    createdAt = Column(DateTime, nullable=False)
-    updatedAt = Column(DateTime, nullable=False)
-    userCourses = relationship('UserCourse', backref='user')
-    def to_dict(self):
-        return {c.key: getattr(self, c.key) for c in class_mapper(self.__class__).columns}
-
-
-class UserCourse(db.Model):
-    __tablename__ = 'UserCourse'
-
-    id = Column(String, primary_key=True, default=lambda: str(uuid4()))
-    createdAt = Column(DateTime, nullable=False)
-    updatedAt = Column(DateTime, nullable=False)
-    status = Column(String, nullable=False)
-    userId = Column(String, ForeignKey('User.id'), nullable=False)
-    courseId = Column(String, ForeignKey('Course.id'), nullable=False)
-
-    __table_args__ = (
-        UniqueConstraint('userId', 'courseId'),
-    )
-
-    def to_dict(self):
-        return {c.key: getattr(self, c.key) for c in class_mapper(self.__class__).columns}
 
 class StudyPlan(db.Model):
     __tablename__ = 'StudyPlan'
@@ -109,6 +82,49 @@ class StudyPlanDetail(db.Model):
     orderNo = Column(String, nullable=False)
     moduleId = Column(String, ForeignKey('Module.id'), nullable=False)
     planId = Column(String, ForeignKey('StudyPlan.id'), nullable=False)
+
+    def to_dict(self):
+        return {c.key: getattr(self, c.key) for c in class_mapper(self.__class__).columns}
+
+class Subject(db.Model):
+    __tablename__ = 'Subject'
+
+    id = Column(String, primary_key=True, default=lambda: str(uuid4()))
+    userId = Column(String, ForeignKey('user.id'), nullable=False)
+    createdAt = Column(DateTime, nullable=False)
+    updatedAt = Column(DateTime, nullable=False)
+    status = Column(String, nullable=False)
+    name = Column(String, nullable=False)
+    teacherId = Column(String, ForeignKey('Teacher.id'), nullable=False)
+
+    # teacher = relationship('Teacher', backref='taught_subjects')
+    modules = relationship('Module', backref='subject_modules')
+    # user = db.relationship('User', backref='owned_subjects')
+
+class User(db.Model):
+    __tablename__ = 'User'
+
+    id = Column(String, primary_key=True, default=lambda: str(uuid4()))
+    createdAt = Column(DateTime, nullable=False)
+    updatedAt = Column(DateTime, nullable=False)
+    userCourses = relationship('UserCourse', backref='user')
+    def to_dict(self):
+        return {c.key: getattr(self, c.key) for c in class_mapper(self.__class__).columns}
+
+
+class UserCourse(db.Model):
+    __tablename__ = 'UserCourse'
+
+    id = Column(String, primary_key=True, default=lambda: str(uuid4()))
+    createdAt = Column(DateTime, nullable=False)
+    updatedAt = Column(DateTime, nullable=False)
+    status = Column(String, nullable=False)
+    userId = Column(String, ForeignKey('User.id'), nullable=False)
+    courseId = Column(String, ForeignKey('Course.id'), nullable=False)
+
+    __table_args__ = (
+        UniqueConstraint('userId', 'courseId'),
+    )
 
     def to_dict(self):
         return {c.key: getattr(self, c.key) for c in class_mapper(self.__class__).columns}
