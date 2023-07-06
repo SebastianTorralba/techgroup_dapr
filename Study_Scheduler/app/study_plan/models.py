@@ -14,8 +14,6 @@ class Academy(db.Model):
     name = Column(String, nullable=False)
     description = Column(String, nullable=False)
 
-    classrooms = relationship('Classroom', backref='academy1')
-    courses = relationship('Course', backref='academy2')
     modules = relationship('Module', backref='academy_modules')
     def to_dict(self):
         return {c.key: getattr(self, c.key) for c in class_mapper(self.__class__).columns}
@@ -48,8 +46,7 @@ class Course(db.Model):
     academyId = Column(String, ForeignKey('Academy.id'), nullable=False)
 
     modules = relationship('Module', backref='course_modules')
-    studyPlans = relationship('StudyPlan', backref='course')
-    userCourses = relationship('UserCourse', backref='course')
+    study_plan = relationship('Module', backref='course_study_plan')
     def to_dict(self):
         return {c.key: getattr(self, c.key) for c in class_mapper(self.__class__).columns}
 
@@ -58,16 +55,18 @@ class StudyPlan(db.Model):
     __tablename__ = 'StudyPlan'
 
     id = Column(String, primary_key=True, default=lambda: str(uuid4()))
-    userId = Column(String, nullable=False)
+    userId = Column(String, ForeignKey('User.id'), nullable=False)
     createdAt = Column(DateTime, nullable=False)
     updatedAt = Column(DateTime, nullable=False)
     status = Column(String, nullable=False)
     courseId = Column(String, ForeignKey('Course.id'), nullable=False)
 
-    studyPlanDetails = relationship('StudyPlanDetail', backref='studyPlan')
+    studyPlanDetails = relationship('StudyPlanDetail', backref='study_plan')
+    course = relationship('Course', backref='course_study_plan')
+    user = relationship('User', backref='user_study_plan')
 
     def to_dict(self):
-        return {c.key: getattr(self, c.key) for c in class_mapper(self.__class__).columns}
+        return {c.key: getattr(self, c.key) for c in class_mapper(self.__class__).columns if c.key not in ['userId', 'courseId']}
 
 class StudyPlanDetail(db.Model):
     __tablename__ = 'StudyPlanDetail'
@@ -95,9 +94,7 @@ class Subject(db.Model):
     name = Column(String, nullable=False)
     teacherId = Column(String, ForeignKey('Teacher.id'), nullable=False)
 
-    # teacher = relationship('Teacher', backref='taught_subjects')
     modules = relationship('Module', backref='subject_modules')
-    # user = db.relationship('User', backref='owned_subjects')
 
     def to_dict(self):
         return {c.key: getattr(self, c.key) for c in class_mapper(self.__class__).columns}
@@ -118,6 +115,7 @@ class User(db.Model):
     status = Column(String, nullable=False)
     userCourses = relationship('UserCourse', backref='user')
     modules = relationship('Module', backref='user_modules')
+    study_plan = relationship('Module', backref='user_study_plan')
 
     def to_dict(self):
         return {c.key: getattr(self, c.key) for c in class_mapper(self.__class__).columns if c.key not in ['password']}
