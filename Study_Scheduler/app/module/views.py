@@ -1,5 +1,6 @@
 from flask import Blueprint, request, jsonify
 from app import db
+from sqlalchemy.orm import joinedload
 from .models import Module
 
 module = Blueprint('module', __name__)
@@ -25,15 +26,30 @@ def create_module():
 # LIST
 @module.route('/module', methods=['GET'])
 def get_modules():
-    modules = Module.query.filter_by(status='active').all()
-    return jsonify({'modules': [module.to_dict() for module in modules]})
+    modules = Module.query.options(joinedload(Module.academy),joinedload(Module.subject), joinedload(Module.course), joinedload(Module.user)).filter(Module.status == 'active').all()
+    
+    output = []
+    for module in modules:
+        module_dict = module.to_dict()
+        module_dict['academy'] = module.academy.to_dict()
+        module_dict['subject'] = module.subject.to_dict()
+        module_dict['course'] = module.course.to_dict()
+        module_dict['user'] = module.user.to_dict()
+        output.append(module_dict)
+    
+    return jsonify({'modules': output})
 
 # GET
 @module.route('/module/<id>', methods=['GET'])
 def get_module(id):
     module = Module.query.filter_by(id=id, status='active').first()
     if module:
-        return jsonify({'module': module.to_dict()}), 200
+        module_dict = module.to_dict()
+        module_dict['academy'] = module.academy.to_dict()
+        module_dict['subject'] = module.subject.to_dict()
+        module_dict['course'] = module.course.to_dict()
+        module_dict['user'] = module.user.to_dict()
+        return jsonify({'module': module_dict}), 200
     else:
         return jsonify({"message": "Module not found"}), 404
 

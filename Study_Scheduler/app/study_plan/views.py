@@ -2,15 +2,9 @@ from flask import Blueprint, request, jsonify
 from app import db
 from .models import StudyPlan, StudyPlanDetail
 from datetime import datetime
+from sqlalchemy.orm import joinedload
 
 study_plan = Blueprint('study_plan', __name__)
-
-# LIST
-@study_plan.route('/study-plan', methods=['GET'])
-def get_study_plans():
-    print('Study plan:', StudyPlan)
-    study_plans = StudyPlan.query.all()
-    return jsonify({'study_plan': [plan.to_dict() for plan in study_plans]})
 
 # CREATE
 @study_plan.route('/study-plan', methods=['POST'])
@@ -36,7 +30,7 @@ def create_study_plan():
             status=detail['status'],
             orderNo=detail['orderNo'],
             moduleId=detail['moduleId'],
-            planId=new_plan.id,  # use the new_plan id as foreign key
+            planId=new_plan.id,  # Use the new_plan id as foreign key
             createdAt=datetime.utcnow(),
             updatedAt=datetime.utcnow()
         )
@@ -46,14 +40,31 @@ def create_study_plan():
 
     return jsonify({"message": "StudyPlan created", "id": new_plan.id}), 201
 
+# LIST
+@study_plan.route('/study-plan', methods=['GET'])
+def get_study_plans():
+    study_plans = StudyPlan.query.options(joinedload(StudyPlan.course), joinedload(StudyPlan.user)).filter(StudyPlan.status == 'active').all()
+    
+    output = []
+    for study_plan in study_plans:
+        study_plan_dict = study_plan.to_dict()
+        study_plan_dict['course'] = study_plan.course.to_dict()
+        study_plan_dict['user'] = study_plan.user.to_dict()
+        output.append(study_plan_dict)
+    
+    return jsonify({'study_plans': output})
+
 # GET
 @study_plan.route('/study-plan/<id>', methods=['GET'])
 def get_study_plan(id):
-    study_plan = StudyPlan.query.get(id)
+    study_plan = StudyPlan.query.filter_by(id=id, status='active').first()
     if study_plan:
-        return jsonify({'study_plan': study_plan.to_dict()})
+        study_plan_dict = study_plan.to_dict()
+        study_plan_dict['course'] = study_plan.course.to_dict()
+        study_plan_dict['user'] = study_plan.user.to_dict()
+        return jsonify({'study_plan': study_plan_dict}), 200
     else:
-        return jsonify({"message": "StudyPlan not found"}), 404
+        return jsonify({"message": "Study plan not found"}), 404
 
 # UPDATE
 @study_plan.route('/study-plan/<id>', methods=['PUT'])
