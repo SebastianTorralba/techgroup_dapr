@@ -34,7 +34,6 @@ namespace AcademyManager.Application.Handler.Subject
                 CourseId = subject.CourseId,
                 AcademyId= subject.AcademyId,
                 TeacherId= subject.TeacherId,
-                TeacherName= subject.Teacher.Name,
                 Enabled = subject.Enabled
             };
         }
