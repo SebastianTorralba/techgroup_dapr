@@ -19,6 +19,7 @@ namespace AcademyManager.Application.Handler.Classroom
             var classroom = new Domain.Classroom
             {
                 Number = request.Number,
+                AcademyId = request.AcademyId,
 
             };
 

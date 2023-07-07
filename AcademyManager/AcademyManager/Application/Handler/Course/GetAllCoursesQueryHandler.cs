@@ -23,7 +23,8 @@ namespace AcademyManager.Application.Handler.Course
                                     Id = t.Id,
                                     Section = t.Section,
                                     AcademyId= t.AcademyId,
-                                    ClassroomId= t.ClassroomId
+                                    ClassroomId= t.ClassroomId,
+                                    Enabled = t.Enabled,
                                 })
                                 .ToListAsync(cancellationToken);
 

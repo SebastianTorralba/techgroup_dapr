@@ -21,8 +21,8 @@ namespace AcademyManager.Application.Handler.Classroom
                                 .Select(t => new ClassroomDto
                                 {
                                     Id = t.Id,
-                                    Number = t.Number
-                                    //Enabled = t.Enabled
+                                    Number = t.Number,
+                                    Enabled = t.Enabled
                                 })
                                 .ToListAsync(cancellationToken);
 

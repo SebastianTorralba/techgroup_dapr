@@ -18,7 +18,7 @@ namespace AcademyManager.Controllers
         }
 
         [HttpGet]
-        public async Task<IEnumerable<AcademyDto>> GetAllAcademys()
+        public async Task<IEnumerable<AcademyDto>> GetAllAcademies()
         {
             return await _mediator.Send(new GetAllAcademiesQuery());
         }

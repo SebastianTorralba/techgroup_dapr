@@ -23,7 +23,7 @@ namespace AcademyManager.Application.Handler.Teacher
                                     Id = t.Id,
                                     Name = t.Name,
                                     LastName = t.LastName,
-                                    //Enabled = t.Enabled
+                                    Enabled = t.Enabled
                                 })
                                 .ToListAsync(cancellationToken);
 

@@ -23,7 +23,7 @@ namespace AcademyManager.Application.Handler.Classroom
                                 {
                                     Id = t.Id,
                                     Number = t.Number,
-                                    //Enabled = t.Enabled
+                                    Enabled = t.Enabled
                                 })
                                 .FirstOrDefaultAsync(t => t.Id == request.Id);
 
