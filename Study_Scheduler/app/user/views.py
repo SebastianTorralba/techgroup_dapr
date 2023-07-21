@@ -4,25 +4,53 @@ from app.handler.error_handler import handle_errors
 from .models import User, UserCourse
 from datetime import datetime
 from sqlalchemy.orm import joinedload
+from werkzeug.security import generate_password_hash, check_password_hash
+import jwt
+import datetime
+
+SECRET_KEY = 'secret-key'
 
 user = Blueprint('user', __name__)
+
+# LOGIN
+@user.route('/user/login', methods=['POST'])
+def login():
+    data = request.get_json()
+
+    email = data.get('email')
+    password = data.get('password')
+
+    user = User.query.filter_by(email=email).first()
+
+    if not user or not check_password_hash(user.password, password):
+        return jsonify({'message': 'Bad credentials'}), 401
+
+    access_token = jwt.encode({
+        'id': user.id,
+        'exp': datetime.datetime.utcnow() + datetime.timedelta(hours=24)
+    }, SECRET_KEY)
+
+    return jsonify({'message': "User successfully logged in", 'access_token': access_token})
 
 # CREATE
 @user.route('/user', methods=['POST'])
 def create_user():
     data = request.get_json()
 
+    hashed_password = generate_password_hash(data['password'], method='sha256')
+
     new_user = User(
     firstname = data['firstname'],
     lastname = data['lastname'],
     email = data['email'],
-    password = data['password'],
+    password = hashed_password,
     photo = data['photo'],
     cellphone = data['cellphone'],
-    birthdate = data['date'],
-    status = data['status']
-)
-
+    birthdate = data['birthdate'],
+    status = data['status'],
+    createdAt=datetime.utcnow(),
+    updatedAt=datetime.utcnow()
+    )
 
     db.session.add(new_user)
     db.session.commit()
@@ -62,6 +90,7 @@ def update_user(id):
     user.cellphone = data['cellphone']
     user.birthdate = data['birthdate']
     user.status = data['status']
+    user.updatedAt=datetime.utcnow()
 
     db.session.commit()
     return jsonify({'message': 'User updated succesfully'}), 200

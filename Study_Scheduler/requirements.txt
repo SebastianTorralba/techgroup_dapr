@@ -2,3 +2,4 @@ Flask==2.2.5
 flask_sqlalchemy
 psycopg2-binary
 flask_restful
+PyJWT
