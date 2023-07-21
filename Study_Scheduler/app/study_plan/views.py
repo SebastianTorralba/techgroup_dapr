@@ -1,5 +1,6 @@
 from flask import Blueprint, request, jsonify
 from app import db
+from app.handler.error_handler import handle_errors
 from .models import StudyPlan, StudyPlanDetail
 from datetime import datetime
 from sqlalchemy.orm import joinedload
@@ -42,6 +43,7 @@ def create_study_plan():
 
 # LIST
 @study_plan.route('/study-plan', methods=['GET'])
+@handle_errors
 def get_study_plans():
     study_plans = StudyPlan.query.options(joinedload(StudyPlan.course), joinedload(StudyPlan.user)).filter(StudyPlan.status == 'active').all()
 
@@ -59,6 +61,7 @@ def get_study_plans():
 
 # GET
 @study_plan.route('/study-plan/<id>', methods=['GET'])
+@handle_errors
 def get_study_plan(id):
     study_plan = StudyPlan.query.filter_by(id=id, status='active').first()
     

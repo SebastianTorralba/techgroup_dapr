@@ -1,6 +1,7 @@
 from flask import Blueprint, request, jsonify
 from app import db
 from sqlalchemy.orm import joinedload
+from app.handler.error_handler import handle_errors
 from .models import Module
 
 module = Blueprint('module', __name__)
@@ -25,6 +26,7 @@ def create_module():
 
 # LIST
 @module.route('/module', methods=['GET'])
+@handle_errors
 def get_modules():
     modules = Module.query.options(joinedload(Module.academy), joinedload(Module.subject), joinedload(Module.course), joinedload(Module.user)).filter(Module.status == 'active').all()
 
@@ -51,6 +53,7 @@ def get_modules():
 
 # GET
 @module.route('/module/<id>', methods=['GET'])
+@handle_errors
 def get_module(id):
     module = Module.query.filter_by(id=id, status='active').first()
     
