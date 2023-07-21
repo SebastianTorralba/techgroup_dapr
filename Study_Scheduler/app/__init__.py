@@ -15,5 +15,8 @@ def create_app(config_class=Config):
     
     from app.module.views import module
     app.register_blueprint(module)
+    
+    from app.user.views import user
+    app.register_blueprint(user)
 
     return app

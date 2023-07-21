@@ -59,7 +59,7 @@ def update_user(id):
     user.status = data['status']
 
     db.session.commit()
-        return jsonify({'message': 'User updated succesfully'}), 200
+    return jsonify({'message': 'User updated succesfully'}), 200
 
 
 #DELETE
