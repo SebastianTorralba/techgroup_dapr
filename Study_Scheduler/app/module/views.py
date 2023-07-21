@@ -1,14 +1,17 @@
 from flask import Blueprint, request, jsonify
 from app import db
 from sqlalchemy.orm import joinedload
-from app.handler.error_handler import handle_errors
+from app.handler.error import handle_errors
+from app.handler.token import token_required
 from .models import Module
 
 module = Blueprint('module', __name__)
 
 # CREATE
 @module.route('/module', methods=['POST'])
-def create_module():
+@handle_errors
+@token_required
+def create_module(current_user):
     data = request.get_json()
 
     new_module = Module(
@@ -27,7 +30,8 @@ def create_module():
 # LIST
 @module.route('/module', methods=['GET'])
 @handle_errors
-def get_modules():
+@token_required
+def get_modules(current_user):
     modules = Module.query.options(joinedload(Module.academy), joinedload(Module.subject), joinedload(Module.course), joinedload(Module.user)).filter(Module.status == 'active').all()
 
     if not modules:
@@ -54,7 +58,8 @@ def get_modules():
 # GET
 @module.route('/module/<id>', methods=['GET'])
 @handle_errors
-def get_module(id):
+@token_required
+def get_module(current_user, id):
     module = Module.query.filter_by(id=id, status='active').first()
     
     if module:
@@ -69,7 +74,9 @@ def get_module(id):
 
 # UPDATE
 @module.route('/module/<id>', methods=['PUT'])
-def update_module(id):
+@handle_errors
+@token_required
+def update_module(current_user,id):
     data = request.get_json()
     module = Module.query.get(id)
     if module:
@@ -85,7 +92,9 @@ def update_module(id):
 
 # DELETE (SET TO INACTIVE)
 @module.route('/module/<id>', methods=['DELETE'])
-def set_module_inactive(id):
+@handle_errors
+@token_required
+def set_module_inactive(current_user, id):
     module = Module.query.get(id)
     if module:
         module.status = "inactive"

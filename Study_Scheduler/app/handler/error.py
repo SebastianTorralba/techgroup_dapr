@@ -8,7 +8,7 @@ def handle_errors(f):
         try:
             return f(*args, **kwargs)
         except Exception as e:
-            # Use a regular expression to extract column name from error message
+            print(e)
             match = re.search(r'column (\w+)\.', str(e))
             column_name = match.group(1) if match else 'unknown'
             message = f'Error: column "{column_name}" does not exist'

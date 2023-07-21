@@ -1,6 +1,7 @@
 from flask import Blueprint, request, jsonify
 from app import db
-from app.handler.error_handler import handle_errors
+from app.handler.error import handle_errors
+from app.handler.token import token_required
 from .models import StudyPlan, StudyPlanDetail
 from datetime import datetime
 from sqlalchemy.orm import joinedload
@@ -9,7 +10,9 @@ study_plan = Blueprint('study_plan', __name__)
 
 # CREATE
 @study_plan.route('/study-plan', methods=['POST'])
-def create_study_plan():
+@handle_errors
+@token_required
+def create_study_plan(current_user):
     data = request.get_json()
 
     new_plan = StudyPlan(
@@ -44,7 +47,8 @@ def create_study_plan():
 # LIST
 @study_plan.route('/study-plan', methods=['GET'])
 @handle_errors
-def get_study_plans():
+@token_required
+def get_study_plans(current_user):
     study_plans = StudyPlan.query.options(joinedload(StudyPlan.course), joinedload(StudyPlan.user)).filter(StudyPlan.status == 'active').all()
 
     if not study_plans:
@@ -62,7 +66,8 @@ def get_study_plans():
 # GET
 @study_plan.route('/study-plan/<id>', methods=['GET'])
 @handle_errors
-def get_study_plan(id):
+@token_required
+def get_study_plan(current_user, id):
     study_plan = StudyPlan.query.filter_by(id=id, status='active').first()
     
     if study_plan:
@@ -75,7 +80,9 @@ def get_study_plan(id):
 
 # UPDATE
 @study_plan.route('/study-plan/<id>', methods=['PUT'])
-def update_study_plan(id):
+@handle_errors
+@token_required
+def update_study_plan(current_user, id):
     data = request.get_json()
     study_plan = StudyPlan.query.get(id)
     if study_plan:
@@ -89,7 +96,9 @@ def update_study_plan(id):
 
 # DELETE
 @study_plan.route('/study-plan/<id>', methods=['DELETE'])
-def delete_study_plan(id):
+@handle_errors
+@token_required
+def delete_study_plan(current_user, id):
     study_plan = StudyPlan.query.get(id)
     if study_plan:
         db.session.delete(study_plan)

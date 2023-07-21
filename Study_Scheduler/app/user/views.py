@@ -1,13 +1,12 @@
 from flask import Blueprint, request, jsonify, current_app
 from app import db
-from app.handler.error_handler import handle_errors
+from app.handler.error import handle_errors
+from app.handler.token import token_required
 from .models import User, UserCourse
-from datetime import datetime
+from datetime import datetime, timedelta
 from sqlalchemy.orm import joinedload
 from werkzeug.security import generate_password_hash, check_password_hash
 import jwt
-import datetime
-
 
 user = Blueprint('user', __name__)
 
@@ -26,7 +25,7 @@ def login():
 
     access_token = jwt.encode({
         'id': user.id,
-        'exp': datetime.datetime.utcnow() + datetime.timedelta(hours=24)
+        'exp': datetime.utcnow() + timedelta(hours=24)
     }, current_app.config['SECRET_KEY'])
 
     return jsonify({'message': "User successfully logged in", 'user': user.to_dict(), 'access_token': access_token})
@@ -59,14 +58,16 @@ def create_user():
 # LIST
 @user.route('/user', methods = ['GET'])
 @handle_errors
-def get_users():
+@token_required
+def get_users(current_user):
     users = User.query.filter(User.status == 'active').all()
     return jsonify([user.to_dict() for user in users]), 200
 
 # GET
 @user.route('/user/<id>', methods = ['GET'])
 @handle_errors
-def get_user(id):
+@token_required
+def get_user(current_user, id):
     user = User.query.filter_by(id=id, status='active').first()
     if not user:
         return jsonify({'message': "User not found"}), 404
@@ -74,7 +75,9 @@ def get_user(id):
 
 # UPDATE
 @user.route('/user/<id>', methods = ['PUT'])
-def update_user(id):
+@handle_errors
+@token_required
+def update_user(current_user, id):
     user = User.query.get(id)
     data = request.get_json()
 
@@ -97,7 +100,9 @@ def update_user(id):
 
 # DELETE
 @user.route('/user', methods = ['DELETE'])
-def delete_user(id):
+@handle_errors
+@token_required
+def delete_user(current_user, id):
     user = User.query.get(id)
     if user:
         user.status = 'inactive'
