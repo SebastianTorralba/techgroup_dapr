@@ -59,7 +59,7 @@ def create_user():
 @user.route('/user', methods = ['GET'])
 @handle_errors
 @token_required
-def get_users(current_user):
+def get_users():
     users = User.query.filter(User.status == 'active').all()
     return jsonify([user.to_dict() for user in users]), 200
 
@@ -67,7 +67,7 @@ def get_users(current_user):
 @user.route('/user/<id>', methods = ['GET'])
 @handle_errors
 @token_required
-def get_user(current_user, id):
+def get_user(id):
     user = User.query.filter_by(id=id, status='active').first()
     if not user:
         return jsonify({'message': "User not found"}), 404
@@ -77,32 +77,31 @@ def get_user(current_user, id):
 @user.route('/user/<id>', methods = ['PUT'])
 @handle_errors
 @token_required
-def update_user(current_user, id):
+def update_user(id):
     user = User.query.get(id)
     data = request.get_json()
 
     if not user:
         return jsonify({'message': "User not found"}), 404
 
-    user.firstname = data['firstname']
-    user.lastname = data['lastname']
-    user.email = data['email']
-    user.password = data['password']
-    user.photo = data['photo']
-    user.cellphone = data['cellphone']
-    user.birthdate = data['birthdate']
-    user.status = data['status']
-    user.updatedAt=datetime.utcnow()
+    user.firstname = data.get('firstname', user.firstname)
+    user.lastname = data.get('lastname', user.lastname)
+    user.email = data.get('email', user.email)
+    user.password = data.get('password', user.password)
+    user.photo = data.get('photo', user.photo)
+    user.cellphone = data.get('cellphone', user.cellphone)
+    user.birthdate = data.get('birthdate', user.birthdate)
+    user.status = data.get('status', user.status)
+    user.updatedAt = datetime.utcnow()
 
     db.session.commit()
     return jsonify({'message': 'User updated succesfully'}), 200
-
 
 # DELETE
 @user.route('/user', methods = ['DELETE'])
 @handle_errors
 @token_required
-def delete_user(current_user, id):
+def delete_user(id):
     user = User.query.get(id)
     if user:
         user.status = 'inactive'

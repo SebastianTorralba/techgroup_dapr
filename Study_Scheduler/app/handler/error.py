@@ -9,8 +9,6 @@ def handle_errors(f):
             return f(*args, **kwargs)
         except Exception as e:
             print(e)
-            match = re.search(r'column (\w+)\.', str(e))
-            column_name = match.group(1) if match else 'unknown'
-            message = f'Error: column "{column_name}" does not exist'
+            message = f'Error: {e}'
             return jsonify({'message': message}), 500
     return wrapper

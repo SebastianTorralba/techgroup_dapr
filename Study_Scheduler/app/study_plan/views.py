@@ -12,7 +12,7 @@ study_plan = Blueprint('study_plan', __name__)
 @study_plan.route('/study-plan', methods=['POST'])
 @handle_errors
 @token_required
-def create_study_plan(current_user):
+def create_study_plan():
     data = request.get_json()
 
     new_plan = StudyPlan(
@@ -48,7 +48,7 @@ def create_study_plan(current_user):
 @study_plan.route('/study-plan', methods=['GET'])
 @handle_errors
 @token_required
-def get_study_plans(current_user):
+def get_study_plans():
     study_plans = StudyPlan.query.options(joinedload(StudyPlan.course), joinedload(StudyPlan.user)).filter(StudyPlan.status == 'active').all()
 
     if not study_plans:
@@ -67,7 +67,7 @@ def get_study_plans(current_user):
 @study_plan.route('/study-plan/<id>', methods=['GET'])
 @handle_errors
 @token_required
-def get_study_plan(current_user, id):
+def get_study_plan( id):
     study_plan = StudyPlan.query.filter_by(id=id, status='active').first()
     
     if study_plan:
@@ -82,7 +82,7 @@ def get_study_plan(current_user, id):
 @study_plan.route('/study-plan/<id>', methods=['PUT'])
 @handle_errors
 @token_required
-def update_study_plan(current_user, id):
+def update_study_plan( id):
     data = request.get_json()
     study_plan = StudyPlan.query.get(id)
     if study_plan:
@@ -98,7 +98,7 @@ def update_study_plan(current_user, id):
 @study_plan.route('/study-plan/<id>', methods=['DELETE'])
 @handle_errors
 @token_required
-def delete_study_plan(current_user, id):
+def delete_study_plan( id):
     study_plan = StudyPlan.query.get(id)
     if study_plan:
         db.session.delete(study_plan)
