@@ -44,6 +44,9 @@ def create_study_plan():
 @study_plan.route('/study-plan', methods=['GET'])
 def get_study_plans():
     study_plans = StudyPlan.query.options(joinedload(StudyPlan.course), joinedload(StudyPlan.user)).filter(StudyPlan.status == 'active').all()
+
+    if not study_plans:
+        return jsonify({'message': 'Study plans not found'}), 404
     
     output = []
     for study_plan in study_plans:
@@ -58,6 +61,7 @@ def get_study_plans():
 @study_plan.route('/study-plan/<id>', methods=['GET'])
 def get_study_plan(id):
     study_plan = StudyPlan.query.filter_by(id=id, status='active').first()
+    
     if study_plan:
         study_plan_dict = study_plan.to_dict()
         study_plan_dict['course'] = study_plan.course.to_dict()
