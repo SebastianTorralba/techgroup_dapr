@@ -98,19 +98,3 @@ class Subject(db.Model):
 
     def to_dict(self):
         return {c.key: getattr(self, c.key) for c in class_mapper(self.__class__).columns}
-
-    __tablename__ = 'UserCourse'
-
-    id = Column(String, primary_key=True, default=lambda: str(uuid4()))
-    createdAt = Column(DateTime, nullable=False)
-    updatedAt = Column(DateTime, nullable=False)
-    status = Column(String, nullable=False)
-    userId = Column(String, ForeignKey('User.id'), nullable=False)
-    courseId = Column(String, ForeignKey('Course.id'), nullable=False)
-
-    __table_args__ = (
-        UniqueConstraint('userId', 'courseId'),
-    )
-
-    def to_dict(self):
-        return {c.key: getattr(self, c.key) for c in class_mapper(self.__class__).columns}
