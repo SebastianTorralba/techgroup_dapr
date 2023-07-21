@@ -1,4 +1,4 @@
-from flask import Blueprint, request, jsonify
+from flask import Blueprint, request, jsonify, current_app
 from app import db
 from app.handler.error_handler import handle_errors
 from .models import User, UserCourse
@@ -8,7 +8,6 @@ from werkzeug.security import generate_password_hash, check_password_hash
 import jwt
 import datetime
 
-SECRET_KEY = 'secret-key'
 
 user = Blueprint('user', __name__)
 
@@ -28,9 +27,9 @@ def login():
     access_token = jwt.encode({
         'id': user.id,
         'exp': datetime.datetime.utcnow() + datetime.timedelta(hours=24)
-    }, SECRET_KEY)
+    }, current_app.config['SECRET_KEY'])
 
-    return jsonify({'message': "User successfully logged in", 'access_token': access_token})
+    return jsonify({'message': "User successfully logged in", 'user': user.to_dict(), 'access_token': access_token})
 
 # CREATE
 @user.route('/user', methods=['POST'])
