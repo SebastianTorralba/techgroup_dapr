@@ -9,7 +9,7 @@ done
 echo "SQL Server connected successfully."
 
 # Run the SQL script
-/opt/mssql-tools/bin/sqlcmd -S sqlserver -U sa -P 'Darp1234!' -d master -i init.sql
+/opt/mssql-tools/bin/sqlcmd -S sqlserver -U sa -P 'Darp1234!' -d academy_manager -i init.sql
 
 # Wait for SQL Server to start
 sleep 10s

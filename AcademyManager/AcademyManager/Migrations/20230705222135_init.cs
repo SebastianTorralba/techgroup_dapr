@@ -20,8 +20,8 @@ namespace AcademyManager.Migrations
                     Name = table.Column<string>(type: "nvarchar(max)", nullable: false),
                     Description = table.Column<string>(type: "nvarchar(max)", nullable: false),
                     Enabled = table.Column<bool>(type: "bit", nullable: false, defaultValueSql: "((1))"),
-                    CreateDate = table.Column<DateTime>(type: "datetime", nullable: false, defaultValueSql: "(getutcdate())"),
-                    UpdateDate = table.Column<DateTime>(type: "datetime", nullable: true)
+                    CreatedDate = table.Column<DateTime>(type: "datetime", nullable: false, defaultValueSql: "(getutcdate())"),
+                    UpdatedDate = table.Column<DateTime>(type: "datetime", nullable: true)
                 },
                 constraints: table =>
                 {
@@ -37,8 +37,8 @@ namespace AcademyManager.Migrations
                     Number = table.Column<int>(type: "int", nullable: false),
                     AcademyId = table.Column<int>(type: "int", nullable: false),
                     Enabled = table.Column<bool>(type: "bit", nullable: false, defaultValueSql: "((1))"),
-                    CreateDate = table.Column<DateTime>(type: "datetime", nullable: false, defaultValueSql: "(getutcdate())"),
-                    UpdateDate = table.Column<DateTime>(type: "datetime", nullable: true)
+                    CreatedDate = table.Column<DateTime>(type: "datetime", nullable: false, defaultValueSql: "(getutcdate())"),
+                    UpdatedDate = table.Column<DateTime>(type: "datetime", nullable: true)
                 },
                 constraints: table =>
                 {
@@ -60,8 +60,8 @@ namespace AcademyManager.Migrations
                     LastName = table.Column<string>(type: "nvarchar(max)", nullable: false),
                     AcademyId = table.Column<int>(type: "int", nullable: false),
                     Enabled = table.Column<bool>(type: "bit", nullable: false, defaultValueSql: "((1))"),
-                    CreateDate = table.Column<DateTime>(type: "datetime", nullable: false, defaultValueSql: "(getutcdate())"),
-                    UpdateDate = table.Column<DateTime>(type: "datetime", nullable: true)
+                    CreatedDate = table.Column<DateTime>(type: "datetime", nullable: false, defaultValueSql: "(getutcdate())"),
+                    UpdatedDate = table.Column<DateTime>(type: "datetime", nullable: true)
                 },
                 constraints: table =>
                 {
@@ -83,8 +83,8 @@ namespace AcademyManager.Migrations
                     AcademyId = table.Column<int>(type: "int", nullable: false),
                     ClassroomId = table.Column<int>(type: "int", nullable: false),
                     Enabled = table.Column<bool>(type: "bit", nullable: false, defaultValueSql: "((1))"),
-                    CreateDate = table.Column<DateTime>(type: "datetime", nullable: false, defaultValueSql: "(getutcdate())"),
-                    UpdateDate = table.Column<DateTime>(type: "datetime", nullable: true)
+                    CreatedDate = table.Column<DateTime>(type: "datetime", nullable: false, defaultValueSql: "(getutcdate())"),
+                    UpdatedDate = table.Column<DateTime>(type: "datetime", nullable: true)
                 },
                 constraints: table =>
                 {
@@ -112,8 +112,8 @@ namespace AcademyManager.Migrations
                     CourseId = table.Column<int>(type: "int", nullable: false),
                     TeacherId = table.Column<int>(type: "int", nullable: false),
                     Enabled = table.Column<bool>(type: "bit", nullable: false, defaultValueSql: "((1))"),
-                    CreateDate = table.Column<DateTime>(type: "datetime", nullable: false, defaultValueSql: "(getutcdate())"),
-                    UpdateDate = table.Column<DateTime>(type: "datetime", nullable: true)
+                    CreatedDate = table.Column<DateTime>(type: "datetime", nullable: false, defaultValueSql: "(getutcdate())"),
+                    UpdatedDate = table.Column<DateTime>(type: "datetime", nullable: true)
                 },
                 constraints: table =>
                 {
