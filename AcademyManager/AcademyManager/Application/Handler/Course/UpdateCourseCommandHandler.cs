@@ -27,7 +27,7 @@ namespace AcademyManager.Application.Handler.Course
             course.Section = request.Section;
             course.AcademyId = request.AcademyId;
             course.ClassroomId = request.ClassroomId;
-            course.UpdateDate = DateTime.UtcNow;
+            course.UpdatedDate = DateTime.UtcNow;
 
             await _dataContext.SaveChangesAsync(cancellationToken);
 

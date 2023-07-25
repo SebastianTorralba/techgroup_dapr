@@ -28,7 +28,7 @@ namespace AcademyManager.Application.Handler.Academy
             academy.Name = request.Name;
             academy.Description = academy.Description;
             academy.Enabled = request.Enabled;
-            academy.UpdateDate = DateTime.UtcNow;
+            academy.UpdatedDate = DateTime.UtcNow;
 
             await _dataContext.SaveChangesAsync(cancellationToken);
 

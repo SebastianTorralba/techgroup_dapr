@@ -29,7 +29,7 @@ namespace AcademyManager.Application.Handler.Subject
             subject.CourseId = request.CourseId;
             subject.TeacherId = request.TeacherId;
             subject.Enabled = request.Enabled;
-            subject.UpdateDate = DateTime.UtcNow;
+            subject.UpdatedDate = DateTime.UtcNow;
 
             await _dataContext.SaveChangesAsync(cancellationToken);
 

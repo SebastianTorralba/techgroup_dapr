@@ -5,11 +5,11 @@ using MediatR;
 
 namespace AcademyManager.Application.Handler.Academy
 {
-    public class CreateAcademyCommandHamdler : IRequestHandler<CreateAcademyCommand, AcademyDto>
+    public class CreateAcademyCommandHandler : IRequestHandler<CreateAcademyCommand, AcademyDto>
     {
         private readonly DataContext _dataContext;
 
-        public CreateAcademyCommandHamdler(DataContext dataContext)
+        public CreateAcademyCommandHandler(DataContext dataContext)
         {
             _dataContext = dataContext;
         }
@@ -20,6 +20,7 @@ namespace AcademyManager.Application.Handler.Academy
             {
                 Name = request.Name,
                 Description = request.Description,
+                
             };
 
             _dataContext.Academies.Add(academy);

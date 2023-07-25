@@ -4,7 +4,7 @@
     {
         public int Id { get; set; }
         public bool Enabled { get; set; } = true;
-        public DateTime CreateDate { get; set; } = DateTime.UtcNow;
-        public DateTime? UpdateDate { get; set; } = null;
+        public DateTime CreatedDate { get; set; } = DateTime.UtcNow;
+        public DateTime UpdatedDate { get; set; } = DateTime.UtcNow;
     }
 }
