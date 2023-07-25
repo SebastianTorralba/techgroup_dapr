@@ -21,11 +21,11 @@ namespace AcademyManager.Infraestructure.Data
             {
                 entity.ToTable("Academy");
 
-                entity.Property(e => e.CreateDate)
+                entity.Property(e => e.CreatedDate)
                     .HasColumnType("datetime")
                     .HasDefaultValueSql("(getutcdate())");
 
-                entity.Property(e => e.UpdateDate).HasColumnType("datetime");
+                entity.Property(e => e.UpdatedDate).HasColumnType("datetime");
 
                 entity.Property(e => e.Enabled)
                     .IsRequired()
@@ -39,7 +39,7 @@ namespace AcademyManager.Infraestructure.Data
 
                 entity.HasIndex(e => e.AcademyId, "IX_Classroom_AcademyId");
 
-                entity.Property(e => e.CreateDate)
+                entity.Property(e => e.CreatedDate)
                     .HasColumnType("datetime")
                     .HasDefaultValueSql("(getutcdate())");
 
@@ -47,7 +47,7 @@ namespace AcademyManager.Infraestructure.Data
                     .IsRequired()
                     .HasDefaultValueSql("((1))");
 
-                entity.Property(e => e.UpdateDate).HasColumnType("datetime");
+                entity.Property(e => e.UpdatedDate).HasColumnType("datetime");
 
                 entity.HasOne(d => d.Academy)
                     .WithMany(p => p.Classroom)
@@ -62,7 +62,7 @@ namespace AcademyManager.Infraestructure.Data
 
                 entity.HasIndex(e => e.AcademyId, "IX_Teacher_AcademyId");
 
-                entity.Property(e => e.CreateDate)
+                entity.Property(e => e.CreatedDate)
                     .HasColumnType("datetime")
                     .HasDefaultValueSql("(getutcdate())");
 
@@ -70,7 +70,7 @@ namespace AcademyManager.Infraestructure.Data
                     .IsRequired()
                     .HasDefaultValueSql("((1))");
 
-                entity.Property(e => e.UpdateDate).HasColumnType("datetime");
+                entity.Property(e => e.UpdatedDate).HasColumnType("datetime");
 
                 entity.HasOne(d => d.Academy)
                     .WithMany(p => p.Teacher)
@@ -84,7 +84,7 @@ namespace AcademyManager.Infraestructure.Data
 
                 entity.HasIndex(e => e.AcademyId, "IX_Course_AcademyId");
 
-                entity.Property(e => e.CreateDate)
+                entity.Property(e => e.CreatedDate)
                     .HasColumnType("datetime")
                     .HasDefaultValueSql("(getutcdate())");
 
@@ -92,7 +92,7 @@ namespace AcademyManager.Infraestructure.Data
                     .IsRequired()
                     .HasDefaultValueSql("((1))");
 
-                entity.Property(e => e.UpdateDate).HasColumnType("datetime");
+                entity.Property(e => e.UpdatedDate).HasColumnType("datetime");
 
                 entity.HasOne(d => d.Academy)
                     .WithMany(p => p.Course)
@@ -112,7 +112,7 @@ namespace AcademyManager.Infraestructure.Data
 
                 entity.HasIndex(e => e.AcademyId, "IX_Subject_AcademyId");
 
-                entity.Property(e => e.CreateDate)
+                entity.Property(e => e.CreatedDate)
                     .HasColumnType("datetime")
                     .HasDefaultValueSql("(getutcdate())");
 
@@ -120,7 +120,7 @@ namespace AcademyManager.Infraestructure.Data
                     .IsRequired()
                     .HasDefaultValueSql("((1))");
 
-                entity.Property(e => e.UpdateDate).HasColumnType("datetime");
+                entity.Property(e => e.UpdatedDate).HasColumnType("datetime");
 
                 entity.HasOne(d => d.Academy)
                     .WithMany(p => p.Subject)

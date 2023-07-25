@@ -29,7 +29,7 @@ namespace AcademyManager.Application.Handler.Classroom
             classroom.Number = request.Number;
             classroom.AcademyId = request.AcademyId;
             classroom.Enabled = request.Enabled;
-            classroom.UpdateDate = DateTime.UtcNow;
+            classroom.UpdatedDate = DateTime.UtcNow;
 
             await _dataContext.SaveChangesAsync(cancellationToken);
 

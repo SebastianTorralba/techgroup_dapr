@@ -27,7 +27,7 @@ namespace AcademyManager.Application.Handler.Teacher
             teacher.Name = request.Name;
             teacher.LastName = request.LastName;
             teacher.Enabled = request.Enabled;
-            teacher.UpdateDate = DateTime.UtcNow;
+            teacher.UpdatedDate = DateTime.UtcNow;
 
             await _dataContext.SaveChangesAsync(cancellationToken);
 
