@@ -3,6 +3,6 @@ using MediatR;
 
 namespace AcademyManager.Infraestructure.Commands.Course
 {
-    public record CreateCourseCommand(string Section, int AcademyId, int ClasroomId) : IRequest<CourseDto>;
+    public record CreateCourseCommand(string Section, int AcademyId, int ClassroomId) : IRequest<CourseDto>;
 
 }

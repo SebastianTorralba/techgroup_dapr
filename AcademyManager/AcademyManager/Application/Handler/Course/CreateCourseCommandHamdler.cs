@@ -20,7 +20,7 @@ namespace AcademyManager.Application.Handler.Course
             var course = new Domain.Course
             {
                 Section = request.Section,
-                ClassroomId = request.ClasroomId,
+                ClassroomId = request.ClassroomId,
                 AcademyId= request.AcademyId,
             };
 
