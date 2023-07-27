@@ -18,7 +18,7 @@ namespace AcademyManager.Application.Handler.Teacher
         {
             var teacher = new Domain.Teacher
             {
-                Name = request.Name,
+                FirstName = request.FirstName,
                 LastName = request.LastName,
                 AcademyId= request.AcademyId,
             };
@@ -29,7 +29,7 @@ namespace AcademyManager.Application.Handler.Teacher
             return new TeacherDto
             {
                 Id = teacher.Id,
-                Name = teacher.Name,
+                FirstName = teacher.FirstName,
                 LastName = teacher.LastName,
                 Enabled = teacher.Enabled
             };

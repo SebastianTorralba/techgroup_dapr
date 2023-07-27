@@ -3,6 +3,6 @@ using MediatR;
 
 namespace AcademyManager.Infraestructure.Commands.Teacher
 {
-    public record UpdateTeacherCommand(int Id, string Name, string LastName, bool Enabled) : IRequest<TeacherDto>;
+    public record UpdateTeacherCommand(int Id, string FirstName, string LastName, bool Enabled) : IRequest<TeacherDto>;
 
 }

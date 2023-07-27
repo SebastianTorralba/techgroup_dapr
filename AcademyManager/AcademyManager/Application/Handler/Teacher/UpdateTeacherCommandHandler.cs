@@ -24,7 +24,7 @@ namespace AcademyManager.Application.Handler.Teacher
                 return null;
             }
 
-            teacher.Name = request.Name;
+            teacher.FirstName = request.FirstName;
             teacher.LastName = request.LastName;
             teacher.Enabled = request.Enabled;
             teacher.UpdatedDate = DateTime.UtcNow;
@@ -34,7 +34,7 @@ namespace AcademyManager.Application.Handler.Teacher
             return new TeacherDto
             {
                 Id = request.Id,
-                Name = request.Name,
+                FirstName = request.FirstName,
                 LastName = request.LastName,
                 Enabled = request.Enabled
             };

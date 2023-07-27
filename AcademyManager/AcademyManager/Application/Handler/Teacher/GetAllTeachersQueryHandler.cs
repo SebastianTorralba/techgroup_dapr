@@ -21,7 +21,7 @@ namespace AcademyManager.Application.Handler.Teacher
                                 .Select(t => new TeacherDto
                                 {
                                     Id = t.Id,
-                                    Name = t.Name,
+                                    FirstName = t.FirstName,
                                     LastName = t.LastName,
                                     Enabled = t.Enabled
                                 })

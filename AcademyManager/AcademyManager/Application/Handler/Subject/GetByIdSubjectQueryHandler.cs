@@ -23,7 +23,7 @@ namespace AcademyManager.Application.Handler.Subject
                                     Id = t.Id,
                                     Name = t.Name,
                                     TeacherId = t.TeacherId,
-                                    TeacherName = t.Teacher.Name,
+                                    TeacherName = t.Teacher.FirstName,
                                     AcademyId = t.AcademyId,
                                     CourseId = t.CourseId,
                                     Enabled = t.Enabled

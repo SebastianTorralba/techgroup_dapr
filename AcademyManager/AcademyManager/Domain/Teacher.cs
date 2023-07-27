@@ -6,7 +6,7 @@
         {
             Subject = new HashSet<Subject>();
         }
-        public string Name { get; set; }
+        public string FirstName { get; set; }
         public string LastName { get; set; }
         public int AcademyId { get; set; }
         public virtual Academy Academy { get; set; } = null!;
