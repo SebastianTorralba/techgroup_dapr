@@ -1,0 +1,21 @@
+version: 1
+common:
+  resourcePath: ./dapr-components
+  env:
+    DEBUG: "true"
+
+apps:
+  - appID: academymanager
+    appDirPath: ./AcademyManager/AcademyManager
+    appChannelAddress: locahost
+    appProtocol:
+    appPort: 5053
+    appHealthCheckPath:
+    command: ["dotnet", "run"]
+  - appID: calendar
+    appDirPath: ./calendar
+    appChannelAddress: locahost
+    appProtocol:
+    appPort:
+    appHealthCheckPath:
+    command: ["java", "./target/calendar-1.0-SNAPSHOT.jar"]

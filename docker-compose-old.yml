@@ -1,0 +1,23 @@
+study_scheduler:
+  build:
+    context: ./study_scheduler
+  command: python run.py
+  volumes:
+    - .:/code
+  ports:
+    - 5000:5000
+  depends_on:
+    - postgres
+    - migration-postgres
+  environment:
+    DATABASE_URL: postgresql://postgres:postgres@postgres:5432/academy_scheduler
+
+academy_manager:
+  build:
+    context: ./AcademyManager/AcademyManager
+    dockerfile: Dockerfile
+  ports:
+    - 8080:8080
+  depends_on:
+    - sqlserver
+    - migration-sqlserver
