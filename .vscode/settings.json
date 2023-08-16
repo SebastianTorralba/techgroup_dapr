@@ -2,5 +2,9 @@
   "java.compile.nullAnalysis.mode": "automatic",
   "python.analysis.extraPaths": [
     "/Users/mateocerquetella/Documents/Mateo/Developer/Dapr/techgroup_dapr/study_scheduler/myenv/lib/python3.9/site-packages"
-  ]
+  ],
+  "[python]": {
+    "editor.defaultFormatter": "ms-python.autopep8"
+  },
+  "python.formatting.provider": "none"
 }
