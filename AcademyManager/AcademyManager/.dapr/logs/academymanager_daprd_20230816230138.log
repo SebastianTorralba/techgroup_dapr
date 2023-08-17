@@ -1,0 +1,41 @@
+Starting Dapr with id academymanager. HTTP Port: 33111. gRPC Port: 40611
+Updating metadata for cliPID: 4275
+time="2023-08-16T23:01:38.647222219-03:00" level=info msg="starting Dapr Runtime -- version 1.11.2 -- commit 83ca1abb11ffe34211db55dcd36d96b94252827a" app_id=academymanager instance=CODER_WS scope=dapr.runtime type=log ver=1.11.2
+time="2023-08-16T23:01:38.647464179-03:00" level=info msg="log level set to: info" app_id=academymanager instance=CODER_WS scope=dapr.runtime type=log ver=1.11.2
+time="2023-08-16T23:01:38.647757639-03:00" level=info msg="metrics server started on :39529/" app_id=academymanager instance=CODER_WS scope=dapr.metrics type=log ver=1.11.2
+time="2023-08-16T23:01:38.648940897-03:00" level=info msg="Resiliency configuration loaded" app_id=academymanager instance=CODER_WS scope=dapr.runtime type=log ver=1.11.2
+time="2023-08-16T23:01:38.649405579-03:00" level=info msg="standalone mode configured" app_id=academymanager instance=CODER_WS scope=dapr.runtime type=log ver=1.11.2
+time="2023-08-16T23:01:38.649629359-03:00" level=info msg="app id: academymanager" app_id=academymanager instance=CODER_WS scope=dapr.runtime type=log ver=1.11.2
+time="2023-08-16T23:01:38.649797419-03:00" level=info msg="mTLS is disabled. Skipping certificate request and tls validation" app_id=academymanager instance=CODER_WS scope=dapr.runtime type=log ver=1.11.2
+time="2023-08-16T23:01:38.650104029-03:00" level=info msg="Dapr trace sampler initialized: DaprTraceSampler(P=1.000000)" app_id=academymanager instance=CODER_WS scope=dapr.runtime type=log ver=1.11.2
+time="2023-08-16T23:01:38.650668997-03:00" level=info msg="local service entry announced: academymanager -> 172.19.3.255:33287" app_id=academymanager component="mdns (nameResolution/v1)" instance=CODER_WS scope=dapr.contrib type=log ver=1.11.2
+time="2023-08-16T23:01:38.650957797-03:00" level=info msg="Initialized name resolution to mdns" app_id=academymanager instance=CODER_WS scope=dapr.runtime type=log ver=1.11.2
+time="2023-08-16T23:01:38.651290353-03:00" level=info msg="Loading components…" app_id=academymanager instance=CODER_WS scope=dapr.runtime type=log ver=1.11.2
+time="2023-08-16T23:01:38.654455555-03:00" level=info msg="Component loaded: pubsub (pubsub.redis/v1)" app_id=academymanager instance=CODER_WS scope=dapr.runtime type=log ver=1.11.2
+time="2023-08-16T23:01:38.654809283-03:00" level=info msg="Waiting for all outstanding components to be processed" app_id=academymanager instance=CODER_WS scope=dapr.runtime type=log ver=1.11.2
+time="2023-08-16T23:01:38.657461732-03:00" level=info msg="Using 'statestore' as actor state store" app_id=academymanager instance=CODER_WS scope=dapr.runtime type=log ver=1.11.2
+time="2023-08-16T23:01:38.657715762-03:00" level=info msg="Component loaded: statestore (state.redis/v1)" app_id=academymanager instance=CODER_WS scope=dapr.runtime type=log ver=1.11.2
+time="2023-08-16T23:01:38.657997633-03:00" level=info msg="All outstanding components processed" app_id=academymanager instance=CODER_WS scope=dapr.runtime type=log ver=1.11.2
+time="2023-08-16T23:01:38.658203793-03:00" level=info msg="Loading endpoints" app_id=academymanager instance=CODER_WS scope=dapr.runtime type=log ver=1.11.2
+time="2023-08-16T23:01:38.658705428-03:00" level=info msg="Waiting for all outstanding http endpoints to be processed" app_id=academymanager instance=CODER_WS scope=dapr.runtime type=log ver=1.11.2
+time="2023-08-16T23:01:38.658923098-03:00" level=info msg="All outstanding http endpoints processed" app_id=academymanager instance=CODER_WS scope=dapr.runtime type=log ver=1.11.2
+time="2023-08-16T23:01:38.659118532-03:00" level=info msg="gRPC proxy enabled" app_id=academymanager instance=CODER_WS scope=dapr.runtime type=log ver=1.11.2
+time="2023-08-16T23:01:38.659285921-03:00" level=info msg="gRPC server listening on TCP address: :40611" app_id=academymanager instance=CODER_WS scope=dapr.runtime.grpc.api type=log ver=1.11.2
+time="2023-08-16T23:01:38.659463208-03:00" level=info msg="Enabled gRPC tracing middleware" app_id=academymanager instance=CODER_WS scope=dapr.runtime.grpc.api type=log ver=1.11.2
+time="2023-08-16T23:01:38.65969505-03:00" level=info msg="Enabled gRPC metrics middleware" app_id=academymanager instance=CODER_WS scope=dapr.runtime.grpc.api type=log ver=1.11.2
+time="2023-08-16T23:01:38.65994153-03:00" level=info msg="Registering workflow engine for gRPC endpoint: [::]:40611" app_id=academymanager instance=CODER_WS scope=dapr.runtime.grpc.api type=log ver=1.11.2
+time="2023-08-16T23:01:38.66015173-03:00" level=info msg="API gRPC server is running on port 40611" app_id=academymanager instance=CODER_WS scope=dapr.runtime type=log ver=1.11.2
+time="2023-08-16T23:01:38.660760757-03:00" level=info msg="enabled metrics http middleware" app_id=academymanager instance=CODER_WS scope=dapr.runtime.http type=log ver=1.11.2
+time="2023-08-16T23:01:38.660960257-03:00" level=info msg="enabled tracing http middleware" app_id=academymanager instance=CODER_WS scope=dapr.runtime.http type=log ver=1.11.2
+time="2023-08-16T23:01:38.661161227-03:00" level=info msg="HTTP server listening on TCP address: :33111" app_id=academymanager instance=CODER_WS scope=dapr.runtime.http type=log ver=1.11.2
+time="2023-08-16T23:01:38.661342227-03:00" level=info msg="http server is running on port 33111" app_id=academymanager instance=CODER_WS scope=dapr.runtime type=log ver=1.11.2
+time="2023-08-16T23:01:38.661524989-03:00" level=info msg="The request body size parameter is: 4" app_id=academymanager instance=CODER_WS scope=dapr.runtime type=log ver=1.11.2
+time="2023-08-16T23:01:38.661712677-03:00" level=info msg="gRPC server listening on TCP address: :33287" app_id=academymanager instance=CODER_WS scope=dapr.runtime.grpc.internal type=log ver=1.11.2
+time="2023-08-16T23:01:38.661919359-03:00" level=info msg="Enabled gRPC tracing middleware" app_id=academymanager instance=CODER_WS scope=dapr.runtime.grpc.internal type=log ver=1.11.2
+time="2023-08-16T23:01:38.662122016-03:00" level=info msg="Enabled gRPC metrics middleware" app_id=academymanager instance=CODER_WS scope=dapr.runtime.grpc.internal type=log ver=1.11.2
+time="2023-08-16T23:01:38.662354896-03:00" level=info msg="internal gRPC server is running on port 33287" app_id=academymanager instance=CODER_WS scope=dapr.runtime type=log ver=1.11.2
+time="2023-08-16T23:01:38.662552459-03:00" level=info msg="application protocol: http. waiting on port 8000.  This will block until the app is listening on that port." app_id=academymanager instance=CODER_WS scope=dapr.runtime type=log ver=1.11.2
+Updating metadata for app command: dotnet run
+Updating metadata for appPID: 4397
+You're up and running! Dapr logs will appear here.
+

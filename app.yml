@@ -5,6 +5,20 @@ common:
     DEBUG: "true"
 
 apps:
+  - appID: studyscheduler
+    appDirPath: ./Study_Scheduler
+    appChannelAddress: locahost
+    appProtocol:
+    appPort: 8002
+    appHealthCheckPath:
+    command: ["python3", "run.py"]
+  - appID: calendar
+    appDirPath: ./calendar
+    appChannelAddress: locahost
+    appProtocol:
+    appPort: 8001
+    appHealthCheckPath:
+    command: ["java", "-jar", "target/calendar-0.0.1-SNAPSHOT.jar"]
   - appID: academymanager
     appDirPath: ./AcademyManager/AcademyManager
     appChannelAddress: locahost
@@ -12,17 +26,3 @@ apps:
     appPort: 8000
     appHealthCheckPath:
     command: ["dotnet", "run"]
-  - appID: calendar
-    appDirPath: ./calendar
-    appChannelAddress: locahost
-    appProtocol:
-    appPort: 8001
-    appHealthCheckPath:
-    command: ["java", "-jar", "./target/calendar-1.0-SNAPSHOT.jar"]
-  - appID: studyscheduler
-    appDirPath: ./Study_Scheduler
-    appChannelAddress: locahost
-    appProtocol:
-    appPort: 8002
-    appHealthCheckPath:
-    command: ["java", "-jar", "./target/calendar-1.0-SNAPSHOT.jar"]

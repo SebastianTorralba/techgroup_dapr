@@ -1,0 +1,15 @@
+== APP - calendar == 23:01:38.104 [main] INFO com.incluit.techgroups.calendar.CalendarApplication -- Starting  TECHGROUP CalendarApplication...
+== APP - calendar == 
+== APP - calendar ==   .   ____          _            __ _ _
+== APP - calendar ==  /\\ / ___'_ __ _ _(_)_ __  __ _ \ \ \ \
+== APP - calendar == ( ( )\___ | '_ | '_| | '_ \/ _` | \ \ \ \
+== APP - calendar ==  \\/  ___)| |_)| | | | | || (_| |  ) ) ) )
+== APP - calendar ==   '  |____| .__|_| |_|_| |_\__, | / / / /
+== APP - calendar ==  =========|_|==============|___/=/_/_/_/
+== APP - calendar ==  :: Spring Boot ::       (v3.0.8-SNAPSHOT)
+== APP - calendar == 
+== APP - calendar == 2023-08-16T23:01:39.532-03:00  INFO 4339 --- [           main] c.i.t.calendar.CalendarApplication       : Starting CalendarApplication v0.0.1-SNAPSHOT using Java 17.0.8 with PID 4339 (/mnt/d/Proyectos/Incluit/TechGroups/techgroup_dapr/calendar/target/calendar-0.0.1-SNAPSHOT.jar started by root in /mnt/d/Proyectos/Incluit/TechGroups/techgroup_dapr/calendar)
+== APP - calendar == 2023-08-16T23:01:39.533-03:00 DEBUG 4339 --- [           main] c.i.t.calendar.CalendarApplication       : Running with Spring Boot v3.0.8-SNAPSHOT, Spring v6.0.10
+== APP - calendar == 2023-08-16T23:01:39.534-03:00  INFO 4339 --- [           main] c.i.t.calendar.CalendarApplication       : No active profile set, falling back to 1 default profile: "default"
+== APP - calendar == 2023-08-16T23:01:39.536-03:00 DEBUG 4339 --- [           main] o.s.boot.SpringApplication               : Loading source class com.incluit.techgroups.calendar.CalendarApplication
+== APP - calendar == 2023-08-16T23:01:39.723-03:00 DEBUG 4339 --- [           main] ConfigServletWebServerApplicationContext : Refreshing org.springframework.boot.web.servlet.context.AnnotationConfigServletWebServerApplicationContext@fe18270

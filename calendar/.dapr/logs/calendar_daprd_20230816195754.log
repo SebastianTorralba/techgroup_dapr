@@ -1,0 +1,44 @@
+Starting Dapr with id calendar. HTTP Port: 45601. gRPC Port: 41915
+Updating metadata for cliPID: 1872
+time="2023-08-16T19:57:54.146960057-03:00" level=info msg="starting Dapr Runtime -- version 1.11.2 -- commit 83ca1abb11ffe34211db55dcd36d96b94252827a" app_id=calendar instance=CODER_WS scope=dapr.runtime type=log ver=1.11.2
+time="2023-08-16T19:57:54.147210658-03:00" level=info msg="log level set to: info" app_id=calendar instance=CODER_WS scope=dapr.runtime type=log ver=1.11.2
+time="2023-08-16T19:57:54.147562627-03:00" level=info msg="metrics server started on :46855/" app_id=calendar instance=CODER_WS scope=dapr.metrics type=log ver=1.11.2
+time="2023-08-16T19:57:54.148637086-03:00" level=info msg="Resiliency configuration loaded" app_id=calendar instance=CODER_WS scope=dapr.runtime type=log ver=1.11.2
+time="2023-08-16T19:57:54.149148004-03:00" level=info msg="standalone mode configured" app_id=calendar instance=CODER_WS scope=dapr.runtime type=log ver=1.11.2
+time="2023-08-16T19:57:54.149324416-03:00" level=info msg="app id: calendar" app_id=calendar instance=CODER_WS scope=dapr.runtime type=log ver=1.11.2
+time="2023-08-16T19:57:54.149492084-03:00" level=info msg="mTLS is disabled. Skipping certificate request and tls validation" app_id=calendar instance=CODER_WS scope=dapr.runtime type=log ver=1.11.2
+time="2023-08-16T19:57:54.149692996-03:00" level=info msg="Dapr trace sampler initialized: DaprTraceSampler(P=1.000000)" app_id=calendar instance=CODER_WS scope=dapr.runtime type=log ver=1.11.2
+time="2023-08-16T19:57:54.150251346-03:00" level=info msg="local service entry announced: calendar -> 172.19.3.255:37573" app_id=calendar component="mdns (nameResolution/v1)" instance=CODER_WS scope=dapr.contrib type=log ver=1.11.2
+time="2023-08-16T19:57:54.150467185-03:00" level=info msg="Initialized name resolution to mdns" app_id=calendar instance=CODER_WS scope=dapr.runtime type=log ver=1.11.2
+time="2023-08-16T19:57:54.150722664-03:00" level=info msg="Loading components…" app_id=calendar instance=CODER_WS scope=dapr.runtime type=log ver=1.11.2
+time="2023-08-16T19:57:54.153925449-03:00" level=info msg="Component loaded: pubsub (pubsub.redis/v1)" app_id=calendar instance=CODER_WS scope=dapr.runtime type=log ver=1.11.2
+time="2023-08-16T19:57:54.154249173-03:00" level=info msg="Waiting for all outstanding components to be processed" app_id=calendar instance=CODER_WS scope=dapr.runtime type=log ver=1.11.2
+time="2023-08-16T19:57:54.157613176-03:00" level=info msg="Using 'statestore' as actor state store" app_id=calendar instance=CODER_WS scope=dapr.runtime type=log ver=1.11.2
+time="2023-08-16T19:57:54.157870526-03:00" level=info msg="Component loaded: statestore (state.redis/v1)" app_id=calendar instance=CODER_WS scope=dapr.runtime type=log ver=1.11.2
+time="2023-08-16T19:57:54.158094636-03:00" level=info msg="All outstanding components processed" app_id=calendar instance=CODER_WS scope=dapr.runtime type=log ver=1.11.2
+time="2023-08-16T19:57:54.158270386-03:00" level=info msg="Loading endpoints" app_id=calendar instance=CODER_WS scope=dapr.runtime type=log ver=1.11.2
+time="2023-08-16T19:57:54.158668001-03:00" level=info msg="Waiting for all outstanding http endpoints to be processed" app_id=calendar instance=CODER_WS scope=dapr.runtime type=log ver=1.11.2
+time="2023-08-16T19:57:54.158831141-03:00" level=info msg="All outstanding http endpoints processed" app_id=calendar instance=CODER_WS scope=dapr.runtime type=log ver=1.11.2
+time="2023-08-16T19:57:54.15899866-03:00" level=info msg="gRPC proxy enabled" app_id=calendar instance=CODER_WS scope=dapr.runtime type=log ver=1.11.2
+time="2023-08-16T19:57:54.159188191-03:00" level=info msg="gRPC server listening on TCP address: :41915" app_id=calendar instance=CODER_WS scope=dapr.runtime.grpc.api type=log ver=1.11.2
+time="2023-08-16T19:57:54.15933823-03:00" level=info msg="Enabled gRPC tracing middleware" app_id=calendar instance=CODER_WS scope=dapr.runtime.grpc.api type=log ver=1.11.2
+time="2023-08-16T19:57:54.15947296-03:00" level=info msg="Enabled gRPC metrics middleware" app_id=calendar instance=CODER_WS scope=dapr.runtime.grpc.api type=log ver=1.11.2
+time="2023-08-16T19:57:54.15970185-03:00" level=info msg="Registering workflow engine for gRPC endpoint: [::]:41915" app_id=calendar instance=CODER_WS scope=dapr.runtime.grpc.api type=log ver=1.11.2
+time="2023-08-16T19:57:54.15989463-03:00" level=info msg="API gRPC server is running on port 41915" app_id=calendar instance=CODER_WS scope=dapr.runtime type=log ver=1.11.2
+time="2023-08-16T19:57:54.160416395-03:00" level=info msg="enabled metrics http middleware" app_id=calendar instance=CODER_WS scope=dapr.runtime.http type=log ver=1.11.2
+time="2023-08-16T19:57:54.16059279-03:00" level=info msg="enabled tracing http middleware" app_id=calendar instance=CODER_WS scope=dapr.runtime.http type=log ver=1.11.2
+time="2023-08-16T19:57:54.16075976-03:00" level=info msg="HTTP server listening on TCP address: :45601" app_id=calendar instance=CODER_WS scope=dapr.runtime.http type=log ver=1.11.2
+time="2023-08-16T19:57:54.160985239-03:00" level=info msg="http server is running on port 45601" app_id=calendar instance=CODER_WS scope=dapr.runtime type=log ver=1.11.2
+time="2023-08-16T19:57:54.161174677-03:00" level=info msg="The request body size parameter is: 4" app_id=calendar instance=CODER_WS scope=dapr.runtime type=log ver=1.11.2
+time="2023-08-16T19:57:54.161404164-03:00" level=info msg="gRPC server listening on TCP address: :37573" app_id=calendar instance=CODER_WS scope=dapr.runtime.grpc.internal type=log ver=1.11.2
+time="2023-08-16T19:57:54.161579429-03:00" level=info msg="Enabled gRPC tracing middleware" app_id=calendar instance=CODER_WS scope=dapr.runtime.grpc.internal type=log ver=1.11.2
+time="2023-08-16T19:57:54.161745889-03:00" level=info msg="Enabled gRPC metrics middleware" app_id=calendar instance=CODER_WS scope=dapr.runtime.grpc.internal type=log ver=1.11.2
+time="2023-08-16T19:57:54.161937919-03:00" level=info msg="internal gRPC server is running on port 37573" app_id=calendar instance=CODER_WS scope=dapr.runtime type=log ver=1.11.2
+time="2023-08-16T19:57:54.162094034-03:00" level=info msg="application protocol: http. waiting on port 8001.  This will block until the app is listening on that port." app_id=calendar instance=CODER_WS scope=dapr.runtime type=log ver=1.11.2
+Updating metadata for app command: java -jar target/calendar-0.0.1-SNAPSHOT.jar
+Updating metadata for appPID: 1911
+You're up and running! Dapr logs will appear here.
+
+
+termination signal received: shutting down
+Exited Dapr successfully

@@ -1,0 +1,759 @@
+== APP - calendar == 19:57:54.848 [main] INFO com.incluit.techgroups.calendar.CalendarApplication -- Starting  TECHGROUP CalendarApplication...
+== APP - calendar == 
+== APP - calendar ==   .   ____          _            __ _ _
+== APP - calendar ==  /\\ / ___'_ __ _ _(_)_ __  __ _ \ \ \ \
+== APP - calendar == ( ( )\___ | '_ | '_| | '_ \/ _` | \ \ \ \
+== APP - calendar ==  \\/  ___)| |_)| | | | | || (_| |  ) ) ) )
+== APP - calendar ==   '  |____| .__|_| |_|_| |_\__, | / / / /
+== APP - calendar ==  =========|_|==============|___/=/_/_/_/
+== APP - calendar ==  :: Spring Boot ::       (v3.0.8-SNAPSHOT)
+== APP - calendar == 
+== APP - calendar == 2023-08-16T19:57:56.247-03:00  INFO 1911 --- [           main] c.i.t.calendar.CalendarApplication       : Starting CalendarApplication v0.0.1-SNAPSHOT using Java 17.0.8 with PID 1911 (/mnt/d/Proyectos/Incluit/TechGroups/techgroup_dapr/calendar/target/calendar-0.0.1-SNAPSHOT.jar started by root in /mnt/d/Proyectos/Incluit/TechGroups/techgroup_dapr/calendar)
+== APP - calendar == 2023-08-16T19:57:56.249-03:00 DEBUG 1911 --- [           main] c.i.t.calendar.CalendarApplication       : Running with Spring Boot v3.0.8-SNAPSHOT, Spring v6.0.10
+== APP - calendar == 2023-08-16T19:57:56.250-03:00  INFO 1911 --- [           main] c.i.t.calendar.CalendarApplication       : No active profile set, falling back to 1 default profile: "default"
+== APP - calendar == 2023-08-16T19:57:56.252-03:00 DEBUG 1911 --- [           main] o.s.boot.SpringApplication               : Loading source class com.incluit.techgroups.calendar.CalendarApplication
+== APP - calendar == 2023-08-16T19:57:56.412-03:00 DEBUG 1911 --- [           main] ConfigServletWebServerApplicationContext : Refreshing org.springframework.boot.web.servlet.context.AnnotationConfigServletWebServerApplicationContext@fe18270
+== APP - calendar == 2023-08-16T19:57:57.670-03:00  INFO 1911 --- [           main] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data MongoDB repositories in DEFAULT mode.
+== APP - calendar == 2023-08-16T19:57:57.704-03:00 DEBUG 1911 --- [           main] o.s.b.a.AutoConfigurationPackages        : @EnableAutoConfiguration was declared on a class in the package 'com.incluit.techgroups.calendar'. Automatic @Repository and @Entity scanning is enabled.
+== APP - calendar == 2023-08-16T19:57:57.709-03:00  INFO 1911 --- [           main] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 29 ms. Found 0 MongoDB repository interfaces.
+== APP - calendar == 2023-08-16T19:57:58.574-03:00 DEBUG 1911 --- [           main] .s.b.w.e.t.TomcatServletWebServerFactory : Code archive: /mnt/d/Proyectos/Incluit/TechGroups/techgroup_dapr/calendar/target/calendar-0.0.1-SNAPSHOT.jar
+== APP - calendar == 2023-08-16T19:57:58.575-03:00 DEBUG 1911 --- [           main] .s.b.w.e.t.TomcatServletWebServerFactory : Code archive: /mnt/d/Proyectos/Incluit/TechGroups/techgroup_dapr/calendar/target/calendar-0.0.1-SNAPSHOT.jar
+== APP - calendar == 2023-08-16T19:57:58.577-03:00 DEBUG 1911 --- [           main] .s.b.w.e.t.TomcatServletWebServerFactory : None of the document roots [src/main/webapp, public, static] point to a directory and will be ignored.
+== APP - calendar == 2023-08-16T19:57:58.628-03:00  INFO 1911 --- [           main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port(s): 8002 (http)
+== APP - calendar == 2023-08-16T19:57:58.648-03:00  INFO 1911 --- [           main] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+== APP - calendar == 2023-08-16T19:57:58.649-03:00  INFO 1911 --- [           main] o.apache.catalina.core.StandardEngine    : Starting Servlet engine: [Apache Tomcat/10.1.10]
+== APP - calendar == 2023-08-16T19:57:58.814-03:00  INFO 1911 --- [           main] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
+== APP - calendar == 2023-08-16T19:57:58.814-03:00 DEBUG 1911 --- [           main] w.s.c.ServletWebServerApplicationContext : Published root WebApplicationContext as ServletContext attribute with name [org.springframework.web.context.WebApplicationContext.ROOT]
+== APP - calendar == 2023-08-16T19:57:58.816-03:00  INFO 1911 --- [           main] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 2403 ms
+== APP - calendar == 2023-08-16T19:57:58.848-03:00 DEBUG 1911 --- [           main] o.s.b.w.s.ServletContextInitializerBeans : Mapping filters: characterEncodingFilter urls=[/*] order=-2147483648, formContentFilter urls=[/*] order=-9900, requestContextFilter urls=[/*] order=-105
+== APP - calendar == 2023-08-16T19:57:58.849-03:00 DEBUG 1911 --- [           main] o.s.b.w.s.ServletContextInitializerBeans : Mapping servlets: dispatcherServlet urls=[/]
+== APP - calendar == 2023-08-16T19:57:58.919-03:00 DEBUG 1911 --- [           main] o.s.b.w.s.f.OrderedRequestContextFilter  : Filter 'requestContextFilter' configured for use
+== APP - calendar == 2023-08-16T19:57:58.922-03:00 DEBUG 1911 --- [           main] s.b.w.s.f.OrderedCharacterEncodingFilter : Filter 'characterEncodingFilter' configured for use
+== APP - calendar == 2023-08-16T19:57:58.923-03:00 DEBUG 1911 --- [           main] o.s.b.w.s.f.OrderedFormContentFilter     : Filter 'formContentFilter' configured for use
+== APP - calendar == 2023-08-16T19:58:00.154-03:00  INFO 1911 --- [           main] org.mongodb.driver.client                : MongoClient with metadata {"driver": {"name": "mongo-java-driver|sync|spring-boot", "version": "4.8.2"}, "os": {"type": "Linux", "name": "Linux", "architecture": "amd64", "version": "5.10.16.3-microsoft-standard-WSL2"}, "platform": "Java/Private Build/17.0.8+7-Ubuntu-122.04"} created with settings MongoClientSettings{readPreference=primary, writeConcern=WriteConcern{w=null, wTimeout=null ms, journal=null}, retryWrites=true, retryReads=true, readConcern=ReadConcern{level=null}, credential=null, streamFactoryFactory=null, commandListeners=[], codecRegistry=ProvidersCodecRegistry{codecProviders=[ValueCodecProvider{}, BsonValueCodecProvider{}, DBRefCodecProvider{}, DBObjectCodecProvider{}, DocumentCodecProvider{}, CollectionCodecProvider{}, IterableCodecProvider{}, MapCodecProvider{}, GeoJsonCodecProvider{}, GridFSFileCodecProvider{}, Jsr310CodecProvider{}, JsonObjectCodecProvider{}, BsonCodecProvider{}, EnumCodecProvider{}, com.mongodb.Jep395RecordCodecProvider@5b057c8c]}, clusterSettings={hosts=[localhost:27017], srvServiceName=mongodb, mode=SINGLE, requiredClusterType=UNKNOWN, requiredReplicaSetName='null', serverSelector='null', clusterListeners='[]', serverSelectionTimeout='30000 ms', localThreshold='30000 ms'}, socketSettings=SocketSettings{connectTimeoutMS=10000, readTimeoutMS=0, receiveBufferSize=0, sendBufferSize=0}, heartbeatSocketSettings=SocketSettings{connectTimeoutMS=10000, readTimeoutMS=10000, receiveBufferSize=0, sendBufferSize=0}, connectionPoolSettings=ConnectionPoolSettings{maxSize=100, minSize=0, maxWaitTimeMS=120000, maxConnectionLifeTimeMS=0, maxConnectionIdleTimeMS=0, maintenanceInitialDelayMS=0, maintenanceFrequencyMS=60000, connectionPoolListeners=[], maxConnecting=2}, serverSettings=ServerSettings{heartbeatFrequencyMS=10000, minHeartbeatFrequencyMS=500, serverListeners='[]', serverMonitorListeners='[]'}, sslSettings=SslSettings{enabled=false, invalidHostNameAllowed=false, context=null}, applicationName='null', compressorList=[], uuidRepresentation=JAVA_LEGACY, serverApi=null, autoEncryptionSettings=null, contextProvider=null}
+== APP - calendar == 2023-08-16T19:58:00.190-03:00  INFO 1911 --- [localhost:27017] org.mongodb.driver.cluster               : Monitor thread successfully connected to server with description ServerDescription{address=localhost:27017, type=STANDALONE, state=CONNECTED, ok=true, minWireVersion=0, maxWireVersion=17, maxDocumentSize=16777216, logicalSessionTimeoutMinutes=30, roundTripTimeNanos=75102526}
+== APP - calendar == 2023-08-16T19:58:00.832-03:00  WARN 1911 --- [           main] ConfigServletWebServerApplicationContext : Exception encountered during context initialization - cancelling refresh attempt: org.springframework.context.ApplicationContextException: Failed to start bean 'webServerStartStop'
+== APP - calendar == 2023-08-16T19:58:00.841-03:00  INFO 1911 --- [           main] o.apache.catalina.core.StandardService   : Stopping service [Tomcat]
+== APP - calendar == 2023-08-16T19:58:00.873-03:00 DEBUG 1911 --- [           main] .s.b.a.l.ConditionEvaluationReportLogger : 
+== APP - calendar == 
+== APP - calendar == 
+== APP - calendar == ============================
+== APP - calendar == CONDITIONS EVALUATION REPORT
+== APP - calendar == ============================
+== APP - calendar == 
+== APP - calendar == 
+== APP - calendar == Positive matches:
+== APP - calendar == -----------------
+== APP - calendar == 
+== APP - calendar ==    AopAutoConfiguration matched:
+== APP - calendar ==       - @ConditionalOnProperty (spring.aop.auto=true) matched (OnPropertyCondition)
+== APP - calendar == 
+== APP - calendar ==    AopAutoConfiguration.ClassProxyingConfiguration matched:
+== APP - calendar ==       - @ConditionalOnMissingClass did not find unwanted class 'org.aspectj.weaver.Advice' (OnClassCondition)
+== APP - calendar ==       - @ConditionalOnProperty (spring.aop.proxy-target-class=true) matched (OnPropertyCondition)
+== APP - calendar == 
+== APP - calendar ==    ApplicationAvailabilityAutoConfiguration#applicationAvailability matched:
+== APP - calendar ==       - @ConditionalOnMissingBean (types: org.springframework.boot.availability.ApplicationAvailability; SearchStrategy: all) did not find any beans (OnBeanCondition)
+== APP - calendar == 
+== APP - calendar ==    DaprAutoConfiguration matched:
+== APP - calendar ==       - @ConditionalOnWebApplication (required) found 'session' scope (OnWebApplicationCondition)
+== APP - calendar == 
+== APP - calendar ==    DispatcherServletAutoConfiguration matched:
+== APP - calendar ==       - @ConditionalOnClass found required class 'org.springframework.web.servlet.DispatcherServlet' (OnClassCondition)
+== APP - calendar ==       - found 'session' scope (OnWebApplicationCondition)
+== APP - calendar == 
+== APP - calendar ==    DispatcherServletAutoConfiguration.DispatcherServletConfiguration matched:
+== APP - calendar ==       - @ConditionalOnClass found required class 'jakarta.servlet.ServletRegistration' (OnClassCondition)
+== APP - calendar ==       - Default DispatcherServlet did not find dispatcher servlet beans (DispatcherServletAutoConfiguration.DefaultDispatcherServletCondition)
+== APP - calendar == 
+== APP - calendar ==    DispatcherServletAutoConfiguration.DispatcherServletRegistrationConfiguration matched:
+== APP - calendar ==       - @ConditionalOnClass found required class 'jakarta.servlet.ServletRegistration' (OnClassCondition)
+== APP - calendar ==       - DispatcherServlet Registration did not find servlet registration bean (DispatcherServletAutoConfiguration.DispatcherServletRegistrationCondition)
+== APP - calendar == 
+== APP - calendar ==    DispatcherServletAutoConfiguration.DispatcherServletRegistrationConfiguration#dispatcherServletRegistration matched:
+== APP - calendar ==       - @ConditionalOnBean (names: dispatcherServlet types: org.springframework.web.servlet.DispatcherServlet; SearchStrategy: all) found bean 'dispatcherServlet' (OnBeanCondition)
+== APP - calendar == 
+== APP - calendar ==    EmbeddedWebServerFactoryCustomizerAutoConfiguration matched:
+== APP - calendar ==       - @ConditionalOnWebApplication (required) found 'session' scope (OnWebApplicationCondition)
+== APP - calendar ==       - @ConditionalOnWarDeployment the application is not deployed as a WAR file. (OnWarDeploymentCondition)
+== APP - calendar == 
+== APP - calendar ==    EmbeddedWebServerFactoryCustomizerAutoConfiguration.TomcatWebServerFactoryCustomizerConfiguration matched:
+== APP - calendar ==       - @ConditionalOnClass found required classes 'org.apache.catalina.startup.Tomcat', 'org.apache.coyote.UpgradeProtocol' (OnClassCondition)
+== APP - calendar == 
+== APP - calendar ==    ErrorMvcAutoConfiguration matched:
+== APP - calendar ==       - @ConditionalOnClass found required classes 'jakarta.servlet.Servlet', 'org.springframework.web.servlet.DispatcherServlet' (OnClassCondition)
+== APP - calendar ==       - found 'session' scope (OnWebApplicationCondition)
+== APP - calendar == 
+== APP - calendar ==    ErrorMvcAutoConfiguration#basicErrorController matched:
+== APP - calendar ==       - @ConditionalOnMissingBean (types: org.springframework.boot.web.servlet.error.ErrorController; SearchStrategy: current) did not find any beans (OnBeanCondition)
+== APP - calendar == 
+== APP - calendar ==    ErrorMvcAutoConfiguration#errorAttributes matched:
+== APP - calendar ==       - @ConditionalOnMissingBean (types: org.springframework.boot.web.servlet.error.ErrorAttributes; SearchStrategy: current) did not find any beans (OnBeanCondition)
+== APP - calendar == 
+== APP - calendar ==    ErrorMvcAutoConfiguration.DefaultErrorViewResolverConfiguration#conventionErrorViewResolver matched:
+== APP - calendar ==       - @ConditionalOnBean (types: org.springframework.web.servlet.DispatcherServlet; SearchStrategy: all) found bean 'dispatcherServlet'; @ConditionalOnMissingBean (types: org.springframework.boot.autoconfigure.web.servlet.error.ErrorViewResolver; SearchStrategy: all) did not find any beans (OnBeanCondition)
+== APP - calendar == 
+== APP - calendar ==    ErrorMvcAutoConfiguration.WhitelabelErrorViewConfiguration matched:
+== APP - calendar ==       - @ConditionalOnProperty (server.error.whitelabel.enabled) matched (OnPropertyCondition)
+== APP - calendar ==       - ErrorTemplate Missing did not find error template view (ErrorMvcAutoConfiguration.ErrorTemplateMissingCondition)
+== APP - calendar == 
+== APP - calendar ==    ErrorMvcAutoConfiguration.WhitelabelErrorViewConfiguration#beanNameViewResolver matched:
+== APP - calendar ==       - @ConditionalOnMissingBean (types: org.springframework.web.servlet.view.BeanNameViewResolver; SearchStrategy: all) did not find any beans (OnBeanCondition)
+== APP - calendar == 
+== APP - calendar ==    ErrorMvcAutoConfiguration.WhitelabelErrorViewConfiguration#defaultErrorView matched:
+== APP - calendar ==       - @ConditionalOnMissingBean (names: error; SearchStrategy: all) did not find any beans (OnBeanCondition)
+== APP - calendar == 
+== APP - calendar ==    GenericCacheConfiguration matched:
+== APP - calendar ==       - Cache org.springframework.boot.autoconfigure.cache.GenericCacheConfiguration automatic cache type (CacheCondition)
+== APP - calendar == 
+== APP - calendar ==    GsonAutoConfiguration matched:
+== APP - calendar ==       - @ConditionalOnClass found required class 'com.google.gson.Gson' (OnClassCondition)
+== APP - calendar == 
+== APP - calendar ==    GsonAutoConfiguration#gson matched:
+== APP - calendar ==       - @ConditionalOnMissingBean (types: com.google.gson.Gson; SearchStrategy: all) did not find any beans (OnBeanCondition)
+== APP - calendar == 
+== APP - calendar ==    GsonAutoConfiguration#gsonBuilder matched:
+== APP - calendar ==       - @ConditionalOnMissingBean (types: com.google.gson.GsonBuilder; SearchStrategy: all) did not find any beans (OnBeanCondition)
+== APP - calendar == 
+== APP - calendar ==    GsonHttpMessageConvertersConfiguration matched:
+== APP - calendar ==       - @ConditionalOnClass found required class 'com.google.gson.Gson' (OnClassCondition)
+== APP - calendar == 
+== APP - calendar ==    HttpEncodingAutoConfiguration matched:
+== APP - calendar ==       - @ConditionalOnClass found required class 'org.springframework.web.filter.CharacterEncodingFilter' (OnClassCondition)
+== APP - calendar ==       - found 'session' scope (OnWebApplicationCondition)
+== APP - calendar ==       - @ConditionalOnProperty (server.servlet.encoding.enabled) matched (OnPropertyCondition)
+== APP - calendar == 
+== APP - calendar ==    HttpEncodingAutoConfiguration#characterEncodingFilter matched:
+== APP - calendar ==       - @ConditionalOnMissingBean (types: org.springframework.web.filter.CharacterEncodingFilter; SearchStrategy: all) did not find any beans (OnBeanCondition)
+== APP - calendar == 
+== APP - calendar ==    HttpMessageConvertersAutoConfiguration matched:
+== APP - calendar ==       - @ConditionalOnClass found required class 'org.springframework.http.converter.HttpMessageConverter' (OnClassCondition)
+== APP - calendar ==       - NoneNestedConditions 0 matched 1 did not; NestedCondition on HttpMessageConvertersAutoConfiguration.NotReactiveWebApplicationCondition.ReactiveWebApplication did not find reactive web application classes (HttpMessageConvertersAutoConfiguration.NotReactiveWebApplicationCondition)
+== APP - calendar == 
+== APP - calendar ==    HttpMessageConvertersAutoConfiguration#messageConverters matched:
+== APP - calendar ==       - @ConditionalOnMissingBean (types: org.springframework.boot.autoconfigure.http.HttpMessageConverters; SearchStrategy: all) did not find any beans (OnBeanCondition)
+== APP - calendar == 
+== APP - calendar ==    HttpMessageConvertersAutoConfiguration.StringHttpMessageConverterConfiguration matched:
+== APP - calendar ==       - @ConditionalOnClass found required class 'org.springframework.http.converter.StringHttpMessageConverter' (OnClassCondition)
+== APP - calendar == 
+== APP - calendar ==    HttpMessageConvertersAutoConfiguration.StringHttpMessageConverterConfiguration#stringHttpMessageConverter matched:
+== APP - calendar ==       - @ConditionalOnMissingBean (types: org.springframework.http.converter.StringHttpMessageConverter; SearchStrategy: all) did not find any beans (OnBeanCondition)
+== APP - calendar == 
+== APP - calendar ==    JacksonAutoConfiguration matched:
+== APP - calendar ==       - @ConditionalOnClass found required class 'com.fasterxml.jackson.databind.ObjectMapper' (OnClassCondition)
+== APP - calendar == 
+== APP - calendar ==    JacksonAutoConfiguration.Jackson2ObjectMapperBuilderCustomizerConfiguration matched:
+== APP - calendar ==       - @ConditionalOnClass found required class 'org.springframework.http.converter.json.Jackson2ObjectMapperBuilder' (OnClassCondition)
+== APP - calendar == 
+== APP - calendar ==    JacksonAutoConfiguration.JacksonObjectMapperBuilderConfiguration matched:
+== APP - calendar ==       - @ConditionalOnClass found required class 'org.springframework.http.converter.json.Jackson2ObjectMapperBuilder' (OnClassCondition)
+== APP - calendar == 
+== APP - calendar ==    JacksonAutoConfiguration.JacksonObjectMapperBuilderConfiguration#jacksonObjectMapperBuilder matched:
+== APP - calendar ==       - @ConditionalOnMissingBean (types: org.springframework.http.converter.json.Jackson2ObjectMapperBuilder; SearchStrategy: all) did not find any beans (OnBeanCondition)
+== APP - calendar == 
+== APP - calendar ==    JacksonAutoConfiguration.JacksonObjectMapperConfiguration matched:
+== APP - calendar ==       - @ConditionalOnClass found required class 'org.springframework.http.converter.json.Jackson2ObjectMapperBuilder' (OnClassCondition)
+== APP - calendar == 
+== APP - calendar ==    JacksonAutoConfiguration.JacksonObjectMapperConfiguration#jacksonObjectMapper matched:
+== APP - calendar ==       - @ConditionalOnMissingBean (types: com.fasterxml.jackson.databind.ObjectMapper; SearchStrategy: all) did not find any beans (OnBeanCondition)
+== APP - calendar == 
+== APP - calendar ==    JacksonAutoConfiguration.ParameterNamesModuleConfiguration matched:
+== APP - calendar ==       - @ConditionalOnClass found required class 'com.fasterxml.jackson.module.paramnames.ParameterNamesModule' (OnClassCondition)
+== APP - calendar == 
+== APP - calendar ==    JacksonAutoConfiguration.ParameterNamesModuleConfiguration#parameterNamesModule matched:
+== APP - calendar ==       - @ConditionalOnMissingBean (types: com.fasterxml.jackson.module.paramnames.ParameterNamesModule; SearchStrategy: all) did not find any beans (OnBeanCondition)
+== APP - calendar == 
+== APP - calendar ==    JacksonHttpMessageConvertersConfiguration.MappingJackson2HttpMessageConverterConfiguration matched:
+== APP - calendar ==       - @ConditionalOnClass found required class 'com.fasterxml.jackson.databind.ObjectMapper' (OnClassCondition)
+== APP - calendar ==       - @ConditionalOnProperty (spring.mvc.converters.preferred-json-mapper=jackson) matched (OnPropertyCondition)
+== APP - calendar ==       - @ConditionalOnBean (types: com.fasterxml.jackson.databind.ObjectMapper; SearchStrategy: all) found bean 'jacksonObjectMapper' (OnBeanCondition)
+== APP - calendar == 
+== APP - calendar ==    JacksonHttpMessageConvertersConfiguration.MappingJackson2HttpMessageConverterConfiguration#mappingJackson2HttpMessageConverter matched:
+== APP - calendar ==       - @ConditionalOnMissingBean (types: org.springframework.http.converter.json.MappingJackson2HttpMessageConverter ignored: org.springframework.hateoas.server.mvc.TypeConstrainedMappingJackson2HttpMessageConverter,org.springframework.data.rest.webmvc.alps.AlpsJsonHttpMessageConverter; SearchStrategy: all) did not find any beans (OnBeanCondition)
+== APP - calendar == 
+== APP - calendar ==    LifecycleAutoConfiguration#defaultLifecycleProcessor matched:
+== APP - calendar ==       - @ConditionalOnMissingBean (names: lifecycleProcessor; SearchStrategy: current) did not find any beans (OnBeanCondition)
+== APP - calendar == 
+== APP - calendar ==    MongoAutoConfiguration matched:
+== APP - calendar ==       - @ConditionalOnClass found required class 'com.mongodb.client.MongoClient' (OnClassCondition)
+== APP - calendar ==       - @ConditionalOnMissingBean (types: org.springframework.data.mongodb.MongoDatabaseFactory; SearchStrategy: all) did not find any beans (OnBeanCondition)
+== APP - calendar == 
+== APP - calendar ==    MongoAutoConfiguration#mongo matched:
+== APP - calendar ==       - @ConditionalOnMissingBean (types: com.mongodb.client.MongoClient; SearchStrategy: all) did not find any beans (OnBeanCondition)
+== APP - calendar == 
+== APP - calendar ==    MongoAutoConfiguration.MongoClientSettingsConfiguration matched:
+== APP - calendar ==       - @ConditionalOnMissingBean (types: com.mongodb.MongoClientSettings; SearchStrategy: all) did not find any beans (OnBeanCondition)
+== APP - calendar == 
+== APP - calendar ==    MongoDataAutoConfiguration matched:
+== APP - calendar ==       - @ConditionalOnClass found required classes 'com.mongodb.client.MongoClient', 'org.springframework.data.mongodb.core.MongoTemplate' (OnClassCondition)
+== APP - calendar == 
+== APP - calendar ==    MongoDataConfiguration#mongoCustomConversions matched:
+== APP - calendar ==       - @ConditionalOnMissingBean (types: org.springframework.data.mongodb.core.convert.MongoCustomConversions; SearchStrategy: all) did not find any beans (OnBeanCondition)
+== APP - calendar == 
+== APP - calendar ==    MongoDataConfiguration#mongoManagedTypes matched:
+== APP - calendar ==       - @ConditionalOnMissingBean (types: org.springframework.data.mongodb.MongoManagedTypes; SearchStrategy: all) did not find any beans (OnBeanCondition)
+== APP - calendar == 
+== APP - calendar ==    MongoDataConfiguration#mongoMappingContext matched:
+== APP - calendar ==       - @ConditionalOnMissingBean (types: org.springframework.data.mongodb.core.mapping.MongoMappingContext; SearchStrategy: all) did not find any beans (OnBeanCondition)
+== APP - calendar == 
+== APP - calendar ==    MongoDatabaseFactoryConfiguration matched:
+== APP - calendar ==       - @ConditionalOnSingleCandidate (types: com.mongodb.client.MongoClient; SearchStrategy: all) found a single bean 'mongo'; @ConditionalOnMissingBean (types: org.springframework.data.mongodb.MongoDatabaseFactory; SearchStrategy: all) did not find any beans (OnBeanCondition)
+== APP - calendar == 
+== APP - calendar ==    MongoDatabaseFactoryDependentConfiguration matched:
+== APP - calendar ==       - @ConditionalOnBean (types: org.springframework.data.mongodb.MongoDatabaseFactory; SearchStrategy: all) found bean 'mongoDatabaseFactory' (OnBeanCondition)
+== APP - calendar == 
+== APP - calendar ==    MongoDatabaseFactoryDependentConfiguration#gridFsTemplate matched:
+== APP - calendar ==       - @ConditionalOnMissingBean (types: org.springframework.data.mongodb.gridfs.GridFsOperations; SearchStrategy: all) did not find any beans (OnBeanCondition)
+== APP - calendar == 
+== APP - calendar ==    MongoDatabaseFactoryDependentConfiguration#mappingMongoConverter matched:
+== APP - calendar ==       - @ConditionalOnMissingBean (types: org.springframework.data.mongodb.core.convert.MongoConverter; SearchStrategy: all) did not find any beans (OnBeanCondition)
+== APP - calendar == 
+== APP - calendar ==    MongoDatabaseFactoryDependentConfiguration#mongoTemplate matched:
+== APP - calendar ==       - @ConditionalOnMissingBean (types: org.springframework.data.mongodb.core.MongoOperations; SearchStrategy: all) did not find any beans (OnBeanCondition)
+== APP - calendar == 
+== APP - calendar ==    MongoRepositoriesAutoConfiguration matched:
+== APP - calendar ==       - @ConditionalOnClass found required classes 'com.mongodb.client.MongoClient', 'org.springframework.data.mongodb.repository.MongoRepository' (OnClassCondition)
+== APP - calendar ==       - @ConditionalOnRepositoryType configured type of 'AUTO' matched required type (OnRepositoryTypeCondition)
+== APP - calendar ==       - @ConditionalOnMissingBean (types: org.springframework.data.mongodb.repository.support.MongoRepositoryFactoryBean,org.springframework.data.mongodb.repository.config.MongoRepositoryConfigurationExtension; SearchStrategy: all) did not find any beans (OnBeanCondition)
+== APP - calendar == 
+== APP - calendar ==    MultipartAutoConfiguration matched:
+== APP - calendar ==       - @ConditionalOnClass found required classes 'jakarta.servlet.Servlet', 'org.springframework.web.multipart.support.StandardServletMultipartResolver', 'jakarta.servlet.MultipartConfigElement' (OnClassCondition)
+== APP - calendar ==       - found 'session' scope (OnWebApplicationCondition)
+== APP - calendar ==       - @ConditionalOnProperty (spring.servlet.multipart.enabled) matched (OnPropertyCondition)
+== APP - calendar == 
+== APP - calendar ==    MultipartAutoConfiguration#multipartConfigElement matched:
+== APP - calendar ==       - @ConditionalOnMissingBean (types: jakarta.servlet.MultipartConfigElement; SearchStrategy: all) did not find any beans (OnBeanCondition)
+== APP - calendar == 
+== APP - calendar ==    MultipartAutoConfiguration#multipartResolver matched:
+== APP - calendar ==       - @ConditionalOnMissingBean (types: org.springframework.web.multipart.MultipartResolver; SearchStrategy: all) did not find any beans (OnBeanCondition)
+== APP - calendar == 
+== APP - calendar ==    NoOpCacheConfiguration matched:
+== APP - calendar ==       - Cache org.springframework.boot.autoconfigure.cache.NoOpCacheConfiguration automatic cache type (CacheCondition)
+== APP - calendar == 
+== APP - calendar ==    PersistenceExceptionTranslationAutoConfiguration matched:
+== APP - calendar ==       - @ConditionalOnClass found required class 'org.springframework.dao.annotation.PersistenceExceptionTranslationPostProcessor' (OnClassCondition)
+== APP - calendar == 
+== APP - calendar ==    PersistenceExceptionTranslationAutoConfiguration#persistenceExceptionTranslationPostProcessor matched:
+== APP - calendar ==       - @ConditionalOnProperty (spring.dao.exceptiontranslation.enabled) matched (OnPropertyCondition)
+== APP - calendar ==       - @ConditionalOnMissingBean (types: org.springframework.dao.annotation.PersistenceExceptionTranslationPostProcessor; SearchStrategy: all) did not find any beans (OnBeanCondition)
+== APP - calendar == 
+== APP - calendar ==    PropertyPlaceholderAutoConfiguration#propertySourcesPlaceholderConfigurer matched:
+== APP - calendar ==       - @ConditionalOnMissingBean (types: org.springframework.context.support.PropertySourcesPlaceholderConfigurer; SearchStrategy: current) did not find any beans (OnBeanCondition)
+== APP - calendar == 
+== APP - calendar ==    RestTemplateAutoConfiguration matched:
+== APP - calendar ==       - @ConditionalOnClass found required class 'org.springframework.web.client.RestTemplate' (OnClassCondition)
+== APP - calendar ==       - NoneNestedConditions 0 matched 1 did not; NestedCondition on RestTemplateAutoConfiguration.NotReactiveWebApplicationCondition.ReactiveWebApplication did not find reactive web application classes (RestTemplateAutoConfiguration.NotReactiveWebApplicationCondition)
+== APP - calendar == 
+== APP - calendar ==    RestTemplateAutoConfiguration#restTemplateBuilder matched:
+== APP - calendar ==       - @ConditionalOnMissingBean (types: org.springframework.boot.web.client.RestTemplateBuilder; SearchStrategy: all) did not find any beans (OnBeanCondition)
+== APP - calendar == 
+== APP - calendar ==    RestTemplateAutoConfiguration#restTemplateBuilderConfigurer matched:
+== APP - calendar ==       - @ConditionalOnMissingBean (types: org.springframework.boot.autoconfigure.web.client.RestTemplateBuilderConfigurer; SearchStrategy: all) did not find any beans (OnBeanCondition)
+== APP - calendar == 
+== APP - calendar ==    ServletWebServerFactoryAutoConfiguration matched:
+== APP - calendar ==       - @ConditionalOnClass found required class 'jakarta.servlet.ServletRequest' (OnClassCondition)
+== APP - calendar ==       - found 'session' scope (OnWebApplicationCondition)
+== APP - calendar == 
+== APP - calendar ==    ServletWebServerFactoryAutoConfiguration#tomcatServletWebServerFactoryCustomizer matched:
+== APP - calendar ==       - @ConditionalOnClass found required class 'org.apache.catalina.startup.Tomcat' (OnClassCondition)
+== APP - calendar == 
+== APP - calendar ==    ServletWebServerFactoryConfiguration.EmbeddedTomcat matched:
+== APP - calendar ==       - @ConditionalOnClass found required classes 'jakarta.servlet.Servlet', 'org.apache.catalina.startup.Tomcat', 'org.apache.coyote.UpgradeProtocol' (OnClassCondition)
+== APP - calendar ==       - @ConditionalOnMissingBean (types: org.springframework.boot.web.servlet.server.ServletWebServerFactory; SearchStrategy: current) did not find any beans (OnBeanCondition)
+== APP - calendar == 
+== APP - calendar ==    SimpleCacheConfiguration matched:
+== APP - calendar ==       - Cache org.springframework.boot.autoconfigure.cache.SimpleCacheConfiguration automatic cache type (CacheCondition)
+== APP - calendar == 
+== APP - calendar ==    SpringDataWebAutoConfiguration matched:
+== APP - calendar ==       - @ConditionalOnClass found required classes 'org.springframework.data.web.PageableHandlerMethodArgumentResolver', 'org.springframework.web.servlet.config.annotation.WebMvcConfigurer' (OnClassCondition)
+== APP - calendar ==       - found 'session' scope (OnWebApplicationCondition)
+== APP - calendar ==       - @ConditionalOnMissingBean (types: org.springframework.data.web.PageableHandlerMethodArgumentResolver; SearchStrategy: all) did not find any beans (OnBeanCondition)
+== APP - calendar == 
+== APP - calendar ==    SpringDataWebAutoConfiguration#pageableCustomizer matched:
+== APP - calendar ==       - @ConditionalOnMissingBean (types: org.springframework.data.web.config.PageableHandlerMethodArgumentResolverCustomizer; SearchStrategy: all) did not find any beans (OnBeanCondition)
+== APP - calendar == 
+== APP - calendar ==    SpringDataWebAutoConfiguration#sortCustomizer matched:
+== APP - calendar ==       - @ConditionalOnMissingBean (types: org.springframework.data.web.config.SortHandlerMethodArgumentResolverCustomizer; SearchStrategy: all) did not find any beans (OnBeanCondition)
+== APP - calendar == 
+== APP - calendar ==    SqlInitializationAutoConfiguration matched:
+== APP - calendar ==       - @ConditionalOnProperty (spring.sql.init.enabled) matched (OnPropertyCondition)
+== APP - calendar ==       - NoneNestedConditions 0 matched 1 did not; NestedCondition on SqlInitializationAutoConfiguration.SqlInitializationModeCondition.ModeIsNever @ConditionalOnProperty (spring.sql.init.mode=never) did not find property 'mode' (SqlInitializationAutoConfiguration.SqlInitializationModeCondition)
+== APP - calendar == 
+== APP - calendar ==    TaskExecutionAutoConfiguration matched:
+== APP - calendar ==       - @ConditionalOnClass found required class 'org.springframework.scheduling.concurrent.ThreadPoolTaskExecutor' (OnClassCondition)
+== APP - calendar == 
+== APP - calendar ==    TaskExecutionAutoConfiguration#applicationTaskExecutor matched:
+== APP - calendar ==       - @ConditionalOnMissingBean (types: java.util.concurrent.Executor; SearchStrategy: all) did not find any beans (OnBeanCondition)
+== APP - calendar == 
+== APP - calendar ==    TaskExecutionAutoConfiguration#taskExecutorBuilder matched:
+== APP - calendar ==       - @ConditionalOnMissingBean (types: org.springframework.boot.task.TaskExecutorBuilder; SearchStrategy: all) did not find any beans (OnBeanCondition)
+== APP - calendar == 
+== APP - calendar ==    TaskSchedulingAutoConfiguration matched:
+== APP - calendar ==       - @ConditionalOnClass found required class 'org.springframework.scheduling.concurrent.ThreadPoolTaskScheduler' (OnClassCondition)
+== APP - calendar == 
+== APP - calendar ==    TaskSchedulingAutoConfiguration#taskSchedulerBuilder matched:
+== APP - calendar ==       - @ConditionalOnMissingBean (types: org.springframework.boot.task.TaskSchedulerBuilder; SearchStrategy: all) did not find any beans (OnBeanCondition)
+== APP - calendar == 
+== APP - calendar ==    TransactionAutoConfiguration matched:
+== APP - calendar ==       - @ConditionalOnClass found required class 'org.springframework.transaction.PlatformTransactionManager' (OnClassCondition)
+== APP - calendar == 
+== APP - calendar ==    TransactionAutoConfiguration#platformTransactionManagerCustomizers matched:
+== APP - calendar ==       - @ConditionalOnMissingBean (types: org.springframework.boot.autoconfigure.transaction.TransactionManagerCustomizers; SearchStrategy: all) did not find any beans (OnBeanCondition)
+== APP - calendar == 
+== APP - calendar ==    WebMvcAutoConfiguration matched:
+== APP - calendar ==       - @ConditionalOnClass found required classes 'jakarta.servlet.Servlet', 'org.springframework.web.servlet.DispatcherServlet', 'org.springframework.web.servlet.config.annotation.WebMvcConfigurer' (OnClassCondition)
+== APP - calendar ==       - found 'session' scope (OnWebApplicationCondition)
+== APP - calendar ==       - @ConditionalOnMissingBean (types: org.springframework.web.servlet.config.annotation.WebMvcConfigurationSupport; SearchStrategy: all) did not find any beans (OnBeanCondition)
+== APP - calendar == 
+== APP - calendar ==    WebMvcAutoConfiguration#formContentFilter matched:
+== APP - calendar ==       - @ConditionalOnProperty (spring.mvc.formcontent.filter.enabled) matched (OnPropertyCondition)
+== APP - calendar ==       - @ConditionalOnMissingBean (types: org.springframework.web.filter.FormContentFilter; SearchStrategy: all) did not find any beans (OnBeanCondition)
+== APP - calendar == 
+== APP - calendar ==    WebMvcAutoConfiguration.EnableWebMvcConfiguration#flashMapManager matched:
+== APP - calendar ==       - @ConditionalOnMissingBean (names: flashMapManager; SearchStrategy: all) did not find any beans (OnBeanCondition)
+== APP - calendar == 
+== APP - calendar ==    WebMvcAutoConfiguration.EnableWebMvcConfiguration#localeResolver matched:
+== APP - calendar ==       - @ConditionalOnMissingBean (names: localeResolver; SearchStrategy: all) did not find any beans (OnBeanCondition)
+== APP - calendar == 
+== APP - calendar ==    WebMvcAutoConfiguration.EnableWebMvcConfiguration#themeResolver matched:
+== APP - calendar ==       - @ConditionalOnMissingBean (names: themeResolver; SearchStrategy: all) did not find any beans (OnBeanCondition)
+== APP - calendar == 
+== APP - calendar ==    WebMvcAutoConfiguration.WebMvcAutoConfigurationAdapter#defaultViewResolver matched:
+== APP - calendar ==       - @ConditionalOnMissingBean (types: org.springframework.web.servlet.view.InternalResourceViewResolver; SearchStrategy: all) did not find any beans (OnBeanCondition)
+== APP - calendar == 
+== APP - calendar ==    WebMvcAutoConfiguration.WebMvcAutoConfigurationAdapter#requestContextFilter matched:
+== APP - calendar ==       - @ConditionalOnMissingBean (types: org.springframework.web.context.request.RequestContextListener,org.springframework.web.filter.RequestContextFilter; SearchStrategy: all) did not find any beans (OnBeanCondition)
+== APP - calendar == 
+== APP - calendar ==    WebMvcAutoConfiguration.WebMvcAutoConfigurationAdapter#viewResolver matched:
+== APP - calendar ==       - @ConditionalOnBean (types: org.springframework.web.servlet.ViewResolver; SearchStrategy: all) found beans 'defaultViewResolver', 'beanNameViewResolver', 'mvcViewResolver'; @ConditionalOnMissingBean (names: viewResolver types: org.springframework.web.servlet.view.ContentNegotiatingViewResolver; SearchStrategy: all) did not find any beans (OnBeanCondition)
+== APP - calendar == 
+== APP - calendar ==    WebSocketServletAutoConfiguration matched:
+== APP - calendar ==       - @ConditionalOnClass found required classes 'jakarta.servlet.Servlet', 'jakarta.websocket.server.ServerContainer' (OnClassCondition)
+== APP - calendar ==       - found 'session' scope (OnWebApplicationCondition)
+== APP - calendar == 
+== APP - calendar ==    WebSocketServletAutoConfiguration.TomcatWebSocketConfiguration matched:
+== APP - calendar ==       - @ConditionalOnClass found required classes 'org.apache.catalina.startup.Tomcat', 'org.apache.tomcat.websocket.server.WsSci' (OnClassCondition)
+== APP - calendar == 
+== APP - calendar ==    WebSocketServletAutoConfiguration.TomcatWebSocketConfiguration#websocketServletWebServerCustomizer matched:
+== APP - calendar ==       - @ConditionalOnMissingBean (names: websocketServletWebServerCustomizer; SearchStrategy: all) did not find any beans (OnBeanCondition)
+== APP - calendar == 
+== APP - calendar == 
+== APP - calendar == Negative matches:
+== APP - calendar == -----------------
+== APP - calendar == 
+== APP - calendar ==    AopAutoConfiguration.AspectJAutoProxyingConfiguration:
+== APP - calendar ==       Did not match:
+== APP - calendar ==          - @ConditionalOnClass did not find required class 'org.aspectj.weaver.Advice' (OnClassCondition)
+== APP - calendar == 
+== APP - calendar ==    ArtemisAutoConfiguration:
+== APP - calendar ==       Did not match:
+== APP - calendar ==          - @ConditionalOnClass did not find required class 'jakarta.jms.ConnectionFactory' (OnClassCondition)
+== APP - calendar == 
+== APP - calendar ==    BatchAutoConfiguration:
+== APP - calendar ==       Did not match:
+== APP - calendar ==          - @ConditionalOnClass did not find required class 'org.springframework.batch.core.launch.JobLauncher' (OnClassCondition)
+== APP - calendar == 
+== APP - calendar ==    Cache2kCacheConfiguration:
+== APP - calendar ==       Did not match:
+== APP - calendar ==          - @ConditionalOnClass did not find required class 'org.cache2k.Cache2kBuilder' (OnClassCondition)
+== APP - calendar == 
+== APP - calendar ==    CacheAutoConfiguration:
+== APP - calendar ==       Did not match:
+== APP - calendar ==          - @ConditionalOnBean (types: org.springframework.cache.interceptor.CacheAspectSupport; SearchStrategy: all) did not find any beans of type org.springframework.cache.interceptor.CacheAspectSupport (OnBeanCondition)
+== APP - calendar ==       Matched:
+== APP - calendar ==          - @ConditionalOnClass found required class 'org.springframework.cache.CacheManager' (OnClassCondition)
+== APP - calendar == 
+== APP - calendar ==    CacheAutoConfiguration.CacheManagerEntityManagerFactoryDependsOnPostProcessor:
+== APP - calendar ==       Did not match:
+== APP - calendar ==          - @ConditionalOnClass did not find required class 'org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean' (OnClassCondition)
+== APP - calendar ==          - Ancestor org.springframework.boot.autoconfigure.cache.CacheAutoConfiguration did not match (ConditionEvaluationReport.AncestorsMatchedCondition)
+== APP - calendar == 
+== APP - calendar ==    CaffeineCacheConfiguration:
+== APP - calendar ==       Did not match:
+== APP - calendar ==          - @ConditionalOnClass did not find required class 'com.github.benmanes.caffeine.cache.Caffeine' (OnClassCondition)
+== APP - calendar == 
+== APP - calendar ==    CassandraAutoConfiguration:
+== APP - calendar ==       Did not match:
+== APP - calendar ==          - @ConditionalOnClass did not find required class 'com.datastax.oss.driver.api.core.CqlSession' (OnClassCondition)
+== APP - calendar == 
+== APP - calendar ==    CassandraDataAutoConfiguration:
+== APP - calendar ==       Did not match:
+== APP - calendar ==          - @ConditionalOnClass did not find required class 'com.datastax.oss.driver.api.core.CqlSession' (OnClassCondition)
+== APP - calendar == 
+== APP - calendar ==    CassandraReactiveDataAutoConfiguration:
+== APP - calendar ==       Did not match:
+== APP - calendar ==          - @ConditionalOnClass did not find required class 'com.datastax.oss.driver.api.core.CqlSession' (OnClassCondition)
+== APP - calendar == 
+== APP - calendar ==    CassandraReactiveRepositoriesAutoConfiguration:
+== APP - calendar ==       Did not match:
+== APP - calendar ==          - @ConditionalOnClass did not find required class 'org.springframework.data.cassandra.ReactiveSession' (OnClassCondition)
+== APP - calendar == 
+== APP - calendar ==    CassandraRepositoriesAutoConfiguration:
+== APP - calendar ==       Did not match:
+== APP - calendar ==          - @ConditionalOnClass did not find required class 'com.datastax.oss.driver.api.core.CqlSession' (OnClassCondition)
+== APP - calendar == 
+== APP - calendar ==    ClientHttpConnectorAutoConfiguration:
+== APP - calendar ==       Did not match:
+== APP - calendar ==          - @ConditionalOnClass did not find required class 'org.springframework.web.reactive.function.client.WebClient' (OnClassCondition)
+== APP - calendar == 
+== APP - calendar ==    CodecsAutoConfiguration:
+== APP - calendar ==       Did not match:
+== APP - calendar ==          - @ConditionalOnClass did not find required class 'org.springframework.web.reactive.function.client.WebClient' (OnClassCondition)
+== APP - calendar == 
+== APP - calendar ==    CouchbaseAutoConfiguration:
+== APP - calendar ==       Did not match:
+== APP - calendar ==          - @ConditionalOnClass did not find required class 'com.couchbase.client.java.Cluster' (OnClassCondition)
+== APP - calendar == 
+== APP - calendar ==    CouchbaseCacheConfiguration:
+== APP - calendar ==       Did not match:
+== APP - calendar ==          - @ConditionalOnClass did not find required class 'com.couchbase.client.java.Cluster' (OnClassCondition)
+== APP - calendar == 
+== APP - calendar ==    CouchbaseDataAutoConfiguration:
+== APP - calendar ==       Did not match:
+== APP - calendar ==          - @ConditionalOnClass did not find required class 'com.couchbase.client.java.Bucket' (OnClassCondition)
+== APP - calendar == 
+== APP - calendar ==    CouchbaseReactiveDataAutoConfiguration:
+== APP - calendar ==       Did not match:
+== APP - calendar ==          - @ConditionalOnClass did not find required class 'com.couchbase.client.java.Cluster' (OnClassCondition)
+== APP - calendar == 
+== APP - calendar ==    CouchbaseReactiveRepositoriesAutoConfiguration:
+== APP - calendar ==       Did not match:
+== APP - calendar ==          - @ConditionalOnClass did not find required class 'com.couchbase.client.java.Cluster' (OnClassCondition)
+== APP - calendar == 
+== APP - calendar ==    CouchbaseRepositoriesAutoConfiguration:
+== APP - calendar ==       Did not match:
+== APP - calendar ==          - @ConditionalOnClass did not find required class 'com.couchbase.client.java.Bucket' (OnClassCondition)
+== APP - calendar == 
+== APP - calendar ==    DataSourceAutoConfiguration:
+== APP - calendar ==       Did not match:
+== APP - calendar ==          - @ConditionalOnClass did not find required class 'org.springframework.jdbc.datasource.embedded.EmbeddedDatabaseType' (OnClassCondition)
+== APP - calendar == 
+== APP - calendar ==    DataSourceInitializationConfiguration:
+== APP - calendar ==       Did not match:
+== APP - calendar ==          - @ConditionalOnClass did not find required class 'org.springframework.jdbc.datasource.init.DatabasePopulator' (OnClassCondition)
+== APP - calendar == 
+== APP - calendar ==    DataSourceTransactionManagerAutoConfiguration:
+== APP - calendar ==       Did not match:
+== APP - calendar ==          - @ConditionalOnClass did not find required class 'org.springframework.jdbc.core.JdbcTemplate' (OnClassCondition)
+== APP - calendar == 
+== APP - calendar ==    DispatcherServletAutoConfiguration.DispatcherServletConfiguration#multipartResolver:
+== APP - calendar ==       Did not match:
+== APP - calendar ==          - @ConditionalOnBean (types: org.springframework.web.multipart.MultipartResolver; SearchStrategy: all) did not find any beans of type org.springframework.web.multipart.MultipartResolver (OnBeanCondition)
+== APP - calendar == 
+== APP - calendar ==    ElasticsearchClientAutoConfiguration:
+== APP - calendar ==       Did not match:
+== APP - calendar ==          - @ConditionalOnClass did not find required class 'co.elastic.clients.elasticsearch.ElasticsearchClient' (OnClassCondition)
+== APP - calendar == 
+== APP - calendar ==    ElasticsearchDataAutoConfiguration:
+== APP - calendar ==       Did not match:
+== APP - calendar ==          - @ConditionalOnClass did not find required class 'org.springframework.data.elasticsearch.client.elc.ElasticsearchTemplate' (OnClassCondition)
+== APP - calendar == 
+== APP - calendar ==    ElasticsearchRepositoriesAutoConfiguration:
+== APP - calendar ==       Did not match:
+== APP - calendar ==          - @ConditionalOnClass did not find required class 'org.springframework.data.elasticsearch.repository.ElasticsearchRepository' (OnClassCondition)
+== APP - calendar == 
+== APP - calendar ==    ElasticsearchRestClientAutoConfiguration:
+== APP - calendar ==       Did not match:
+== APP - calendar ==          - @ConditionalOnClass did not find required class 'org.elasticsearch.client.RestClientBuilder' (OnClassCondition)
+== APP - calendar == 
+== APP - calendar ==    EmbeddedLdapAutoConfiguration:
+== APP - calendar ==       Did not match:
+== APP - calendar ==          - @ConditionalOnClass did not find required class 'com.unboundid.ldap.listener.InMemoryDirectoryServer' (OnClassCondition)
+== APP - calendar == 
+== APP - calendar ==    EmbeddedWebServerFactoryCustomizerAutoConfiguration.JettyWebServerFactoryCustomizerConfiguration:
+== APP - calendar ==       Did not match:
+== APP - calendar ==          - @ConditionalOnClass did not find required classes 'org.eclipse.jetty.server.Server', 'org.eclipse.jetty.util.Loader', 'org.eclipse.jetty.webapp.WebAppContext' (OnClassCondition)
+== APP - calendar == 
+== APP - calendar ==    EmbeddedWebServerFactoryCustomizerAutoConfiguration.NettyWebServerFactoryCustomizerConfiguration:
+== APP - calendar ==       Did not match:
+== APP - calendar ==          - @ConditionalOnClass did not find required class 'reactor.netty.http.server.HttpServer' (OnClassCondition)
+== APP - calendar == 
+== APP - calendar ==    EmbeddedWebServerFactoryCustomizerAutoConfiguration.UndertowWebServerFactoryCustomizerConfiguration:
+== APP - calendar ==       Did not match:
+== APP - calendar ==          - @ConditionalOnClass did not find required classes 'io.undertow.Undertow', 'org.xnio.SslClientAuthMode' (OnClassCondition)
+== APP - calendar == 
+== APP - calendar ==    ErrorWebFluxAutoConfiguration:
+== APP - calendar ==       Did not match:
+== APP - calendar ==          - @ConditionalOnClass did not find required class 'org.springframework.web.reactive.config.WebFluxConfigurer' (OnClassCondition)
+== APP - calendar == 
+== APP - calendar ==    FlywayAutoConfiguration:
+== APP - calendar ==       Did not match:
+== APP - calendar ==          - @ConditionalOnClass did not find required class 'org.flywaydb.core.Flyway' (OnClassCondition)
+== APP - calendar == 
+== APP - calendar ==    FreeMarkerAutoConfiguration:
+== APP - calendar ==       Did not match:
+== APP - calendar ==          - @ConditionalOnClass did not find required class 'freemarker.template.Configuration' (OnClassCondition)
+== APP - calendar == 
+== APP - calendar ==    GraphQlAutoConfiguration:
+== APP - calendar ==       Did not match:
+== APP - calendar ==          - @ConditionalOnClass did not find required class 'graphql.GraphQL' (OnClassCondition)
+== APP - calendar == 
+== APP - calendar ==    GraphQlQueryByExampleAutoConfiguration:
+== APP - calendar ==       Did not match:
+== APP - calendar ==          - @ConditionalOnClass did not find required class 'graphql.GraphQL' (OnClassCondition)
+== APP - calendar == 
+== APP - calendar ==    GraphQlQuerydslAutoConfiguration:
+== APP - calendar ==       Did not match:
+== APP - calendar ==          - @ConditionalOnClass did not find required class 'graphql.GraphQL' (OnClassCondition)
+== APP - calendar == 
+== APP - calendar ==    GraphQlRSocketAutoConfiguration:
+== APP - calendar ==       Did not match:
+== APP - calendar ==          - @ConditionalOnClass did not find required class 'graphql.GraphQL' (OnClassCondition)
+== APP - calendar == 
+== APP - calendar ==    GraphQlReactiveQueryByExampleAutoConfiguration:
+== APP - calendar ==       Did not match:
+== APP - calendar ==          - @ConditionalOnClass did not find required class 'graphql.GraphQL' (OnClassCondition)
+== APP - calendar == 
+== APP - calendar ==    GraphQlReactiveQuerydslAutoConfiguration:
+== APP - calendar ==       Did not match:
+== APP - calendar ==          - @ConditionalOnClass did not find required class 'graphql.GraphQL' (OnClassCondition)
+== APP - calendar == 
+== APP - calendar ==    GraphQlWebFluxAutoConfiguration:
+== APP - calendar ==       Did not match:
+== APP - calendar ==          - @ConditionalOnClass did not find required class 'graphql.GraphQL' (OnClassCondition)
+== APP - calendar == 
+== APP - calendar ==    GraphQlWebFluxSecurityAutoConfiguration:
+== APP - calendar ==       Did not match:
+== APP - calendar ==          - @ConditionalOnClass did not find required class 'graphql.GraphQL' (OnClassCondition)
+== APP - calendar == 
+== APP - calendar ==    GraphQlWebMvcAutoConfiguration:
+== APP - calendar ==       Did not match:
+== APP - calendar ==          - @ConditionalOnClass did not find required class 'graphql.GraphQL' (OnClassCondition)
+== APP - calendar == 
+== APP - calendar ==    GraphQlWebMvcSecurityAutoConfiguration:
+== APP - calendar ==       Did not match:
+== APP - calendar ==          - @ConditionalOnClass did not find required class 'graphql.GraphQL' (OnClassCondition)
+== APP - calendar == 
+== APP - calendar ==    GroovyTemplateAutoConfiguration:
+== APP - calendar ==       Did not match:
+== APP - calendar ==          - @ConditionalOnClass did not find required class 'groovy.text.markup.MarkupTemplateEngine' (OnClassCondition)
+== APP - calendar == 
+== APP - calendar ==    GsonHttpMessageConvertersConfiguration.GsonHttpMessageConverterConfiguration:
+== APP - calendar ==       Did not match:
+== APP - calendar ==          - AnyNestedCondition 0 matched 2 did not; NestedCondition on GsonHttpMessageConvertersConfiguration.PreferGsonOrJacksonAndJsonbUnavailableCondition.JacksonJsonbUnavailable NoneNestedConditions 1 matched 1 did not; NestedCondition on GsonHttpMessageConvertersConfiguration.JacksonAndJsonbUnavailableCondition.JsonbPreferred @ConditionalOnProperty (spring.mvc.converters.preferred-json-mapper=jsonb) did not find property 'spring.mvc.converters.preferred-json-mapper'; NestedCondition on GsonHttpMessageConvertersConfiguration.JacksonAndJsonbUnavailableCondition.JacksonAvailable @ConditionalOnBean (types: org.springframework.http.converter.json.MappingJackson2HttpMessageConverter; SearchStrategy: all) found bean 'mappingJackson2HttpMessageConverter'; NestedCondition on GsonHttpMessageConvertersConfiguration.PreferGsonOrJacksonAndJsonbUnavailableCondition.GsonPreferred @ConditionalOnProperty (spring.mvc.converters.preferred-json-mapper=gson) did not find property 'spring.mvc.converters.preferred-json-mapper' (GsonHttpMessageConvertersConfiguration.PreferGsonOrJacksonAndJsonbUnavailableCondition)
+== APP - calendar == 
+== APP - calendar ==    H2ConsoleAutoConfiguration:
+== APP - calendar ==       Did not match:
+== APP - calendar ==          - @ConditionalOnClass did not find required class 'org.h2.server.web.JakartaWebServlet' (OnClassCondition)
+== APP - calendar == 
+== APP - calendar ==    HazelcastAutoConfiguration:
+== APP - calendar ==       Did not match:
+== APP - calendar ==          - @ConditionalOnClass did not find required class 'com.hazelcast.core.HazelcastInstance' (OnClassCondition)
+== APP - calendar == 
+== APP - calendar ==    HazelcastCacheConfiguration:
+== APP - calendar ==       Did not match:
+== APP - calendar ==          - @ConditionalOnClass did not find required class 'com.hazelcast.core.HazelcastInstance' (OnClassCondition)
+== APP - calendar == 
+== APP - calendar ==    HazelcastJpaDependencyAutoConfiguration:
+== APP - calendar ==       Did not match:
+== APP - calendar ==          - @ConditionalOnClass did not find required class 'com.hazelcast.core.HazelcastInstance' (OnClassCondition)
+== APP - calendar == 
+== APP - calendar ==    HibernateJpaAutoConfiguration:
+== APP - calendar ==       Did not match:
+== APP - calendar ==          - @ConditionalOnClass did not find required class 'jakarta.persistence.EntityManager' (OnClassCondition)
+== APP - calendar == 
+== APP - calendar ==    HttpHandlerAutoConfiguration:
+== APP - calendar ==       Did not match:
+== APP - calendar ==          - @ConditionalOnClass did not find required class 'org.springframework.web.reactive.DispatcherHandler' (OnClassCondition)
+== APP - calendar == 
+== APP - calendar ==    HypermediaAutoConfiguration:
+== APP - calendar ==       Did not match:
+== APP - calendar ==          - @ConditionalOnClass did not find required class 'org.springframework.hateoas.EntityModel' (OnClassCondition)
+== APP - calendar == 
+== APP - calendar ==    InfinispanCacheConfiguration:
+== APP - calendar ==       Did not match:
+== APP - calendar ==          - @ConditionalOnClass did not find required class 'org.infinispan.spring.embedded.provider.SpringEmbeddedCacheManager' (OnClassCondition)
+== APP - calendar == 
+== APP - calendar ==    InfluxDbAutoConfiguration:
+== APP - calendar ==       Did not match:
+== APP - calendar ==          - @ConditionalOnClass did not find required class 'org.influxdb.InfluxDB' (OnClassCondition)
+== APP - calendar == 
+== APP - calendar ==    IntegrationAutoConfiguration:
+== APP - calendar ==       Did not match:
+== APP - calendar ==          - @ConditionalOnClass did not find required class 'org.springframework.integration.config.EnableIntegration' (OnClassCondition)
+== APP - calendar == 
+== APP - calendar ==    JCacheCacheConfiguration:
+== APP - calendar ==       Did not match:
+== APP - calendar ==          - @ConditionalOnClass did not find required class 'javax.cache.Caching' (OnClassCondition)
+== APP - calendar == 
+== APP - calendar ==    JacksonHttpMessageConvertersConfiguration.MappingJackson2XmlHttpMessageConverterConfiguration:
+== APP - calendar ==       Did not match:
+== APP - calendar ==          - @ConditionalOnClass did not find required class 'com.fasterxml.jackson.dataformat.xml.XmlMapper' (OnClassCondition)
+== APP - calendar == 
+== APP - calendar ==    JdbcRepositoriesAutoConfiguration:
+== APP - calendar ==       Did not match:
+== APP - calendar ==          - @ConditionalOnClass did not find required class 'org.springframework.data.jdbc.repository.config.AbstractJdbcConfiguration' (OnClassCondition)
+== APP - calendar == 
+== APP - calendar ==    JdbcTemplateAutoConfiguration:
+== APP - calendar ==       Did not match:
+== APP - calendar ==          - @ConditionalOnClass did not find required class 'org.springframework.jdbc.core.JdbcTemplate' (OnClassCondition)
+== APP - calendar == 
+== APP - calendar ==    JerseyAutoConfiguration:
+== APP - calendar ==       Did not match:
+== APP - calendar ==          - @ConditionalOnClass did not find required class 'org.glassfish.jersey.server.spring.SpringComponentProvider' (OnClassCondition)
+== APP - calendar == 
+== APP - calendar ==    JmsAutoConfiguration:
+== APP - calendar ==       Did not match:
+== APP - calendar ==          - @ConditionalOnClass did not find required class 'jakarta.jms.Message' (OnClassCondition)
+== APP - calendar == 
+== APP - calendar ==    JmxAutoConfiguration:
+== APP - calendar ==       Did not match:
+== APP - calendar ==          - @ConditionalOnProperty (spring.jmx.enabled=true) did not find property 'enabled' (OnPropertyCondition)
+== APP - calendar ==       Matched:
+== APP - calendar ==          - @ConditionalOnClass found required class 'org.springframework.jmx.export.MBeanExporter' (OnClassCondition)
+== APP - calendar == 
+== APP - calendar ==    JndiConnectionFactoryAutoConfiguration:
+== APP - calendar ==       Did not match:
+== APP - calendar ==          - @ConditionalOnClass did not find required class 'org.springframework.jms.core.JmsTemplate' (OnClassCondition)
+== APP - calendar == 
+== APP - calendar ==    JndiDataSourceAutoConfiguration:
+== APP - calendar ==       Did not match:
+== APP - calendar ==          - @ConditionalOnClass did not find required class 'org.springframework.jdbc.datasource.embedded.EmbeddedDatabaseType' (OnClassCondition)
+== APP - calendar == 
+== APP - calendar ==    JooqAutoConfiguration:
+== APP - calendar ==       Did not match:
+== APP - calendar ==          - @ConditionalOnClass did not find required class 'org.jooq.DSLContext' (OnClassCondition)
+== APP - calendar == 
+== APP - calendar ==    JpaRepositoriesAutoConfiguration:
+== APP - calendar ==       Did not match:
+== APP - calendar ==          - @ConditionalOnClass did not find required class 'org.springframework.data.jpa.repository.JpaRepository' (OnClassCondition)
+== APP - calendar == 
+== APP - calendar ==    JsonbAutoConfiguration:
+== APP - calendar ==       Did not match:
+== APP - calendar ==          - @ConditionalOnClass did not find required class 'jakarta.json.bind.Jsonb' (OnClassCondition)
+== APP - calendar == 
+== APP - calendar ==    JsonbHttpMessageConvertersConfiguration:
+== APP - calendar ==       Did not match:
+== APP - calendar ==          - @ConditionalOnClass did not find required class 'jakarta.json.bind.Jsonb' (OnClassCondition)
+== APP - calendar == 
+== APP - calendar ==    JtaAutoConfiguration:
+== APP - calendar ==       Did not match:
+== APP - calendar ==          - @ConditionalOnClass did not find required class 'jakarta.transaction.Transaction' (OnClassCondition)
+== APP - calendar == 
+== APP - calendar ==    KafkaAutoConfiguration:
+== APP - calendar ==       Did not match:
+== APP - calendar ==          - @ConditionalOnClass did not find required class 'org.springframework.kafka.core.KafkaTemplate' (OnClassCondition)
+== APP - calendar == 
+== APP - calendar ==    LdapAutoConfiguration:
+== APP - calendar ==       Did not match:
+== APP - calendar ==          - @ConditionalOnClass did not find required class 'org.springframework.ldap.core.ContextSource' (OnClassCondition)
+== APP - calendar == 
+== APP - calendar ==    LdapRepositoriesAutoConfiguration:
+== APP - calendar ==       Did not match:
+== APP - calendar ==          - @ConditionalOnClass did not find required class 'org.springframework.data.ldap.repository.LdapRepository' (OnClassCondition)
+== APP - calendar == 
+== APP - calendar ==    LiquibaseAutoConfiguration:
+== APP - calendar ==       Did not match:
+== APP - calendar ==          - @ConditionalOnClass did not find required class 'liquibase.change.DatabaseChange' (OnClassCondition)
+== APP - calendar == 
+== APP - calendar ==    MailSenderAutoConfiguration:
+== APP - calendar ==       Did not match:
+== APP - calendar ==          - @ConditionalOnClass did not find required class 'jakarta.activation.MimeType' (OnClassCondition)
+== APP - calendar == 
+== APP - calendar ==    MailSenderValidatorAutoConfiguration:
+== APP - calendar ==       Did not match:
+== APP - calendar ==          - @ConditionalOnSingleCandidate did not find required type 'org.springframework.mail.javamail.JavaMailSenderImpl' (OnBeanCondition)
+== APP - calendar == 
+== APP - calendar ==    MessageSourceAutoConfiguration:
+== APP - calendar ==       Did not match:
+== APP - calendar ==          - ResourceBundle did not find bundle with basename messages (MessageSourceAutoConfiguration.ResourceBundleCondition)
+== APP - calendar == 
+== APP - calendar ==    MongoReactiveAutoConfiguration:
+== APP - calendar ==       Did not match:
+== APP - calendar ==          - @ConditionalOnClass did not find required class 'com.mongodb.reactivestreams.client.MongoClient' (OnClassCondition)
+== APP - calendar == 
+== APP - calendar ==    MongoReactiveDataAutoConfiguration:
+== APP - calendar ==       Did not match:
+== APP - calendar ==          - @ConditionalOnClass did not find required class 'com.mongodb.reactivestreams.client.MongoClient' (OnClassCondition)
+== APP - calendar == 
+== APP - calendar ==    MongoReactiveRepositoriesAutoConfiguration:
+== APP - calendar ==       Did not match:
+== APP - calendar ==          - @ConditionalOnClass did not find required class 'com.mongodb.reactivestreams.client.MongoClient' (OnClassCondition)
+== APP - calendar == 
+== APP - calendar ==    MustacheAutoConfiguration:
+== APP - calendar ==       Did not match:
+== APP - calendar ==          - @ConditionalOnClass did not find required class 'com.samskivert.mustache.Mustache' (OnClassCondition)
+== APP - calendar == 
+== APP - calendar ==    Neo4jAutoConfiguration:
+== APP - calendar ==       Did not match:
+== APP - calendar ==          - @ConditionalOnClass did not find required class 'org.neo4j.driver.Driver' (OnClassCondition)
+== APP - calendar == 
+== APP - calendar ==    Neo4jDataAutoConfiguration:
+== APP - calendar ==       Did not match:
+== APP - calendar ==          - @ConditionalOnClass did not find required class 'org.neo4j.driver.Driver' (OnClassCondition)
+== APP - calendar == 
+== APP - calendar ==    Neo4jReactiveDataAutoConfiguration:
+== APP - calendar ==       Did not match:
+== APP - calendar ==          - @ConditionalOnClass did not find required class 'org.neo4j.driver.Driver' (OnClassCondition)
+== APP - calendar == 
+== APP - calendar ==    Neo4jReactiveRepositoriesAutoConfiguration:
+== APP - calendar ==       Did not match:
+== APP - calendar ==          - @ConditionalOnClass did not find required class 'org.neo4j.driver.Driver' (OnClassCondition)
+== APP - calendar == 
+== APP - calendar ==    Neo4jRepositoriesAutoConfiguration:
+== APP - calendar ==       Did not match:
+== APP - calendar ==          - @ConditionalOnClass did not find required class 'org.neo4j.driver.Driver' (OnClassCondition)
+== APP - calendar == 
+== APP - calendar ==    NettyAutoConfiguration:
+== APP - calendar ==       Did not match:
+== APP - calendar ==          - @ConditionalOnClass did not find required class 'io.netty.util.NettyRuntime' (OnClassCondition)
+== APP - calendar == 
+== APP - calendar ==    OAuth2ClientAutoConfiguration:
+== APP - calendar ==       Did not match:
+== APP - calendar ==          - @ConditionalOnClass did not find required class 'org.springframework.security.config.annotation.web.configuration.EnableWebSecurity' (OnClassCondition)
+== APP - calendar == 
+== APP - calendar ==    OAuth2ResourceServerAutoConfiguration:
+== APP - calendar ==       Did not match:
+== APP - calendar ==          - @ConditionalOnClass did not find required class 'org.springframework.security.oauth2.server.resource.authentication.BearerTokenAuthenticationToken' (OnClassCondition)
+== APP - calendar == 
+== APP - calendar ==    ProjectInfoAutoConfiguration#buildProperties:
+== APP - calendar ==       Did not match:
+== APP - calendar ==          - @ConditionalOnResource did not find resource '${spring.info.build.location:classpath:META-INF/build-info.properties}' (OnResourceCondition)
+== APP - calendar == 
+== APP - calendar ==    ProjectInfoAutoConfiguration#gitProperties:
+== APP - calendar ==       Did not match:
+== APP - calendar ==          - GitResource did not find git info at classpath:git.properties (ProjectInfoAutoConfiguration.GitResourceAvailableCondition)
+== APP - calendar == 
+== APP - calendar ==    QuartzAutoConfiguration:
+== APP - calendar ==       Did not match:
+== APP - calendar ==          - @ConditionalOnClass did not find required class 'org.quartz.Scheduler' (OnClassCondition)
+== APP - calendar == 
+== APP - calendar ==    R2dbcAutoConfiguration:
+== APP - calendar ==       Did not match:
+== APP - calendar ==          - @ConditionalOnClass did not find required class 'io.r2dbc.spi.ConnectionFactory' (OnClassCondition)
+== APP - calendar == 
+== APP - calendar ==    R2dbcDataAutoConfiguration:
+== APP - calendar ==       Did not match:
+== APP - calendar ==          - @ConditionalOnClass did not find required class 'org.springframework.data.r2dbc.core.R2dbcEntityTemplate' (OnClassCondition)
+== APP - calendar == 
+== APP - calendar ==    R2dbcInitializationConfiguration:
+== APP - calendar ==       Did not match:
+== APP - calendar ==          - @ConditionalOnClass did not find required classes 'io.r2dbc.spi.ConnectionFactory', 'org.springframework.r2dbc.connection.init.DatabasePopulator' (OnClassCondition)
+== APP - calendar == 
+== APP - calendar ==    R2dbcRepositoriesAutoConfiguration:
+== APP - calendar ==       Did not match:
+== APP - calendar ==          - @ConditionalOnClass did not find required class 'io.r2dbc.spi.ConnectionFactory' (OnClassCondition)
+== APP - calendar == 
+== APP - calendar ==    R2dbcTransactionManagerAutoConfiguration:
+== APP - calendar ==       Did not match:
+== APP - calendar ==          - @ConditionalOnClass did not find required class 'org.springframework.r2dbc.connection.R2dbcTransactionManager' (OnClassCondition)
+== APP - calendar == 
+== APP - calendar ==    RSocketGraphQlClientAutoConfiguration:
+== APP - calendar ==       Did not match:
+== APP - calendar ==          - @ConditionalOnClass did not find required class 'graphql.GraphQL' (OnClassCondition)
+== APP - calendar == 
+== APP - calendar ==    RSocketMessagingAutoConfiguration:
+== APP - calendar ==       Did not match:
+== APP - calendar ==          - @ConditionalOnClass did not find required class 'io.rsocket.RSocket' (OnClassCondition)
+== APP - calendar == 
+== APP - calendar ==    RSocketRequesterAutoConfiguration:
+== APP - calendar ==       Did not match:
+== APP - calendar ==          - @ConditionalOnClass did not find required class 'io.rsocket.RSocket' (OnClassCondition)
+== APP - calendar == 
+== APP - calendar ==    RSocketSecurityAutoConfiguration:
+== APP - calendar ==       Did not match:
+== APP - calendar ==          - @ConditionalOnClass did not find required class 'org.springframework.security.rsocket.core
+The App process exited with error code: exit status 1
+
+termination signal received: shutting down
+Error exiting App: exit status 1

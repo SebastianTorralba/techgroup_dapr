@@ -2,6 +2,8 @@
 using AcademyManager.Infraestructure.Commands.Academy;
 using AcademyManager.Infraestructure.Queries.Academy;
 using MediatR;
+
+
 using Microsoft.AspNetCore.Mvc;
 
 namespace AcademyManager.Controllers
