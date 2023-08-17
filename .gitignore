@@ -29,3 +29,6 @@
 /AcademyManager/AcademyManager/bin
 /AcademyManager/AcademyManager/bin/Debug/
 /AcademyManager/.vs/*
+AcademyManager/AcademyManager/.dapr/logs/*
+calendar/.dapr/logs/*
+study_scheduler/.dapr/logs/*
