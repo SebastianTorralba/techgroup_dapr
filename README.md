@@ -1,4 +1,6 @@
-# Techgroup Dapr: Academy Scheduler Manager
+# Academy Scheduler Manager
+
+![Techgroup Dapr](https://media.licdn.com/dms/image/D4D3DAQGVnCNKfv9bfQ/image-scale_191_1128/0/1675779502361?e=1693008000&v=beta&t=G2lc0TbIC6BEuMpiymhRdIojphS8IDXAjU9FmMFI8yU)
 
 Academy Scheduler Manager is a robust academy scheduler manager designed to streamline the coordination and management of academic scheduling. It consists of three core microservices: Academy Manager, Study Scheduler, and Calendar. These microservices work together to provide a comprehensive solution for educational institutions.
 
