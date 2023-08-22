@@ -11,7 +11,7 @@ apps:
     appProtocol:
     appPort: 8002
     appHealthCheckPath:
-    command: ['python3', 'run.py']
+    command: ['sh', '-c', 'pip3 install -r requirements.txt && python3 run.py']
   - appID: calendar
     appDirPath: ./calendar
     appChannelAddress: localhost
