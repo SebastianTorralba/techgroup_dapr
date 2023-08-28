@@ -10,7 +10,6 @@ module = Blueprint('module', __name__)
 # CREATE
 @module.route('/module', methods=['POST'])
 @handle_errors
-@token_required
 def create_module():
     data = request.get_json()
 
@@ -30,7 +29,6 @@ def create_module():
 # LIST
 @module.route('/module', methods=['GET'])
 @handle_errors
-@token_required
 def get_modules():
     modules = Module.query.options(joinedload(Module.academy), joinedload(Module.subject), joinedload(Module.course), joinedload(Module.user)).filter(Module.status == 'active').all()
 
@@ -58,7 +56,6 @@ def get_modules():
 # GET
 @module.route('/module/<id>', methods=['GET'])
 @handle_errors
-@token_required
 def get_module( id):
     module = Module.query.filter_by(id=id, status='active').first()
     
@@ -75,7 +72,6 @@ def get_module( id):
 # UPDATE
 @module.route('/module/<id>', methods=['PUT'])
 @handle_errors
-@token_required
 def update_module(id):
     data = request.get_json()
     module = Module.query.get(id)
@@ -93,7 +89,6 @@ def update_module(id):
 # DELETE (SET TO INACTIVE)
 @module.route('/module/<id>', methods=['DELETE'])
 @handle_errors
-@token_required
 def set_module_inactive( id):
     module = Module.query.get(id)
     if module:

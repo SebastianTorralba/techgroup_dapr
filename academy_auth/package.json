@@ -1,0 +1,23 @@
+{
+  "name": "auth-server",
+  "version": "1.0.50",
+  "scripts": {
+    "dev": "bun run --watch src/index.ts",
+    "migration": "bunx prisma db push",
+    "build": "bun build ./ --outdir ./build",
+    "start": "bun run build/src/index.js",
+    "build:start": "bun run build && bun run start"
+  },
+  "dependencies": {
+    "@elysiajs/cookie": "^0.6.1",
+    "@elysiajs/jwt": "^0.6.3",
+    "@elysiajs/swagger": "^0.6.1",
+    "@prisma/client": "5.2.0",
+    "elysia": "^0.6.12"
+  },
+  "devDependencies": {
+    "bun-types": "latest",
+    "prisma": "5.2.0"
+  },
+  "module": "src/index.js"
+}
