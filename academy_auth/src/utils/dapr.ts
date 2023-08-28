@@ -9,12 +9,19 @@ export async function saveToDaprState(
         value: value
       }
     ];
+    console.log(
+      `http://localhost:${Bun.env.DAPR_HTTP_PORT}/v1.0/state/statestore`,
+      'url es:'
+    );
 
-    const res = await fetch('http://localhost:59956/v1.0/state/statestore', {
-      method: 'POST',
-      headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify(state)
-    });
+    const res = await fetch(
+      `http://localhost:${Bun.env.DAPR_HTTP_PORT}/v1.0/state/statestore`,
+      {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(state)
+      }
+    );
 
     if (!res.ok) {
       console.error(`Failed to save state: ${res.statusText}`);

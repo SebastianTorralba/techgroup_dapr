@@ -21,12 +21,5 @@ const app = new Elysia()
   )
   .listen(8003);
 
-console.log(
-  '🌎',
-  '\x1b[44m',
-  '\x1b[37m',
-  'server up on',
-  `${app.server?.hostname}:${app.server?.port}`,
-  '\x1b[0m'
-);
-console.log('🔑', '\x1b[45m', '\x1b[37m', 'mode:', Bun.env.BUN_ENV, '\x1b[0m');
+console.log('🌎', `${app.server?.hostname}:${app.server?.port}`);
+console.log('🔑', 'mode:', Bun.env.BUN_ENV);
