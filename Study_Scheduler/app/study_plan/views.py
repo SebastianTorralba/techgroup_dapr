@@ -1,7 +1,6 @@
 from flask import Blueprint, request, jsonify
 from app import db
 from app.handler.error import handle_errors
-from app.handler.token import token_required
 from .models import StudyPlan, StudyPlanDetail
 from datetime import datetime
 from sqlalchemy.orm import joinedload

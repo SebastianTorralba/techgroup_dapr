@@ -2,7 +2,6 @@ from flask import Blueprint, request, jsonify
 from app import db
 from sqlalchemy.orm import joinedload
 from app.handler.error import handle_errors
-from app.handler.token import token_required
 from .models import Module
 
 module = Blueprint('module', __name__)

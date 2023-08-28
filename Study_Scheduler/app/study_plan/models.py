@@ -87,7 +87,7 @@ class Subject(db.Model):
     __tablename__ = 'Subject'
 
     id = Column(String, primary_key=True, default=lambda: str(uuid4()))
-    userId = Column(String, ForeignKey('user.id'), nullable=False)
+    userId = Column(String, ForeignKey('User.id'), nullable=False)
     createdAt = Column(DateTime, nullable=False)
     updatedAt = Column(DateTime, nullable=False)
     status = Column(String, nullable=False)
@@ -137,3 +137,21 @@ class UserCourse(db.Model):
 
     def to_dict(self):
         return {c.key: getattr(self, c.key) for c in class_mapper(self.__class__).columns} 
+    
+class Teacher(db.Model):
+    __tablename__ = 'Teacher'
+
+    id = Column(String, primary_key=True, default=lambda: str(uuid4()))
+    userId = Column(String, ForeignKey('User.id'), nullable=False)
+    createdAt = Column(DateTime, nullable=False)
+    updatedAt = Column(DateTime, nullable=False)
+    status = Column(String, nullable=False)
+    firstname = Column(String, nullable=False)
+    lastname = Column(String, nullable=False)
+    
+    subjects = relationship('Subject', backref='teacher')
+
+    user = relationship('User', backref='teacher_subjects')
+
+    def to_dict(self):
+        return {c.key: getattr(self, c.key) for c in class_mapper(self.__class__).columns}
