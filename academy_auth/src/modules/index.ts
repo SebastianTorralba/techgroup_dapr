@@ -121,10 +121,7 @@ export const auth = (app: Elysia) =>
             userId: user.id
           });
 
-          const test = await saveToDaprState(`user_${user.id}`, user.id);
           await saveToDaprState(`user_${user.id}_token`, accessToken);
-          console.log('🚀 -> test:', test);
-          console.log('🚀 -> user_${user.id}_token:', `user_${user.id}_token`);
 
           setCookie('access_token', accessToken, {
             maxAge: 15 * 6000,
@@ -133,7 +130,7 @@ export const auth = (app: Elysia) =>
 
           return {
             success: true,
-            data: accessToken,
+            data: { accessToken, stateStoreTokenKey: `user_${user.id}_token` },
             message: 'Account login successfully'
           };
         },
