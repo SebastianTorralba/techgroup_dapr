@@ -10,7 +10,7 @@ export async function saveToDaprState(
       }
     ];
 
-    const res = await fetch('http://localhost:3500/v1.0/state/statestore', {
+    const res = await fetch('http://localhost:59956/v1.0/state/statestore', {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify(state)

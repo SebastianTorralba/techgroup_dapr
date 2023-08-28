@@ -10,6 +10,7 @@ apps:
     appChannelAddress: localhost
     appProtocol:
     appPort: 8003
+    daprHttpPort: 3503
     appHealthCheckPath:
     command: [
         'sh',
@@ -21,6 +22,7 @@ apps:
     appChannelAddress: localhost
     appProtocol:
     appPort: 8002
+    daprHttpPort: 3502
     appHealthCheckPath:
     command: ['sh', '-c', 'pip3 install -r requirements.txt && python3 run.py']
   - appID: calendar
@@ -28,6 +30,7 @@ apps:
     appChannelAddress: localhost
     appProtocol:
     appPort: 8001
+    daprHttpPort: 3501
     appHealthCheckPath:
     command: ['java', '-jar', 'target/calendar-0.0.1-SNAPSHOT.jar']
   - appID: academymanager
@@ -35,5 +38,6 @@ apps:
     appChannelAddress: localhost
     appProtocol:
     appPort: 8000
+    daprHttpPort: 3500
     appHealthCheckPath:
     command: ['dotnet', 'run']
