@@ -3,7 +3,7 @@
   "version": "1.0.50",
   "scripts": {
     "dev": "bun run --watch src/index.ts",
-    "update-database": "bunx prisma db push"
+    "migration": "bunx prisma db push"
   },
   "dependencies": {
     "@elysiajs/cookie": "^0.6.1",

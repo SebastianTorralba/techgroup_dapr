@@ -1,7 +1,6 @@
 import { Elysia, t } from 'elysia';
 
 import { prisma } from '../libs/prisma';
-import { comparePassword, hashPassword } from '../utils/bcrypt';
 
 export const auth = (app: Elysia) =>
   app.group('/auth', (app) =>
@@ -49,16 +48,15 @@ export const auth = (app: Elysia) =>
               };
             }
 
-            const { hash, salt } = await hashPassword(password);
+            const hash = await Bun.password.hash(password, 'bcrypt');
 
             const newUser = await prisma.user.create({
               data: {
                 email,
                 firstname,
                 lastname,
-                hash,
-                salt,
                 birthdate,
+                hash,
                 status
               }
             });
@@ -95,7 +93,6 @@ export const auth = (app: Elysia) =>
             },
             select: {
               id: true,
-              salt: true,
               hash: true
             }
           });
@@ -109,7 +106,7 @@ export const auth = (app: Elysia) =>
             };
           }
 
-          const match = await comparePassword(password, user.salt, user.hash);
+          const match = await Bun.password.verify(password, user.hash);
           if (!match) {
             set.status = 400;
             return {

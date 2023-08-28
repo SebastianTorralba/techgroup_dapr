@@ -13,7 +13,6 @@ model User {
   lastname  String   @db.VarChar(100)
   email     String   @unique(map: "user_email_unique") @db.VarChar(320)
   hash      String   @db.VarChar(500)
-  salt      String   @db.VarChar(500)
   photo     String?  @db.VarChar(500)
   cellphone String?  @db.VarChar(20)
   birthdate DateTime @db.Timestamptz(6)

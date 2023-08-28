@@ -9,8 +9,6 @@
     // if TS 5.x+
     "moduleResolution": "bundler",
     "noEmit": true,
-    "allowImportingTsExtensions": true,
-    "moduleDetection": "force",
     "jsx": "react-jsx", // support JSX
     "allowJs": true, // allow importing `.js` from `.ts`
     "esModuleInterop": true, // allow default imports for CommonJS modules

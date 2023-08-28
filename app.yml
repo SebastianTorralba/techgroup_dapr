@@ -5,6 +5,13 @@ common:
     DEBUG: 'true'
 
 apps:
+  - appID: academyauth
+    appDirPath: ./academy_auth
+    appChannelAddress: localhost
+    appProtocol:
+    appPort: 8003
+    appHealthCheckPath:
+    command: ['npm ']
   - appID: studyscheduler
     appDirPath: ./Study_Scheduler
     appChannelAddress: localhost
