@@ -1,6 +1,7 @@
 import { Elysia, t } from 'elysia';
 
 import { prisma } from '../libs/prisma';
+import { saveToDaprState } from '../utils/dapr';
 
 export const auth = (app: Elysia) =>
   app.group('/auth', (app) =>
@@ -119,6 +120,10 @@ export const auth = (app: Elysia) =>
           const accessToken = await jwt.sign({
             userId: user.id
           });
+
+          const test = await saveToDaprState(`user_${user.id}`, user.id);
+          await saveToDaprState(`user_${user.id}_token`, accessToken);
+          console.log('🚀 -> test:', test);
 
           setCookie('access_token', accessToken, {
             maxAge: 15 * 6000,
