@@ -9,10 +9,6 @@ export async function saveToDaprState(
         value: value
       }
     ];
-    console.log(
-      `http://localhost:${Bun.env.DAPR_HTTP_PORT}/v1.0/state/statestore`,
-      'url es:'
-    );
 
     const res = await fetch(
       `http://localhost:${Bun.env.DAPR_HTTP_PORT}/v1.0/state/statestore`,

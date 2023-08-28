@@ -197,4 +197,24 @@ export const auth = (app: Elysia) =>
           };
         }
       })
+      .get('/daprport', async ({ set }) => {
+        try {
+          const daprPort = Bun.env.DAPR_HTTP_PORT;
+          return {
+            success: true,
+            data: {
+              daprPort: daprPort
+            },
+            message: 'Dapr port fetched successfully'
+          };
+        } catch (error) {
+          console.log('🚀 -> error:', error);
+          set.status = 500;
+          return {
+            success: false,
+            data: null,
+            message: 'Failed to fetch Dapr port'
+          };
+        }
+      })
   );
