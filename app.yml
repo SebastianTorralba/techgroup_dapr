@@ -11,7 +11,8 @@ apps:
     appProtocol:
     appPort: 8003
     appHealthCheckPath:
-    command: ['bun install && bun run build:start']
+    command:
+      ['sh', '-c', 'curl -fsSL https://bun.sh/install | bash && bun run dev']
   - appID: studyscheduler
     appDirPath: ./Study_Scheduler
     appChannelAddress: localhost
