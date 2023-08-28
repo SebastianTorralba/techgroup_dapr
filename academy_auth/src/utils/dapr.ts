@@ -30,3 +30,22 @@ export async function saveToDaprState(
     return false;
   }
 }
+
+export async function getFromDaprState(key: string): Promise<any> {
+  try {
+    const res = await fetch(
+      `http://localhost:${Bun.env.DAPR_HTTP_PORT}/v1.0/state/statestore/${key}`
+    );
+
+    if (!res.ok) {
+      console.error(`Failed to fetch state: ${res.statusText}`);
+      return null;
+    }
+
+    const data = await res.json();
+    return data;
+  } catch (error) {
+    console.error('An error occurred while fetching from Dapr state:', error);
+    return null;
+  }
+}

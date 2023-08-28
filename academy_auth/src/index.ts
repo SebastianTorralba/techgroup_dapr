@@ -4,7 +4,8 @@ import { cookie } from '@elysiajs/cookie';
 import { jwt } from '@elysiajs/jwt';
 import swagger from '@elysiajs/swagger';
 
-import { auth } from './modules';
+import { auth } from './modules/auth';
+import { dapr } from './modules/dapr';
 
 const app = new Elysia()
   .use(swagger())
@@ -18,6 +19,7 @@ const app = new Elysia()
       )
       .use(cookie())
       .use(auth)
+      .use(dapr)
   )
   .listen(8003);
 
