@@ -1,0 +1,15 @@
+{
+  "name": "techgroup_dapr_db",
+  "version": "1.0.0",
+  "main": "index.js",
+  "scripts": {
+    "new-migration": "prisma migrate dev --name academy_auth",
+    "migrate": "npx prisma validate && npx prisma generate && npx prisma migrate deploy && echo SQLServer migration completed successfully!"
+  },
+  "devDependencies": {
+    "prisma": "^4.15.0"
+  },
+  "dependencies": {
+    "@prisma/client": "^4.15.0"
+  }
+}

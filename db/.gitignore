@@ -2,6 +2,7 @@ node_modules
 package-lock.json
 .env
 postgres/postgres_data
+postgres-auth/postgres_data
 mongo/mongodb_data
 sqlserver/sqlserver_data
 .DS_Store

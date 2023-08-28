@@ -25,7 +25,7 @@ console.log(
   '🌎',
   '\x1b[44m',
   '\x1b[37m',
-  'server up on:',
+  'server up on',
   `${app.server?.hostname}:${app.server?.port}`,
   '\x1b[0m'
 );
