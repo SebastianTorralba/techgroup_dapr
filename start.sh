@@ -1,5 +1,5 @@
 # run docker-compose
-docker-compose up
+docker-compose up -d
 # run dapr init
 dapr init
 # run dapr multiapp

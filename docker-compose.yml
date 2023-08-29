@@ -1,50 +1,50 @@
 version: '3.1'
 
 services:
-  #   postgres:
-  #     image: postgres:latest
-  #     restart: always
-  #     volumes:
-  #       - ./db/postgres/postgres_data:/var/lib/postgresql/data
-  #     environment:
-  #       POSTGRES_PASSWORD: postgres
-  #       POSTGRES_USER: postgres
-  #       POSTGRES_DB: academy_scheduler
-  #     ports:
-  #       - 5432:5432
-  #     healthcheck:
-  #       test: ['CMD-SHELL', 'pg_isready -U postgres']
-  #       interval: 10s
-  #       timeout: 5s
-  #       retries: 5
+  postgres:
+    image: postgres:latest
+    restart: always
+    volumes:
+      - ./db/postgres/postgres_data:/var/lib/postgresql/data
+    environment:
+      POSTGRES_PASSWORD: postgres
+      POSTGRES_USER: postgres
+      POSTGRES_DB: academy_scheduler
+    ports:
+      - 5432:5432
+    healthcheck:
+      test: ['CMD-SHELL', 'pg_isready -U postgres']
+      interval: 10s
+      timeout: 5s
+      retries: 5
 
-  #   postgres-auth:
-  #     image: postgres:latest
-  #     restart: always
-  #     volumes:
-  #       - ./db/postgres-auth/postgres_data:/var/lib/postgresql/data
-  #     environment:
-  #       POSTGRES_PASSWORD: postgres
-  #       POSTGRES_USER: postgres
-  #       POSTGRES_DB: academy_auth
-  #     ports:
-  #       - 5433:5432
-  #     healthcheck:
-  #       test: ['CMD-SHELL', 'pg_isready -U postgres']
-  #       interval: 10s
-  #       timeout: 5s
-  #       retries: 5
+  postgres-auth:
+    image: postgres:latest
+    restart: always
+    volumes:
+      - ./db/postgres-auth/postgres_data:/var/lib/postgresql/data
+    environment:
+      POSTGRES_PASSWORD: postgres
+      POSTGRES_USER: postgres
+      POSTGRES_DB: academy_auth
+    ports:
+      - 5433:5432
+    healthcheck:
+      test: ['CMD-SHELL', 'pg_isready -U postgres']
+      interval: 10s
+      timeout: 5s
+      retries: 5
 
-  #   mongodb:
-  #     image: mongo:latest
-  #     restart: always
-  #     volumes:
-  #       - ./db/mongo/mongodb_data:/data/db
-  #     environment:
-  #       MONGO_INITDB_ROOT_USERNAME: mongoadmin
-  #       MONGO_INITDB_ROOT_PASSWORD: secret
-  #     ports:
-  #       - 27017:27017
+  mongodb:
+    image: mongo:latest
+    restart: always
+    volumes:
+      - ./db/mongo/mongodb_data:/data/db
+    environment:
+      MONGO_INITDB_ROOT_USERNAME: mongoadmin
+      MONGO_INITDB_ROOT_PASSWORD: secret
+    ports:
+      - 27017:27017
 
   sqlserver:
     image: mcr.microsoft.com/mssql/server:2022-latest
@@ -58,35 +58,35 @@ services:
     volumes:
       - ./db/sqlserver/sqlserver_data:/var/opt/mssql/data
 
-  #   migration-postgres:
-  #     build:
-  #       context: ./db/postgres
-  #       dockerfile: Dockerfile
-  #     depends_on:
-  #       postgres:
-  #         condition: service_healthy
-  #     environment:
-  #       DATABASE_URL: postgresql://postgres:postgres@postgres:5432/academy_scheduler
-  #       DATABASE_USER: postgres
-  #       DATABASE_PASSWORD: postgres
-  #       DATABASE_HOST: localhost
-  #       DATABASE_PORT: 5432
-  #       DATABASE_NAME: academy_scheduler
+  migration-postgres:
+    build:
+      context: ./db/postgres
+      dockerfile: Dockerfile
+    depends_on:
+      postgres:
+        condition: service_healthy
+    environment:
+      DATABASE_URL: postgresql://postgres:postgres@postgres:5432/academy_scheduler
+      DATABASE_USER: postgres
+      DATABASE_PASSWORD: postgres
+      DATABASE_HOST: localhost
+      DATABASE_PORT: 5432
+      DATABASE_NAME: academy_scheduler
 
-  #   migration-postgres-auth:
-  #     build:
-  #       context: ./db/postgres-auth
-  #       dockerfile: Dockerfile
-  #     depends_on:
-  #       postgres:
-  #         condition: service_healthy
-  #     environment:
-  #       DATABASE_URL: postgresql://postgres:postgres@postgres-auth:5432/academy_auth
-  #       DATABASE_USER: postgres
-  #       DATABASE_PASSWORD: postgres
-  #       DATABASE_HOST: localhost
-  #       DATABASE_PORT: 5432
-  #       DATABASE_NAME: academy_auth
+  migration-postgres-auth:
+    build:
+      context: ./db/postgres-auth
+      dockerfile: Dockerfile
+    depends_on:
+      postgres:
+        condition: service_healthy
+    environment:
+      DATABASE_URL: postgresql://postgres:postgres@postgres-auth:5432/academy_auth
+      DATABASE_USER: postgres
+      DATABASE_PASSWORD: postgres
+      DATABASE_HOST: localhost
+      DATABASE_PORT: 5432
+      DATABASE_NAME: academy_auth
 
   migration-sqlserver:
     build:
@@ -98,6 +98,6 @@ services:
       DATABASE_URL: sqlserver://sqlserver:1433;databaseName=academy_manager;user=sa;password=Dapr1234!;encrypt=DANGER_PLAINTEXT
 
 volumes:
-  # postgres_data:
-  # mongodb_data:
+  postgres_data:
+  mongodb_data:
   sqlserver_data:
