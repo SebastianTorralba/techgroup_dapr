@@ -21,7 +21,7 @@ This directory contains the database configuration for the Study Scheduler appli
 
    ```
    DATABASE_URL="postgresql://postgres:postgres@localhost:5432/academy_scheduler"
-   SQLSERVER_URL="sqlserver://localhost:1433;databaseName=academy_scheduler;user=sa;password=Darp1234!"
+   SQLSERVER_URL="sqlserver://localhost:1433;databaseName=academy_scheduler;user=sa;password=Dapr1234!"
    ```
 
 3. Generate Prisma Client:
